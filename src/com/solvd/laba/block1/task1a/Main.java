@@ -1,12 +1,8 @@
-package org.example;
-
-
-
+package com.solvd.laba.block1.task1a;
 
 public class Main {
     public static void main(String[] args) {
-        for (String arg:args
-             ) {
+        for (String arg:args) {
             System.out.println(arg);
         }
     }
