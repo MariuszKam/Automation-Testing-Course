@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class InsertionSort implements Sortable {
 
+    private final String NAME = "Insertion";
+
     @Override
     public int[] sort(int[] array) {
         int[] copyOfArray = Arrays.copyOf(array, array.length);
@@ -18,5 +20,10 @@ public class InsertionSort implements Sortable {
             copyOfArray[j] = key;
         }
         return copyOfArray;
+    }
+
+    @Override
+    public String getName() {
+        return this.NAME;
     }
 }
