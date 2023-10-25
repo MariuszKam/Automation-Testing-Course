@@ -2,6 +2,7 @@ package com.solvd.laba.block1.task1b;
 
 import java.util.Random;
 
+
 public class ArrayCreator {
 
     public static int[] createRandomArray(int amount) {
@@ -18,5 +19,6 @@ public class ArrayCreator {
         for (int num:array) {
             System.out.print(num + " ");
         }
+        System.out.println();
     }
 }
