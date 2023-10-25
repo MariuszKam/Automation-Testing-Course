@@ -7,19 +7,18 @@ public class SelectionSort implements Sortable {
     private final String NAME = "Selection";
     @Override
     public int[] sort(int[] array) {
-        int[] copyOfArray = Arrays.copyOf(array, array.length);
-        for (int i = 0; i < copyOfArray.length - 1; i++) {
+        for (int i = 0; i < array.length - 1; i++) {
             int min = i;
-            for (int j = i + 1; j < copyOfArray.length; j++) {
-                if (copyOfArray[j] < copyOfArray[min]) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] < array[min]) {
                     min = j;
                 }
             }
-            int change = copyOfArray[min];
-            copyOfArray[min] = copyOfArray[i];
-            copyOfArray[i] = change;
+            int change = array[min];
+            array[min] = array[i];
+            array[i] = change;
         }
-        return copyOfArray;
+        return array;
     }
 
     @Override

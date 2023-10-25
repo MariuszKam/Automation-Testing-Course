@@ -8,18 +8,17 @@ public class InsertionSort implements Sortable {
 
     @Override
     public int[] sort(int[] array) {
-        int[] copyOfArray = Arrays.copyOf(array, array.length);
         int j, key;
-        for (int i = 1; i < copyOfArray.length; i++) {
+        for (int i = 1; i < array.length; i++) {
             j = i;
-            key = copyOfArray[i];
-            while (j > 0 && copyOfArray[j - 1] > key) {
-                copyOfArray[j] = copyOfArray[j - 1];
+            key = array[i];
+            while (j > 0 && array[j - 1] > key) {
+                array[j] = array[j - 1];
                 j--;
             }
-            copyOfArray[j] = key;
+            array[j] = key;
         }
-        return copyOfArray;
+        return array;
     }
 
     @Override

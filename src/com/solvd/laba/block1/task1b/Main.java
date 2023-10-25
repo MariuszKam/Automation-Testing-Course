@@ -1,5 +1,6 @@
 package com.solvd.laba.block1.task1b;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -13,9 +14,11 @@ public class Main {
                 new InsertionSort(),
                 new SelectionSort()
         );
+        int[] copyOfArray;
         for (Sortable sortable:sortables) {
+            copyOfArray = Arrays.copyOf(array, array.length);
             startTime = System.currentTimeMillis();
-            ArrayCreator.printArray(sortable.sort(array));
+            ArrayCreator.printArray(sortable.sort(copyOfArray));
             endTime = System.currentTimeMillis();
             System.out.println("Time taken by " + sortable.getName() + " algorithm to sort the array: " + (endTime - startTime) + " milliseconds");
         }
