@@ -14,7 +14,8 @@ public class Main {
                 new InsertionSort(),
                 new SelectionSort(),
                 new BubbleSort(),
-                new MargeSort()
+                new MargeSort(),
+                new QuickSort()
         );
         int[] copyOfArray;
 
