@@ -3,6 +3,7 @@ package com.solvd.laba.block1.task1b;
 public class QuickSort implements Sortable {
 
     private final String NAME = "Quicksort";
+
     @Override
     public int[] sort(int[] array) {
         quickSort(array, 0, array.length - 1);

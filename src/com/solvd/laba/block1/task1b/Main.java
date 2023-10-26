@@ -6,7 +6,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         //Creating array with random numbers
-        int[] array = ArrayCreator.createRandomArray(1000);
+        int[] array = ArrayCreator.createRandomArray(10000);
         //Variables used to count time
         long startTime, endTime;
         //List of algorithms
@@ -21,7 +21,7 @@ public class Main {
 
         System.out.println("Array: ");
         ArrayCreator.printArray(array);
-        for (Sortable sortable:sortables) {
+        for (Sortable sortable : sortables) {
             copyOfArray = Arrays.copyOf(array, array.length);
             System.out.println(sortable.getName() + " algorithm: ");
             startTime = System.currentTimeMillis();
@@ -29,7 +29,5 @@ public class Main {
             endTime = System.currentTimeMillis();
             System.out.println("Time taken by " + sortable.getName() + " algorithm to sort the array: " + (endTime - startTime) + " milliseconds" + "\n");
         }
-        //ArrayCreator.printArray(array);
-
     }
 }
