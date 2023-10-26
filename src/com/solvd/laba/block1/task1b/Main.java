@@ -6,7 +6,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         //Creating array with random numbers
-        int[] array = ArrayCreator.createRandomArray(11);
+        int[] array = ArrayCreator.createRandomArray(1000);
         //Variables used to count time
         long startTime, endTime;
         //List of algorithms

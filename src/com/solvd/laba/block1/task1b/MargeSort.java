@@ -21,8 +21,28 @@ public class MargeSort implements Sortable {
         leftSide = sort(leftSide);
         rightSide = sort(rightSide);
 
-        //Need method to marge
-        return 
+        return marge(leftSide, rightSide);
+    }
+
+    private int[] marge(int[]leftSide, int[]rightSide) {
+        int[] result = new int[leftSide.length + rightSide.length];
+        int leftPointer, rightPointer, resultPointer;
+        leftPointer = rightPointer = resultPointer = 0;
+
+        while(leftPointer < leftSide.length || rightPointer < rightSide.length) {
+            if (leftPointer < leftSide.length && rightPointer < rightSide.length) {
+                if (leftSide[leftPointer] < rightSide[rightPointer]) {
+                    result[resultPointer++] = leftSide[leftPointer++];
+                } else {
+                    result[resultPointer++] = rightSide[rightPointer++];
+                }
+            } else if (leftPointer < leftSide.length) {
+                result[resultPointer++] = leftSide[leftPointer++];
+            } else {
+                result[resultPointer++] = rightSide[rightPointer++];
+            }
+        }
+        return result;
     }
 
     @Override
