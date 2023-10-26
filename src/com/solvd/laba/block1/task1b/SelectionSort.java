@@ -1,10 +1,9 @@
 package com.solvd.laba.block1.task1b;
 
-import java.util.Arrays;
-
 public class SelectionSort implements Sortable {
 
     private final String NAME = "Selection";
+
     @Override
     public int[] sort(int[] array) {
         for (int i = 0; i < array.length - 1; i++) {

@@ -3,6 +3,7 @@ package com.solvd.laba.block1.task1b;
 public class MargeSort implements Sortable {
 
     private final String NAME = "Marge";
+
     @Override
     public int[] sort(int[] array) {
         if (array.length <= 1) {

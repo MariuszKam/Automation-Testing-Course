@@ -1,7 +1,5 @@
 package com.solvd.laba.block1.task1b;
 
-import java.util.Arrays;
-
 public class InsertionSort implements Sortable {
 
     private final String NAME = "Insertion";
