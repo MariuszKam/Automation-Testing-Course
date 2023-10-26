@@ -6,14 +6,15 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         //Creating array with random numbers
-        int[] array = ArrayCreator.createRandomArray(1000);
+        int[] array = ArrayCreator.createRandomArray(11);
         //Variables used to count time
         long startTime, endTime;
         //List of algorithms
         List<Sortable> sortables = List.of(
                 new InsertionSort(),
                 new SelectionSort(),
-                new BubbleSort()
+                new BubbleSort(),
+                new MargeSort()
         );
         int[] copyOfArray;
 
