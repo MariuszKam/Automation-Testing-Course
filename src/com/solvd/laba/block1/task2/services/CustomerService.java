@@ -13,4 +13,8 @@ public class CustomerService {
         //If transaction is finished add said price to Shop balance, do reverse do Customer balance(Made in different method?)
 
     }
+
+    private boolean isAvailable(Item item, Shop shop, int amount) {
+        return true;
+    }
 }

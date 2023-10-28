@@ -2,7 +2,7 @@ package com.solvd.laba.block1.task2.models;
 
 public class Employee extends Person {
 
-    private int salary;
+    private double salary;
     private String position;
 
     public Employee(long id, String NAME, String LASTNAME, int salary, String position) {
@@ -26,15 +26,24 @@ public class Employee extends Person {
         return super.getLASTNAME();
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(int newSalary) {
+    public void setSalary(double newSalary) {
         this.salary = newSalary;
     }
 
     public void setPosition(String newPosition) {
         this.position = newPosition;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee:\n" +
+                "Employee id: " + getId() +
+                "\nName: " + getNAME() + " " + getLASTNAME() +
+                "\nSalary: " + String.format("%.2f", salary) +
+                "\nPosition: " + position;
     }
 }

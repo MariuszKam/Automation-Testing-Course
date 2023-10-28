@@ -1,5 +1,6 @@
 package com.solvd.laba.block1.task2.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Shop {
@@ -8,6 +9,7 @@ public class Shop {
     private double balance;
 
     public Shop() {
+        this.employees = new ArrayList<>();
         this.storage = new Storage();
     }
 

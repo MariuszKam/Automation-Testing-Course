@@ -23,4 +23,5 @@ public abstract class Person {
     public String getLASTNAME() {
         return LASTNAME;
     }
+
 }
