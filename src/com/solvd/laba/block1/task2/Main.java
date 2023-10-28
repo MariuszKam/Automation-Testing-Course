@@ -25,8 +25,9 @@ public class Main {
         Employee employee2 = new Employee(2, "Derek", "Knight", 800, "Attendant");
         shopService.hire(employee2);
         shopService.showStaff();
-        shopService.fire(employee);
+        //shopService.fire(employee);
         shopService.showStaff();
+        shopService.payroll();
 
 
     }
