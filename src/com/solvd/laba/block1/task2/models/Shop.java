@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Shop {
     private List<Employee> employees;
-    private long balance;
+    private double balance;
 
 
 }

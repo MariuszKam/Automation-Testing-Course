@@ -23,5 +23,8 @@ public class Customer extends Person {
     public String getLASTNAME() {
         return super.getLASTNAME();
     }
-    
+
+    public Cart getCart() {
+        return cart;
+    }
 }

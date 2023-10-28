@@ -1,17 +1,10 @@
 package com.solvd.laba.block1.task2.models;
 
 public class Item {
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
 
     private final long id;
     private final String name;
-    private int price;
+    private double price;
     private int amount; //Temp? Maybe better solution soon.
 
     //Constructor for item without price and amount yet
@@ -20,7 +13,7 @@ public class Item {
         this.name = name;
     }
 
-    public Item(long id, String name, int price, int amount) {
+    public Item(long id, String name, double price, int amount) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -35,7 +28,7 @@ public class Item {
         return name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -43,5 +36,12 @@ public class Item {
         return amount;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 
 }
