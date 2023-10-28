@@ -2,9 +2,11 @@ package com.solvd.laba.block1.task2.models;
 
 public class Customer extends Person {
 
-    
+    private final Cart cart;
+
     public Customer(long id, String NAME, String LASTNAME) {
         super(id, NAME, LASTNAME);
+        cart = new Cart();
     }
 
     @Override
@@ -21,4 +23,5 @@ public class Customer extends Person {
     public String getLASTNAME() {
         return super.getLASTNAME();
     }
+    
 }
