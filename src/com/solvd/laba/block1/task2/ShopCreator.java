@@ -1,5 +1,6 @@
 package com.solvd.laba.block1.task2;
 
+import com.solvd.laba.block1.task2.models.Employee;
 import com.solvd.laba.block1.task2.models.Shop;
 import com.solvd.laba.block1.task2.services.ShopService;
 
@@ -9,18 +10,24 @@ import java.util.Random;
 
 public class ShopCreator {
 
-    private String[] name = {"Amelia", "Jackson", "Olivia", "Ethan", "Sophia", "Liam", "Mia", "Noah", "Ava", "Lucas"};
-    private String[] lastname = {"Parker", "Bennett", "Mitchell", "Cooper", "Anderson", "Johnson", "Turner", "Collins", "Davis", "Wilson"};
-    private Random random = new Random();
-    private ShopService shopService;
-
 
     public static void createStaff(Shop shop) {
+        String[] name = {"Amelia", "Jackson", "Olivia", "Ethan", "Sophia", "Liam", "Mia", "Noah", "Ava", "Lucas"};
+        String[] lastname = {"Parker", "Bennett", "Mitchell", "Cooper", "Anderson", "Johnson", "Turner", "Collins", "Davis", "Wilson"};
+        ShopService shopService = new ShopService(shop);
+        Random random = new Random();
+
         for (int i = 1; i < 12; i++) {
+            //Same length for both arrays
+            int randomName = random.nextInt(name.length);
+            int randomLastname = random.nextInt(lastname.length);
+            int salary = random.nextInt(2200 - 800 + 1) + 800;
             //Creating Manager
             if (i == 1) {
-
+                shopService.hire(new Employee(i, name[randomName], lastname[randomLastname], salary, "Manager"));
+                continue;
             }
+            shopService.hire(new Employee(i, name[randomName], lastname[randomLastname], salary, "Attendant"));
         }
 
     }
