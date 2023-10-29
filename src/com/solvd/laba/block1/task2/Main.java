@@ -3,6 +3,7 @@ package com.solvd.laba.block1.task2;
 import com.solvd.laba.block1.task2.models.Customer;
 import com.solvd.laba.block1.task2.models.Employee;
 import com.solvd.laba.block1.task2.models.Item;
+import com.solvd.laba.block1.task2.models.Shop;
 import com.solvd.laba.block1.task2.services.ShopService;
 
 public class Main {
@@ -17,17 +18,22 @@ public class Main {
         customer.getCart().addItem(pencil);
         System.out.println(customer.getCart().getItems().get(0).getName());
         //ShopServices testing
+        Shop shop = new Shop();
         //Hire
-        ShopService shopService = new ShopService();
+        ShopService shopService = new ShopService(shop);
         shopService.hire(employee);
         shopService.showStaff();
         //New Employee
         Employee employee2 = new Employee(2, "Derek", "Knight", 800, "Attendant");
         shopService.hire(employee2);
         shopService.showStaff();
-        //shopService.fire(employee);
+        shopService.fire(employee);
         shopService.showStaff();
         shopService.payroll();
+        //Item
+        shopService.addItem(pencil);
+        shopService.showInventory();
+        //Item
 
 
     }
