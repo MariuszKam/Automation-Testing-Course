@@ -6,6 +6,7 @@ import com.solvd.laba.block1.task2.models.Shop;
 public class Main {
     public static void main(String[] args) {
         Shop shop = new Shop();
+        ShopCreator.createStaff(shop);
 
 
     }
