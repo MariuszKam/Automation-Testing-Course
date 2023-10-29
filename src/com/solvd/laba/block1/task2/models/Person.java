@@ -3,25 +3,25 @@ package com.solvd.laba.block1.task2.models;
 public abstract class Person {
 
     private final long id;
-    private final String NAME;
-    private final String LASTNAME;
+    private final String name;
+    private final String lastname;
 
-    public Person(long id, String NAME, String LASTNAME) {
+    public Person(long id, String name, String lastname) {
         this.id = id;
-        this.NAME = NAME;
-        this.LASTNAME = LASTNAME;
+        this.name = name;
+        this.lastname = lastname;
     }
 
     public long getId() {
         return id;
     }
 
-    public String getNAME() {
-        return NAME;
+    public String getName() {
+        return name;
     }
 
-    public String getLASTNAME() {
-        return LASTNAME;
+    public String getLastname() {
+        return lastname;
     }
 
 }

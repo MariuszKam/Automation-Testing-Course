@@ -4,8 +4,8 @@ public class Customer extends Person {
 
     private final Cart cart;
 
-    public Customer(long id, String NAME, String LASTNAME) {
-        super(id, NAME, LASTNAME);
+    public Customer(long id, String name, String lastname) {
+        super(id, name, lastname);
         cart = new Cart();
     }
 
@@ -15,13 +15,13 @@ public class Customer extends Person {
     }
 
     @Override
-    public String getNAME() {
-        return super.getNAME();
+    public String getName() {
+        return super.getName();
     }
 
     @Override
-    public String getLASTNAME() {
-        return super.getLASTNAME();
+    public String getLastname() {
+        return super.getLastname();
     }
 
     public Cart getCart() {

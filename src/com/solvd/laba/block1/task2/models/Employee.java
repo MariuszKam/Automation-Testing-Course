@@ -5,8 +5,8 @@ public class Employee extends Person {
     private double salary;
     private String position;
 
-    public Employee(long id, String NAME, String LASTNAME, int salary, String position) {
-        super(id, NAME, LASTNAME);
+    public Employee(long id, String name, String lastname, int salary, String position) {
+        super(id, name, lastname);
         this.salary = salary;
         this.position = position;
     }
@@ -17,13 +17,13 @@ public class Employee extends Person {
     }
 
     @Override
-    public String getNAME() {
-        return super.getNAME();
+    public String getName() {
+        return super.getName();
     }
 
     @Override
-    public String getLASTNAME() {
-        return super.getLASTNAME();
+    public String getLastname() {
+        return super.getLastname();
     }
 
     public double getSalary() {
@@ -42,7 +42,7 @@ public class Employee extends Person {
     public String toString() {
         return "Employee:\n" +
                 "Employee id: " + getId() +
-                "\nName: " + getNAME() + " " + getLASTNAME() +
+                "\nName: " + getName() + " " + getLastname() +
                 "\nSalary: " + String.format("%.2f", salary) +
                 "\nPosition: " + position;
     }
