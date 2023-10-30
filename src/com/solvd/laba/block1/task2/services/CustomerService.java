@@ -6,15 +6,26 @@ import com.solvd.laba.block1.task2.models.Shop;
 
 public class CustomerService {
 
-    //Has to be @Transactional
-    public void putToCart(Customer customer, Shop shop, Item item, int amount) {
-        //Check if Shop(Storage contains said item) - If does put to Customer cart if not inform Customer
-        //If item gets to Cart should be removed as well from storage
-        //If transaction is finished add said price to Shop balance, do reverse do Customer balance(Made in different method?)
-
+    public void putToCart(Customer customer, Shop shop, Item item) {
+        if (isAvailable(item, shop)) {
+            //Gets to Cart
+            customer.getCart().addItem(item);
+            //Removed from Storage
+            int index = (int) item.getId() - 1;
+            int newAmount = shop.getStorage().getItems().get(index).getAmount() - item.getAmount();
+            shop.getStorage().getItems().get(index).setAmount(newAmount);
+            //Change Shop balance
+            shop.setBalance(shop.getBalance() + item.getPrice());
+        } else {
+            System.out.println("Product currently unavailable");
+        }
     }
 
-    private boolean isAvailable(Item item, Shop shop, int amount) {
-        return true;
+    private boolean isAvailable(Item item, Shop shop) {
+        if (shop.getStorage().getItems().contains(item)) {
+            int index = (int) item.getId() - 1;
+            return shop.getStorage().getItems().get(index).getAmount() >= item.getAmount();
+        }
+        return false;
     }
 }

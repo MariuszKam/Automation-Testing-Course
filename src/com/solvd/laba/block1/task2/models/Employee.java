@@ -46,4 +46,6 @@ public class Employee extends Person {
                 "\nSalary: " + String.format("%.2f", salary) +
                 "\nPosition: " + position;
     }
+
+
 }
