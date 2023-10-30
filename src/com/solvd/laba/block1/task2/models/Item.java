@@ -5,13 +5,7 @@ public class Item {
     private final long id;
     private final String name;
     private double price;
-    private int amount; //Temp? Maybe better solution soon.
-
-    //Constructor for item without price and amount yet
-    public Item(long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    private int amount;
 
     public Item(long id, String name, double price, int amount) {
         this.id = id;
