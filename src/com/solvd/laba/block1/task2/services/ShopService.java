@@ -28,9 +28,13 @@ public class ShopService {
 
     public void payroll() {
         double payroll = shop.getEmployees().stream().mapToDouble(Employee::getSalary).sum();
-        System.out.println("Total amount that has to be paid this month to all the employees is " + payroll);
+        System.out.println("Total amount that has to be paid this month to all the employees is " + convertToMoney(payroll));
         shop.setBalance(shop.getBalance() - payroll);
-        System.out.println("New balance will be " + shop.getBalance());
+        System.out.println("New balance will be " + convertToMoney(shop.getBalance()));
+    }
+
+    private String convertToMoney(double num) {
+        return String.format("%.2f", num);
     }
 
     public void showInventory() {

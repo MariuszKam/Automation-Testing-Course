@@ -21,13 +21,13 @@ public class ShopCreator {
             //Same length for both arrays
             int randomName = random.nextInt(name.length);
             int randomLastname = random.nextInt(lastname.length);
-            int salary = random.nextInt(2200 - 800 + 1) + 800;
+            double salary = random.nextDouble(2200.00 - 800.00 + 1) + 800.00;
             //Creating Manager
             if (i == 1) {
                 shopService.hire(new Employee(i, name[randomName], lastname[randomLastname], salary, "Manager"));
                 continue;
             }
-            shopService.hire(new Employee(i, name[randomName], lastname[randomLastname], salary, "Attendant"));
+            shopService.hire(new Employee(i, name[randomName], lastname[randomLastname], salary, "Customer Service"));
         }
 
     }
