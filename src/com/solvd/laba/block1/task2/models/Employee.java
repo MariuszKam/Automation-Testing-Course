@@ -42,7 +42,7 @@ public class Employee extends Person {
     public String toString() {
         return "Employee:\n" +
                 "Employee id: " + getId() +
-                "\nName: " + getName() + " " + getLastname() +
+                "\nName: " + name + " " + lastname +
                 "\nSalary: " + String.format("%.2f", salary) +
                 "\nPosition: " + position;
     }

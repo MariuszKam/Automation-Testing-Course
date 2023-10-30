@@ -10,7 +10,7 @@ import java.util.Random;
 
 
 public class ShopCreator {
-    private static Random random = new Random();
+    private static final Random random = new Random();
 
 
     private static void createStaff(Shop shop) {
