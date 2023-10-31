@@ -9,21 +9,6 @@ public class Customer extends Person {
         cart = new Cart();
     }
 
-    @Override
-    public long getId() {
-        return super.getId();
-    }
-
-    @Override
-    public String getName() {
-        return super.getName();
-    }
-
-    @Override
-    public String getLastname() {
-        return super.getLastname();
-    }
-
     public Cart getCart() {
         return cart;
     }

@@ -11,21 +11,6 @@ public class Employee extends Person {
         this.position = position;
     }
 
-    @Override
-    public long getId() {
-        return super.getId();
-    }
-
-    @Override
-    public String getName() {
-        return super.getName();
-    }
-
-    @Override
-    public String getLastname() {
-        return super.getLastname();
-    }
-
     public double getSalary() {
         return salary;
     }
