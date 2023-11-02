@@ -1,10 +1,12 @@
 package com.solvd.laba.block1.task2;
 
 
-import com.solvd.laba.block1.task2.models.Customer;
-import com.solvd.laba.block1.task2.models.Employee;
 import com.solvd.laba.block1.task2.models.Item;
 import com.solvd.laba.block1.task2.models.Shop;
+import com.solvd.laba.block1.task2.models.persons.Customer;
+import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
+import com.solvd.laba.block1.task2.models.persons.employees.Employee;
+import com.solvd.laba.block1.task2.models.persons.employees.Manager;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,8 +14,12 @@ public class Main {
         Shop shop = new Shop();
 
         //Creating Staff
-        Employee employee1 = new Employee(1, "Mark", "Williams", 1200.00, "Manager");
-        Employee employee2 = new Employee(2, "Sophie", "Turner", 1500.00, "Customer Service");
+        Employee employee1 = new Manager(1, "Mark", "Williams", 2200.00);
+        Employee employee2 = new CustomerService(2, "Sophie", "Turner", 1500.00);
+
+        //Employee test
+        System.out.println(employee1);
+        System.out.println(employee2);
 
         //Add staff to shop
         shop.getEmployees().add(employee1);

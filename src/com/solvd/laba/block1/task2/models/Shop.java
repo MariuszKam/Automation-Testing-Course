@@ -1,5 +1,7 @@
 package com.solvd.laba.block1.task2.models;
 
+import com.solvd.laba.block1.task2.models.persons.employees.Employee;
+
 import java.util.ArrayList;
 import java.util.List;
 
