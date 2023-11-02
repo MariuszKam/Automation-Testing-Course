@@ -1,6 +1,7 @@
 package com.solvd.laba.block1.task2;
 
 
+import com.solvd.laba.block1.task2.models.Inquiry;
 import com.solvd.laba.block1.task2.models.Item;
 import com.solvd.laba.block1.task2.models.Shop;
 import com.solvd.laba.block1.task2.models.persons.Customer;
@@ -17,10 +18,6 @@ public class Main {
         Employee employee1 = new Manager(1, "Mark", "Williams", 2200.00);
         Employee employee2 = new CustomerService(2, "Sophie", "Turner", 1500.00);
 
-        //Employee test
-        System.out.println(employee1);
-        System.out.println(employee2);
-
         //Add staff to shop
         shop.getEmployees().add(employee1);
         shop.getEmployees().add(employee2);
@@ -35,6 +32,10 @@ public class Main {
 
         //Creating customer
         Customer customer = new Customer(1, "Adam", "Smith");
+
+        //Inquiry chain
+        Inquiry inquiry = customer.makeInquiry();
+        System.out.println(inquiry);
 
         //Put item to cart
         customer.getCart().addItem(item1);

@@ -1,6 +1,7 @@
 package com.solvd.laba.block1.task2.models.persons;
 
 import com.solvd.laba.block1.task2.models.Cart;
+import com.solvd.laba.block1.task2.models.Inquiry;
 
 public class Customer extends Person {
 
@@ -9,6 +10,10 @@ public class Customer extends Person {
     public Customer(long id, String name, String lastname) {
         super(id, name, lastname);
         cart = new Cart();
+    }
+
+    public Inquiry makeInquiry() {
+        return new Inquiry(name + " " + lastname);
     }
 
     public Cart getCart() {

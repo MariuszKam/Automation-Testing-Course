@@ -34,4 +34,8 @@ public class Shop {
     public void setBalance(double balance) {
         this.balance = balance;
     }
+
+    public void handleInquiry(Inquiry inquiry) {
+        
+    }
 }

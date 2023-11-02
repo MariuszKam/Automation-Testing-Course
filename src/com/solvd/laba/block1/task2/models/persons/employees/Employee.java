@@ -49,7 +49,7 @@ public abstract class Employee extends Person {
         return "Employee:\n" +
                 "Employee id: " + getId() +
                 "\nName: " + name + " " + lastname +
-                "\nSalary: " + String.format("%.2f", salary) +
+                "\nSalary: " + String.format("%.2f$", salary) +
                 "\nPosition: " + position;
     }
 
