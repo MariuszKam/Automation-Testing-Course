@@ -15,8 +15,13 @@ public class Main {
         Shop shop = new Shop();
 
         //Creating Staff
+        //OPP - part 2 - Use polymorphism with at least one abstract class.
         Employee employee1 = new Manager(1, "Mark", "Williams", 2200.00);
         Employee employee2 = new CustomerService(2, "Sophie", "Turner", 1500.00);
+
+        //Test Employees
+        System.out.println(employee1);
+        System.out.println(employee2);
 
         //Add staff to shop
         shop.getEmployees().add(employee1);
@@ -33,8 +38,10 @@ public class Main {
         //Creating customer
         Customer customer = new Customer(1, "Adam", "Smith");
 
-        //Inquiry chain
-        Inquiry inquiry = customer.makeInquiry();
+        //Inquiry
+        Inquiry inquiry = customer.makeInquiry("Pencil");
+        System.out.println(inquiry);
+        shop.handleInquiry(inquiry);
         System.out.println(inquiry);
 
         //Put item to cart

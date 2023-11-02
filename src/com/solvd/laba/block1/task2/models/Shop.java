@@ -1,6 +1,8 @@
 package com.solvd.laba.block1.task2.models;
 
+import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
+import com.solvd.laba.block1.task2.models.persons.employees.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +38,12 @@ public class Shop {
     }
 
     public void handleInquiry(Inquiry inquiry) {
-        
+        for (Employee employee : employees) {
+            if (employee.getPosition() == Position.CUSTOMER_SERVICE && employee instanceof CustomerService) {
+                ((CustomerService) employee).solveInquiry(inquiry, storage);
+                return;
+            }
+        }
+        System.out.println("No customer service available");
     }
 }

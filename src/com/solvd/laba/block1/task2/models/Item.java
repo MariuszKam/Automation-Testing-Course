@@ -5,13 +5,13 @@ public class Item {
     private final long id;
     private final String name;
     private double price;
-    private int amount;
+    private int quantity;
 
     public Item(long id, String name, double price, int amount) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.amount = amount;
+        this.quantity = amount;
     }
 
     public long getId() {
@@ -26,23 +26,23 @@ public class Item {
         return price;
     }
 
-    public int getAmount() {
-        return amount;
+    public int getQuantity() {
+        return quantity;
     }
 
     public void setPrice(double price) {
         this.price = price;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setQuantity(int amount) {
+        this.quantity = amount;
     }
 
     @Override
     public String toString() {
         return "Name of product: " + name +
                 "\nPrice: " + String.format("%.2f", price) +
-                "\nAmount in stock: " + amount;
+                "\nQuantity in stock: " + quantity;
     }
 
     @Override

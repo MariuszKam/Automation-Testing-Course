@@ -25,4 +25,13 @@ public class Storage {
     public void addItems(List<Item> itemsToAdd) {
         items.addAll(itemsToAdd);
     }
+
+    public Item getItemByName(String name) {
+        for (Item item : items) {
+            if (item.getName().equals(name)) {
+                return item;
+            }
+        }
+        return null;
+    }
 }

@@ -12,8 +12,8 @@ public class Customer extends Person {
         cart = new Cart();
     }
 
-    public Inquiry makeInquiry() {
-        return new Inquiry(name + " " + lastname);
+    public Inquiry makeInquiry(String itemName) {
+        return new Inquiry(name + " " + lastname, itemName);
     }
 
     public Cart getCart() {
