@@ -42,7 +42,7 @@ public class Item {
     public String toString() {
         return "Name of product: " + name +
                 "\nPrice: " + String.format("%.2f", price) +
-                "\nQuantity in stock: " + quantity;
+                "\nQuantity: " + quantity;
     }
 
     @Override

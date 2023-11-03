@@ -35,17 +35,28 @@ public class Main {
         shop.getStorage().addItem(item1);
         shop.getStorage().addItem(item2);
 
-        //Creating customer
-        Customer customer = new Customer(1, "Adam", "Smith");
+        //Creating customers
+        Customer customer1 = new Customer(1, "Adam", "Smith");
+        Customer customer2 = new Customer(2, "Lucas", "Miller");
 
         //Inquiry
-        Inquiry inquiry = customer.makeInquiry("Pencil");
+        Inquiry inquiry = customer1.makeInquiry("Pencil");
         System.out.println(inquiry);
         shop.handleInquiry(inquiry);
         System.out.println(inquiry);
 
         //Put item to cart
-        customer.getCart().addItem(item1);
-        customer.getCart().addItem(item2);
+        shop.assignCart(customer1); //Implement method where shop assigns cart to a customer
+        shop.addItem("Pencil", 3);
+        shop.removeItem("Pencil", 2);
+        shop.printCart();
+        shop.removeItem("Pencil", 1);
+        shop.printCart();
+        shop.addItem("Pencil", 9);
+        shop.addItem("Book", 5);
+        shop.printCart();
+        shop.showTotalPrice();
+        shop.applyPromoCode("10NOW");
+        
     }
 }
