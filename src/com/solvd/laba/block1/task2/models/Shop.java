@@ -13,12 +13,14 @@ public class Shop {
     private final Storage storage;
     private Cart cart;
     private final PromoCode promoCode;
+    private final Payment payment;
     private double balance;
 
     public Shop() {
         this.employees = new ArrayList<>();
         this.storage = new Storage();
         this.promoCode = new PromoCode();
+        this.payment = new Payment();
     }
 
     public List<Employee> getEmployees() {
@@ -119,9 +121,36 @@ public class Shop {
     public void applyPromoCode(String code) {
         if (promoCode.getCode().equals(code)) {
             cart.setTotalPrice(cart.getTotalPrice() * 0.9);
-            System.out.printf("Congratulation! You applied a promo code. You new total price is %.2f$", cart.getTotalPrice());
+            System.out.printf("Congratulation! You applied a promo code. You new total price is %.2f$%n", cart.getTotalPrice());
         } else {
-            System.out.printf("%s promo code is invalid!", code);
+            System.out.printf("%s promo code is invalid!%n", code);
         }
+    }
+
+    public void checkout() {
+        if (payment.makePayment(this)) {
+            //Successful apply to storage and clear the cart
+            confirmOrder();
+        } else {
+            //Nope! Do not apply to storage, but as well clear the cart
+            rejectOrder();
+            System.out.printf("You have insufficient funds. Total cart price is %.2f$, but your account balance is %.2f$%n",
+                    cart.getTotalPrice(),
+                    cart.getCustomer().getBalance());
+        }
+    }
+
+    private void confirmOrder() {
+        for (Item item : cart.getItems()) {
+            Item inStorage = storage.getItemByName(item.getName());
+            inStorage.setQuantity(inStorage.getQuantity() - item.getQuantity());
+        }
+        cart.getItems().clear();
+        System.out.println("Thank you for choosing our shop!");
+    }
+
+    public void rejectOrder() {
+        cart.getItems().clear();
+        System.out.println("Order rejected!");
     }
 }

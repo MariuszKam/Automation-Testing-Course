@@ -16,6 +16,9 @@ public class Cart {
         this.items = new ArrayList<>();
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
 
     public List<Item> getItems() {
         return items;

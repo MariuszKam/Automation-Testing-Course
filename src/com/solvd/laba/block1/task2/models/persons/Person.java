@@ -38,4 +38,12 @@ public abstract class Person {
     public int hashCode() {
         return Objects.hash(id, name, lastname);
     }
+
+    @Override
+    public String toString() {
+        return "Person: " +
+                "ID: " + id +
+                "\nName: " + name +
+                "\nLastname: " + lastname;
+    }
 }

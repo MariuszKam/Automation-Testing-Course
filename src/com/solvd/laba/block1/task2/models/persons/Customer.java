@@ -4,8 +4,19 @@ import com.solvd.laba.block1.task2.models.Inquiry;
 
 public class Customer extends Person {
 
-    public Customer(long id, String name, String lastname) {
+    private double balance;
+
+    public Customer(long id, String name, String lastname, double balance) {
         super(id, name, lastname);
+        this.balance = balance;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     public Inquiry makeInquiry(String itemName) {
