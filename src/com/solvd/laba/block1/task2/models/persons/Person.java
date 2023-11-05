@@ -1,17 +1,22 @@
 package com.solvd.laba.block1.task2.models.persons;
 
+import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
+
 import java.util.Objects;
 
-public abstract class Person {
+public abstract class Person implements Balanceable {
 
     protected final long id;
     protected final String name;
     protected final String lastname;
+    protected double balance;
+
 
     public Person(long id, String name, String lastname) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
+        this.balance = 0.00;
     }
 
     public long getId() {
@@ -24,6 +29,39 @@ public abstract class Person {
 
     public String getLastname() {
         return lastname;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    @Override
+    public void showBalance() {
+        System.out.printf("%s %s's account balance is %.2f$%n", name, lastname, balance);
+    }
+
+    @Override
+    public boolean isPositive() {
+        return balance >= 0;
+    }
+
+    @Override
+    public void increaseBalance(double amount) {
+        balance += amount;
+    }
+
+    @Override
+    public void decreaseBalance(double amount) {
+        double savePoint = balance;
+        balance -= amount;
+        if (!isPositive()) {
+            balance = savePoint;
+            System.out.println("Insufficient funds for operation");
+        }
     }
 
     @Override

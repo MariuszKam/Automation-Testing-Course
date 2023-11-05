@@ -4,7 +4,7 @@ import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
 import com.solvd.laba.block1.task2.models.shop.components.Item;
 import com.solvd.laba.block1.task2.models.shop.components.Storage;
 
-public class CustomerService extends Employee {
+public final class CustomerService extends Employee {
 
     public CustomerService(long id, String name, String lastname, double salary) {
         super(id, name, lastname, salary);

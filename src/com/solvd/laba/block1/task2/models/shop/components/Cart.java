@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class Cart implements Sortable, Storageable {
+public final class Cart implements Sortable, Storageable {
 
     private final Customer customer;
     private List<Item> items;

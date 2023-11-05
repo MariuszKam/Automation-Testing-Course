@@ -15,7 +15,7 @@ public class Main {
         Shop shop = new Shop();
 
         //Creating Staff
-        //OPP - part 2 - Use polymorphism with at least one abstract class.
+        //OOP - part 2 - Use polymorphism with at least one abstract class.
         Employee employee1 = new Manager(1, "Mark", "Williams", 2200.00);
         Employee employee2 = new CustomerService(2, "Sophie", "Turner", 1500.00);
 
@@ -40,8 +40,8 @@ public class Main {
         shop.getStorage().addItem(item4);
 
         //Creating customers
-        Customer customer1 = new Customer(1, "Adam", "Smith", 10000);
-        Customer customer2 = new Customer(2, "Lucas", "Miller", 0);
+        Customer customer1 = new Customer(1, "Adam", "Smith");
+        Customer customer2 = new Customer(2, "Lucas", "Miller");
 
         //Inquiry
         Inquiry inquiry = customer1.makeInquiry("Pencil");
@@ -90,16 +90,6 @@ public class Main {
         //shop.rejectOrder();
         //Storage didn't change
         shop.printStorage();
-        System.out.println("-----Balance-----");
-        customer1.showBalance();
-        customer1.increaseBalance(1000);
-        customer1.showBalance();
-        customer1.decreaseBalance(500);
-        customer1.showBalance();
-        System.out.println("-----Balance2-----");
-        shop.showBalance();
-        shop.decreaseBalance(166.28);
-        shop.showBalance();
 
     }
 }

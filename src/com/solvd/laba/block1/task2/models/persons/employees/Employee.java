@@ -30,8 +30,13 @@ public abstract class Employee extends Person {
         this.position = position;
     }
 
-    //OPP - part 2 - Create and override at least one abstract method.
+    //OOP - part 2 - Create and override at least one abstract method.
     public abstract void work();
+
+    //OOP - part 3 - Final method
+    public final void paySalary() {
+        increaseBalance(salary);
+    }
 
     @Override
     public boolean equals(Object o) {

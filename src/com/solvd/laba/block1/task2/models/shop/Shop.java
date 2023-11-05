@@ -9,7 +9,7 @@ import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable
 import java.util.ArrayList;
 import java.util.List;
 
-public class Shop implements Balanceable {
+public final class Shop implements Balanceable {
     private List<Employee> employees;
     private final Storage storage;
     private Cart cart;
