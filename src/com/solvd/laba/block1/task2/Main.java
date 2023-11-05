@@ -90,6 +90,16 @@ public class Main {
         //shop.rejectOrder();
         //Storage didn't change
         shop.printStorage();
+        System.out.println("-----Balance-----");
+        customer1.showBalance();
+        customer1.increaseBalance(1000);
+        customer1.showBalance();
+        customer1.decreaseBalance(500);
+        customer1.showBalance();
+        System.out.println("-----Balance2-----");
+        shop.showBalance();
+        shop.decreaseBalance(166.28);
+        shop.showBalance();
 
     }
 }

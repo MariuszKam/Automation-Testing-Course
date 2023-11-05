@@ -4,11 +4,12 @@ import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.shop.components.*;
+import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Shop {
+public class Shop implements Balanceable {
     private List<Employee> employees;
     private final Storage storage;
     private Cart cart;
@@ -53,6 +54,31 @@ public class Shop {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    @Override
+    public void showBalance() {
+        System.out.printf("Shop balance is %.2f$%n", balance);
+    }
+
+    @Override
+    public boolean isPositive() {
+        return balance >= 0;
+    }
+
+    @Override
+    public void increaseBalance(double amount) {
+        balance += amount;
+    }
+
+    @Override
+    public void decreaseBalance(double amount) {
+        double savePoint = balance;
+        balance -= amount;
+        if (!isPositive()) {
+            balance = savePoint;
+            System.out.println("Insufficient funds for operation");
+        }
     }
 
     public void handleInquiry(Inquiry inquiry) {
@@ -153,4 +179,5 @@ public class Shop {
         cart.getItems().clear();
         System.out.println("Order rejected!");
     }
+
 }
