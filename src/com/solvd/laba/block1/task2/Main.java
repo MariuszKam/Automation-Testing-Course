@@ -28,12 +28,16 @@ public class Main {
         shop.getEmployees().add(employee2);
 
         //Creating products
-        Item item1 = new Item(1, "Pencil", 2.50, 50);
-        Item item2 = new Item(2, "Book", 10.00, 10);
+        Item item1 = new Item(1, "Pencil", 0.99, 500);
+        Item item2 = new Item(2, "Book", 14.99, 10);
+        Item item3 = new Item(3, "Ball", 50.99, 80);
+        Item item4 = new Item(4, "Sunglasses", 4.99, 250);
 
         //Add products to shop
         shop.getStorage().addItem(item1);
         shop.getStorage().addItem(item2);
+        shop.getStorage().addItem(item3);
+        shop.getStorage().addItem(item4);
 
         //Creating customers
         Customer customer1 = new Customer(1, "Adam", "Smith", 10000);
@@ -59,6 +63,8 @@ public class Main {
         //Filling up cart again
         shop.addItem("Pencil", 9);
         shop.addItem("Book", 5);
+        shop.addItem("Sunglasses", 10);
+        shop.addItem("Ball", 1);
         shop.printCart();
         //Printing total price
         shop.showTotalPrice();

@@ -5,6 +5,7 @@ import com.solvd.laba.block1.task2.models.shop.components.interfaces.Sortable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Storageable;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Cart implements Sortable, Storageable {
@@ -42,6 +43,7 @@ public class Cart implements Sortable, Storageable {
         return items.stream().mapToDouble(item -> item.getPrice() * item.getQuantity()).sum();
     }
 
+    @Override
     public void addItem(Item item) {
         items.add(item);
         setTotalPrice(calculateCart());
@@ -50,12 +52,14 @@ public class Cart implements Sortable, Storageable {
                 customer.getLastname());
     }
 
+    @Override
     public void removeItem(Item item) {
         items.remove(item);
         setTotalPrice(calculateCart());
         System.out.printf("Item %s was removed from your cart%n", item.getName());
     }
 
+    @Override
     public void decreaseQuantity(Item item, int quantity) {
         item.setQuantity(item.getQuantity() - quantity);
         setTotalPrice(calculateCart());
@@ -73,6 +77,7 @@ public class Cart implements Sortable, Storageable {
                 item.getName());
     }
 
+    @Override
     public Item getItemByName(String name) {
         for (Item item : items) {
             if (item.getName().equals(name)) {
@@ -83,12 +88,28 @@ public class Cart implements Sortable, Storageable {
     }
 
     @Override
-    public void sortByPrice(List<Item> items) {
-
+    public void sortByPrice() {
+        List<Item> sortedByPrice = new ArrayList<>(items);
+        sortedByPrice.sort(new Comparator<Item>() {
+            @Override
+            public int compare(Item o1, Item o2) {
+                return Integer.compare(o1.getQuantity(), o2.getQuantity());
+            }
+        });
+        System.out.println("Items in your cart sorted by price");
+        sortedByPrice.forEach(System.out::println);
     }
 
     @Override
-    public void sortByAmount(List<Item> items) {
-
+    public void sortByQuantity() {
+        List<Item> sortedByQuantity = new ArrayList<>(items);
+        sortedByQuantity.sort(new Comparator<Item>() {
+            @Override
+            public int compare(Item o1, Item o2) {
+                return Integer.compare(o1.getQuantity(), o2.getQuantity());
+            }
+        });
+        System.out.println("Items in your cart sorted by quantity");
+        sortedByQuantity.forEach(System.out::println);
     }
 }
