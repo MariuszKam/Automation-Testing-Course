@@ -1,13 +1,13 @@
 package com.solvd.laba.block1.task2;
 
 
-import com.solvd.laba.block1.task2.models.Inquiry;
-import com.solvd.laba.block1.task2.models.Item;
-import com.solvd.laba.block1.task2.models.Shop;
 import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.persons.employees.Manager;
+import com.solvd.laba.block1.task2.models.shop.Shop;
+import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
+import com.solvd.laba.block1.task2.models.shop.components.Item;
 
 public class Main {
     public static void main(String[] args) {

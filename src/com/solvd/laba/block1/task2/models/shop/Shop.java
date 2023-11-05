@@ -1,9 +1,9 @@
-package com.solvd.laba.block1.task2.models;
+package com.solvd.laba.block1.task2.models.shop;
 
 import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
-import com.solvd.laba.block1.task2.models.persons.employees.Position;
+import com.solvd.laba.block1.task2.models.shop.components.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,8 +57,8 @@ public class Shop {
 
     public void handleInquiry(Inquiry inquiry) {
         for (Employee employee : employees) {
-            if (employee.getPosition() == Position.CUSTOMER_SERVICE && employee instanceof CustomerService) {
-                ((CustomerService) employee).solveInquiry(inquiry, storage);
+            if (employee instanceof CustomerService customerservice) {
+                customerservice.solveInquiry(inquiry, storage);
                 return;
             }
         }

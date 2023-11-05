@@ -1,4 +1,6 @@
-package com.solvd.laba.block1.task2.models;
+package com.solvd.laba.block1.task2.models.shop.components;
+
+import com.solvd.laba.block1.task2.models.shop.Shop;
 
 public class Payment {
 

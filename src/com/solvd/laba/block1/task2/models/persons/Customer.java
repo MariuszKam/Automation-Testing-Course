@@ -1,6 +1,6 @@
 package com.solvd.laba.block1.task2.models.persons;
 
-import com.solvd.laba.block1.task2.models.Inquiry;
+import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
 
 public class Customer extends Person {
 

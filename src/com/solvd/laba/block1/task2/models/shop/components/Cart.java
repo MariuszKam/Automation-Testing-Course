@@ -1,11 +1,13 @@
-package com.solvd.laba.block1.task2.models;
+package com.solvd.laba.block1.task2.models.shop.components;
 
 import com.solvd.laba.block1.task2.models.persons.Customer;
+import com.solvd.laba.block1.task2.models.shop.components.interfaces.Sortable;
+import com.solvd.laba.block1.task2.models.shop.components.interfaces.Storageable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cart {
+public class Cart implements Sortable, Storageable {
 
     private final Customer customer;
     private List<Item> items;
@@ -62,6 +64,15 @@ public class Cart {
                 item.getName());
     }
 
+    @Override
+    public void increaseQuantity(Item item, int quantity) {
+        item.setQuantity(item.getQuantity() + quantity);
+        setTotalPrice(calculateCart());
+        System.out.printf("Quantity was increased by %d, now you have %d %s in your cart%n", quantity,
+                item.getQuantity(),
+                item.getName());
+    }
+
     public Item getItemByName(String name) {
         for (Item item : items) {
             if (item.getName().equals(name)) {
@@ -71,4 +82,13 @@ public class Cart {
         return null;
     }
 
+    @Override
+    public void sortByPrice(List<Item> items) {
+
+    }
+
+    @Override
+    public void sortByAmount(List<Item> items) {
+
+    }
 }

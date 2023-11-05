@@ -1,8 +1,8 @@
 package com.solvd.laba.block1.task2.models.persons.employees;
 
-import com.solvd.laba.block1.task2.models.Inquiry;
-import com.solvd.laba.block1.task2.models.Item;
-import com.solvd.laba.block1.task2.models.Storage;
+import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
+import com.solvd.laba.block1.task2.models.shop.components.Item;
+import com.solvd.laba.block1.task2.models.shop.components.Storage;
 
 public class CustomerService extends Employee {
 
