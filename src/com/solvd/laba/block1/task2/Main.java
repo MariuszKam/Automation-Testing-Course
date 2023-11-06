@@ -2,42 +2,14 @@ package com.solvd.laba.block1.task2;
 
 
 import com.solvd.laba.block1.task2.models.persons.Customer;
-import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
-import com.solvd.laba.block1.task2.models.persons.employees.Employee;
-import com.solvd.laba.block1.task2.models.persons.employees.Manager;
 import com.solvd.laba.block1.task2.models.shop.Shop;
+import com.solvd.laba.block1.task2.models.shop.ShopInitializer;
 import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
-import com.solvd.laba.block1.task2.models.shop.components.Item;
 
 public class Main {
     public static void main(String[] args) {
         //Creating Shop
-        Shop shop = new Shop();
-
-        //Creating Staff
-        //OOP - part 2 - Use polymorphism with at least one abstract class.
-        Employee employee1 = new Manager(1, "Mark", "Williams", 2200.00);
-        Employee employee2 = new CustomerService(2, "Sophie", "Turner", 1500.00);
-
-        //Test Employees
-        System.out.println(employee1);
-        System.out.println(employee2);
-
-        //Add staff to shop
-        shop.getEmployees().add(employee1);
-        shop.getEmployees().add(employee2);
-
-        //Creating products
-        Item item1 = new Item(1, "Pencil", 0.99, 500);
-        Item item2 = new Item(2, "Book", 14.99, 10);
-        Item item3 = new Item(3, "Ball", 50.99, 80);
-        Item item4 = new Item(4, "Sunglasses", 4.99, 250);
-
-        //Add products to shop
-        shop.getStorage().addItem(item1);
-        shop.getStorage().addItem(item2);
-        shop.getStorage().addItem(item3);
-        shop.getStorage().addItem(item4);
+        Shop shop = ShopInitializer.getShop();
 
         //Creating customers
         Customer customer1 = new Customer(1, "Adam", "Smith");
