@@ -22,6 +22,7 @@ public class Main {
         System.out.println(inquiry);
 
         //Customer - Scenario one: Successful transaction.
+        System.out.println("\nFirst case\n");
         shop.assignCart(customer1); //Implement method where shop assigns cart to a customer
         //Storage before transaction
         shop.printStorage();
@@ -35,7 +36,7 @@ public class Main {
         //Filling up cart again
         shop.addItem("Pencil", 9);
         shop.addItem("Book", 5);
-        shop.addItem("Sunglasses", 10);
+        shop.addItem("Sunglasses", 13);
         shop.addItem("Ball", 1);
         shop.printCart();
         //Printing total price
@@ -43,6 +44,8 @@ public class Main {
         //Applying promo code
         shop.applyPromoCode("NONEXISTENT");
         shop.applyPromoCode("10NOW");
+        //Lend some money to customer
+        customer1.increaseBalance(500);
         //Finishing transaction
         shop.checkout();
         //Changes in storage after successful transaction
@@ -52,6 +55,7 @@ public class Main {
         System.out.println(shop.getBalance());
 
         //Customer - Scenario two: Failed transaction.
+        System.out.println("\nSecond case\n");
         shop.assignCart(customer2);
         //Filling up cart
         shop.addItem("Pencil", 3);

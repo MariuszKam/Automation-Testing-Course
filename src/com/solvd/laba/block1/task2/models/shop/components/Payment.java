@@ -24,8 +24,8 @@ public class Payment {
         //Check if sufficient funds in balance
         if (customerBalance >= toPay) {
             //Set new balance of customer and shop
-            shop.getCart().getCustomer().setBalance(customerBalance - toPay);
-            shop.setBalance(shop.getBalance() + toPay);
+            shop.getCart().getCustomer().decreaseBalance(toPay);
+            shop.increaseBalance(toPay);
             return true;
         }
         return false;

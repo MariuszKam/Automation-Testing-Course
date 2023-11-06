@@ -146,7 +146,9 @@ public final class Shop implements Balanceable {
 
     public void applyPromoCode(String code) {
         if (promoCode.getCode().equals(code)) {
-            cart.setTotalPrice(cart.getTotalPrice() * 0.9);
+            double newTotalPrice = cart.getTotalPrice() * 0.9;
+            newTotalPrice = (double) Math.round(newTotalPrice * 100) / 100;
+            cart.setTotalPrice(newTotalPrice);
             System.out.printf("Congratulation! You applied a promo code. You new total price is %.2f$%n", cart.getTotalPrice());
         } else {
             System.out.printf("%s promo code is invalid!%n", code);
