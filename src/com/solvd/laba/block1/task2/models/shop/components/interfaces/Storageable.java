@@ -10,6 +10,4 @@ public interface Storageable {
     void decreaseQuantity(Item item, int quantity);
 
     void increaseQuantity(Item item, int quantity);
-
-    Item getItemByName(String name);
 }

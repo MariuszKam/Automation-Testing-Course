@@ -5,11 +5,12 @@ import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.shop.components.*;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
+import com.solvd.laba.block1.task2.models.shop.components.interfaces.Discountable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public final class Shop implements Balanceable {
+public final class Shop implements Balanceable, Discountable {
     private List<Employee> employees;
     private final Storage storage;
     private Cart cart;
