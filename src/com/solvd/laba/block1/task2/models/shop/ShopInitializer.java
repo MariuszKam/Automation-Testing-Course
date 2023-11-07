@@ -24,8 +24,8 @@ public class ShopInitializer {
         Employee employee1 = new Manager(1, "Mark", "Williams", 2200.00);
         Employee employee2 = new CustomerService(2, "Sophie", "Turner", 1500.00);
         //Add staff to shop
-        ShopInitializer.shop.getEmployees().add(employee1);
-        ShopInitializer.shop.getEmployees().add(employee2);
+        shop.getEmployees().add(employee1);
+        shop.getEmployees().add(employee2);
     }
 
     private static void initializeItems() {
@@ -36,9 +36,9 @@ public class ShopInitializer {
         Item item4 = new Item(4, "Sunglasses", 4.99, 250);
 
         //Add products to shop
-        ShopInitializer.shop.getStorage().addItem(item1);
-        ShopInitializer.shop.getStorage().addItem(item2);
-        ShopInitializer.shop.getStorage().addItem(item3);
-        ShopInitializer.shop.getStorage().addItem(item4);
+        shop.getStorage().addItem(item1);
+        shop.getStorage().addItem(item2);
+        shop.getStorage().addItem(item3);
+        shop.getStorage().addItem(item4);
     }
 }
