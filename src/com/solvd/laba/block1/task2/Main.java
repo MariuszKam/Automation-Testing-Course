@@ -5,16 +5,15 @@ import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.shop.Shop;
 import com.solvd.laba.block1.task2.models.shop.ShopInitializer;
 import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
-import com.solvd.laba.block1.task2.models.shop.components.Storage;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Sortable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         //Creating Shop
         Shop shop = ShopInitializer.getShop();
-
-        //Polymorphism interface
-        Sortable sortable = new Storage();
 
         //Creating customers
         Customer customer1 = new Customer(1, "Adam", "Smith");
@@ -43,7 +42,12 @@ public class Main {
         shop.addItem("Book", 5);
         shop.addItem("Sunglasses", 13);
         shop.addItem("Ball", 1);
-        shop.printCart();
+        //Polymorphism Interfaces
+        System.out.println("Polymorphism Interfaces: ");
+        List<Sortable> sortableList = new ArrayList<>();
+        sortableList.add(shop.getStorage());
+        sortableList.add(shop.getCart());
+        sortableList.forEach(Sortable::sortByPrice);
         //Printing total price
         shop.showTotalPrice();
         //Applying promo code
