@@ -5,11 +5,16 @@ import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.shop.Shop;
 import com.solvd.laba.block1.task2.models.shop.ShopInitializer;
 import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
+import com.solvd.laba.block1.task2.models.shop.components.Storage;
+import com.solvd.laba.block1.task2.models.shop.components.interfaces.Sortable;
 
 public class Main {
     public static void main(String[] args) {
         //Creating Shop
         Shop shop = ShopInitializer.getShop();
+
+        //Polymorphism interface
+        Sortable sortable = new Storage();
 
         //Creating customers
         Customer customer1 = new Customer(1, "Adam", "Smith");
