@@ -33,14 +33,16 @@ public class Main {
         shop.printStorage();
         //Adding and removing a PART of order
         shop.addItemToCustomerCart(customer1, "Pencil", 3);
+        shop.printStorage();
         shop.removeItemFromCustomerCart(customer1, "Pencil", 2);
+        shop.printStorage();
         shop.printCart(customer1);
         //Finally removing entire order
         shop.removeItemFromCustomerCart(customer1, "Pencil", 1);
         shop.printCart(customer1);
         //Filling up cart again
         shop.addItemToCustomerCart(customer1, "Pencil", 9);
-        shop.addItemToCustomerCart(customer1, "Book", 11);
+        shop.addItemToCustomerCart(customer1, "Book", 7);
         shop.addItemToCustomerCart(customer1, "Sunglasses", 13);
         shop.addItemToCustomerCart(customer1, "Ball", 1);
         //Polymorphism Interfaces

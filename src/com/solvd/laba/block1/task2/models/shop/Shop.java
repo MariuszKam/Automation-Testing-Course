@@ -115,16 +115,12 @@ public final class Shop implements Balanceable, Discountable {
             Cart cart = customerCart.get(customer);
             //Check if item exists in storage to avoid NPE
             if (storage.getItems().stream().noneMatch(item -> item.getName().equals(itemName))) {
-                System.out.printf("We do not have %s in our store%n", itemName);
+                System.out.printf("We do not have %s in our store%n", itemName); //ItemNotFoundException should work here instead be here
                 return;
             }
             //Retrieve item from storage
             Item item = storage.getItemByName(itemName);
-            //Check if storage has ordered quantity
-            if (item.getQuantity() < quantity) {
-                System.out.printf("We have only %s %s%n", item.getQuantity(), item.getName());
-                return;
-            }
+            item.setQuantity(item.getQuantity() - quantity);
             Item toCart = new Item(item.getId(), item.getName(), item.getPrice(), quantity);
             cart.addItem(toCart);
         } else {
@@ -139,17 +135,20 @@ public final class Shop implements Balanceable, Discountable {
             Cart cart = customerCart.get(customer);
             //Check if item exists in cart
             if (cart.getItems().stream().noneMatch(item -> item.getName().equals(itemName))) {
-                System.out.printf("You do not have %s in your cart%n", itemName);
+                System.out.printf("You do not have %s in your cart%n", itemName); //ItemNotFoundException should be here
                 return;
             }
-            //Retrieve item from cart
-            Item item = cart.getItemByName(itemName);
+            //Retrieve items
+            Item inCart = cart.getItemByName(itemName);
+            //Change in Storage
+            Item inStorage = storage.getItemByName(itemName);
+            inStorage.setQuantity(inStorage.getQuantity() + quantity);
             //Removing item if equals to quantity
-            if (item.getQuantity() == quantity) {
-                cart.removeItem(item);
+            if (inCart.getQuantity() == quantity) {
+                cart.removeItem(inCart);
                 return;
             }
-            cart.decreaseQuantity(item, quantity);
+            cart.decreaseQuantity(inCart, quantity);
         } else {
             System.out.printf("%s %s does not have a cart! Please assign a cart first",
                     customer.getName(), customer.getLastname());
