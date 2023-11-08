@@ -113,11 +113,6 @@ public final class Shop implements Balanceable, Discountable {
     public void addItemToCustomerCart(Customer customer, String itemName, int quantity) {
         if (hasCart(customer)) {
             Cart cart = customerCart.get(customer);
-            //Check if item exists in storage to avoid NPE
-            if (storage.getItems().stream().noneMatch(item -> item.getName().equals(itemName))) {
-                System.out.printf("We do not have %s in our store%n", itemName); //ItemNotFoundException should work here instead be here
-                return;
-            }
             //Retrieve item from storage
             Item item = storage.getItemByName(itemName);
             item.setQuantity(item.getQuantity() - quantity);
@@ -133,11 +128,6 @@ public final class Shop implements Balanceable, Discountable {
     public void removeItemFromCustomerCart(Customer customer, String itemName, int quantity) {
         if (hasCart(customer)) {
             Cart cart = customerCart.get(customer);
-            //Check if item exists in cart
-            if (cart.getItems().stream().noneMatch(item -> item.getName().equals(itemName))) {
-                System.out.printf("You do not have %s in your cart%n", itemName); //ItemNotFoundException should be here
-                return;
-            }
             //Retrieve items
             Item inCart = cart.getItemByName(itemName);
             //Change in Storage
