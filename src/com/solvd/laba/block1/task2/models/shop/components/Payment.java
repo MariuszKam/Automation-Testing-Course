@@ -18,13 +18,13 @@ public class Payment {
         isSuccessful = successful;
     }
 
-    public boolean makePayment(Shop shop) {
-        double customerBalance = shop.getCart().getCustomer().getBalance();
-        double toPay = shop.getCart().getTotalPrice();
+    public boolean makePayment(Shop shop, Cart cart) {
+        double customerBalance = cart.getCustomer().getBalance();
+        double toPay = cart.getTotalPrice();
         //Check if sufficient funds in balance
         if (customerBalance >= toPay) {
             //Set new balance of customer and shop
-            shop.getCart().getCustomer().decreaseBalance(toPay);
+            cart.getCustomer().decreaseBalance(toPay);
             shop.increaseBalance(toPay);
             return true;
         }

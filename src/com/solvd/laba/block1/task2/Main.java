@@ -25,38 +25,39 @@ public class Main {
         shop.handleInquiry(inquiry);
         System.out.println(inquiry);
 
+
         //Customer - Scenario one: Successful transaction.
         System.out.println("\nFirst case\n");
         shop.assignCart(customer1); //Implement method where shop assigns cart to a customer
         //Storage before transaction
         shop.printStorage();
         //Adding and removing a PART of order
-        shop.addItem("Pencil", 3);
-        shop.removeItem("Pencil", 2);
-        shop.printCart();
+        shop.addItemToCustomerCart(customer1, "Pencil", 3);
+        shop.removeItemFromCustomerCart(customer1, "Pencil", 2);
+        shop.printCart(customer1);
         //Finally removing entire order
-        shop.removeItem("Pencil", 1);
-        shop.printCart();
+        shop.removeItemFromCustomerCart(customer1, "Pencil", 1);
+        shop.printCart(customer1);
         //Filling up cart again
-        shop.addItem("Pencil", 9);
-        shop.addItem("Book", 5);
-        shop.addItem("Sunglasses", 13);
-        shop.addItem("Ball", 1);
+        shop.addItemToCustomerCart(customer1, "Pencil", 9);
+        shop.addItemToCustomerCart(customer1, "Book", 5);
+        shop.addItemToCustomerCart(customer1, "Sunglasses", 13);
+        shop.addItemToCustomerCart(customer1, "Ball", 1);
         //Polymorphism Interfaces
         System.out.println("Polymorphism Interfaces: ");
         List<Sortable> sortableList = new ArrayList<>();
         sortableList.add(shop.getStorage());
-        sortableList.add(shop.getCart());
+        sortableList.add(shop.getCustomerCart().get(customer1));
         sortableList.forEach(Sortable::sortByPrice);
         //Printing total price
-        shop.showTotalPrice();
+        shop.showTotalPrice(customer1);
         //Applying promo code
-        shop.applyPromoCode("NONEXISTENT");
-        shop.applyPromoCode("10NOW");
+        shop.applyPromoCode(customer1, "NONEXISTENT");
+        shop.applyPromoCode(customer1, "10NOW");
         //Lend some money to customer
         customer1.increaseBalance(500);
         //Finishing transaction
-        shop.checkout();
+        shop.checkout(customer1);
         //Changes in storage after successful transaction
         shop.printStorage();
         //Balance changes
@@ -67,10 +68,10 @@ public class Main {
         System.out.println("\nSecond case\n");
         shop.assignCart(customer2);
         //Filling up cart
-        shop.addItem("Pencil", 3);
-        shop.addItem("Book", 2);
+        shop.addItemToCustomerCart(customer2, "Pencil", 3);
+        shop.addItemToCustomerCart(customer2, "Book", 2);
         //Try to finish transaction
-        shop.checkout();
+        shop.checkout(customer2);
         //Possible to reject by public method
         //shop.rejectOrder();
         //Storage didn't change

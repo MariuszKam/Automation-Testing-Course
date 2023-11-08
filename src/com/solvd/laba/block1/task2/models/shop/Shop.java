@@ -15,7 +15,7 @@ import java.util.Map;
 public final class Shop implements Balanceable, Discountable {
     private List<Employee> employees;
     private final Storage storage;
-    private Map<Customer, Cart> customerCart;
+    private final Map<Customer, Cart> customerCart;
     private final PromoCode promoCode;
     private final Payment payment;
     private double balance;
@@ -40,6 +40,9 @@ public final class Shop implements Balanceable, Discountable {
         return storage;
     }
 
+    public Map<Customer, Cart> getCustomerCart() {
+        return customerCart;
+    }
 
     public void assignCart(Customer customer) {
         Cart cart = new Cart(customer);
@@ -93,56 +96,72 @@ public final class Shop implements Balanceable, Discountable {
         storage.getItems().forEach(System.out::println);
     }
 
-    public void printCart() {
+    public void printCart(Customer customer) {
+        Cart cart = customerCart.get(customer);
         if (cart.getItems().size() == 0) {
             System.out.println("Your cart is empty");
         }
         cart.getItems().forEach(System.out::println);
     }
 
-    public void showTotalPrice() {
+    public void showTotalPrice(Customer customer) {
+        Cart cart = customerCart.get(customer);
         System.out.printf("Total price of your cart is: %.2f$%n", cart.getTotalPrice());
     }
 
-    public void addItem(String itemName, int quantity) {
-        //Check if item exists in storage to avoid NPE
-        if (storage.getItems().stream().noneMatch(item -> item.getName().equals(itemName))) {
-            System.out.printf("We do not have %s in our store%n", itemName);
-            return;
+    public void addItemToCustomerCart(Customer customer, String itemName, int quantity) {
+        if (hasCart(customer)) {
+            Cart cart = customerCart.get(customer);
+            //Check if item exists in storage to avoid NPE
+            if (storage.getItems().stream().noneMatch(item -> item.getName().equals(itemName))) {
+                System.out.printf("We do not have %s in our store%n", itemName);
+                return;
+            }
+            //Retrieve item from storage
+            Item item = storage.getItemByName(itemName);
+            //Check if storage has ordered quantity
+            if (item.getQuantity() < quantity) {
+                System.out.printf("We have only %s %s%n", item.getQuantity(), item.getName());
+                return;
+            }
+            Item toCart = new Item(item.getId(), item.getName(), item.getPrice(), quantity);
+            cart.addItem(toCart);
+        } else {
+            System.out.printf("%s %s does not have a cart! Please assign a cart first",
+                    customer.getName(), customer.getLastname());
         }
-        //Retrieve item from storage
-        Item item = storage.getItemByName(itemName);
-        //Check if storage has ordered quantity
-        if (item.getQuantity() < quantity) {
-            System.out.printf("We have only %s %s%n", item.getQuantity(), item.getName());
-            return;
-        }
-        Item toCart = new Item(item.getId(), item.getName(), item.getPrice(), quantity);
-        cart.addItem(toCart);
+
     }
 
-    public void removeItem(String itemName, int quantity) {
-        //Check if item exists in cart
-        if (cart.getItems().stream().noneMatch(item -> item.getName().equals(itemName))) {
-            System.out.printf("You do not have %s in your cart%n", itemName);
-            return;
+    public void removeItemFromCustomerCart(Customer customer, String itemName, int quantity) {
+        if (hasCart(customer)) {
+            Cart cart = customerCart.get(customer);
+            //Check if item exists in cart
+            if (cart.getItems().stream().noneMatch(item -> item.getName().equals(itemName))) {
+                System.out.printf("You do not have %s in your cart%n", itemName);
+                return;
+            }
+            //Retrieve item from cart
+            Item item = cart.getItemByName(itemName);
+            //Check quantity
+            if (item.getQuantity() < quantity) {
+                System.out.printf("You do not have %s %s in your cart%n", quantity, item.getName());
+                return;
+            }
+            //Removing item if equals to quantity
+            if (item.getQuantity() == quantity) {
+                cart.removeItem(item);
+                return;
+            }
+            cart.decreaseQuantity(item, quantity);
+        } else {
+            System.out.printf("%s %s does not have a cart! Please assign a cart first",
+                    customer.getName(), customer.getLastname());
         }
-        //Retrieve item from cart
-        Item item = cart.getItemByName(itemName);
-        //Check quantity
-        if (item.getQuantity() < quantity) {
-            System.out.printf("You do not have %s %s in your cart%n", quantity, item.getName());
-            return;
-        }
-        //Removing item if equals to quantity
-        if (item.getQuantity() == quantity) {
-            cart.removeItem(item);
-            return;
-        }
-        cart.decreaseQuantity(item, quantity);
     }
 
-    public void applyPromoCode(String code) {
+    public void applyPromoCode(Customer customer, String code) {
+        Cart cart = customerCart.get(customer);
         if (promoCode.getCode().equals(code)) {
             double newTotalPrice = cart.getTotalPrice() * 0.9;
             newTotalPrice = (double) Math.round(newTotalPrice * 100) / 100;
@@ -153,20 +172,22 @@ public final class Shop implements Balanceable, Discountable {
         }
     }
 
-    public void checkout() {
-        if (payment.makePayment(this)) {
+    public void checkout(Customer customer) {
+        Cart cart = customerCart.get(customer);
+        if (payment.makePayment(this, cart)) {
             //Successful apply to storage and clear the cart
-            confirmOrder();
+            confirmOrder(customer);
         } else {
             //Nope! Do not apply to storage, but as well clear the cart
-            rejectOrder();
+            rejectOrder(customer);
             System.out.printf("You have insufficient funds. Total cart price is %.2f$, but your account balance is %.2f$%n",
                     cart.getTotalPrice(),
                     cart.getCustomer().getBalance());
         }
     }
 
-    private void confirmOrder() {
+    private void confirmOrder(Customer customer) {
+        Cart cart = customerCart.get(customer);
         for (Item item : cart.getItems()) {
             Item inStorage = storage.getItemByName(item.getName());
             inStorage.setQuantity(inStorage.getQuantity() - item.getQuantity());
@@ -175,9 +196,14 @@ public final class Shop implements Balanceable, Discountable {
         System.out.println("Thank you for choosing our shop!");
     }
 
-    public void rejectOrder() {
+    public void rejectOrder(Customer customer) {
+        Cart cart = customerCart.get(customer);
         cart.getItems().clear();
         System.out.println("Order rejected!");
+    }
+
+    private boolean hasCart(Customer customer) {
+        return customerCart.containsKey(customer);
     }
 
 }
