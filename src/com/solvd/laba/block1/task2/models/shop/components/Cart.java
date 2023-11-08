@@ -1,6 +1,7 @@
 package com.solvd.laba.block1.task2.models.shop.components;
 
 import com.solvd.laba.block1.task2.models.persons.Customer;
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.ItemNotFoundException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Searchable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Sortable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Storageable;
@@ -85,7 +86,7 @@ public final class Cart implements Sortable, Storageable, Searchable {
                 return item;
             }
         }
-        return null;
+        throw new ItemNotFoundException();
     }
 
     @Override

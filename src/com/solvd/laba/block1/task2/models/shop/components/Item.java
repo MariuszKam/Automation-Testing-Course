@@ -1,5 +1,8 @@
 package com.solvd.laba.block1.task2.models.shop.components;
 
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidItemPriceException;
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidItemQuantityException;
+
 public class Item {
 
     private final long id;
@@ -7,11 +10,18 @@ public class Item {
     private double price;
     private int quantity;
 
-    public Item(long id, String name, double price, int amount) {
+    public Item(long id, String name, double price, int quantity) {
         this.id = id;
         this.name = name;
+        if (price < 0) {
+            throw new InvalidItemPriceException();
+        }
         this.price = price;
-        this.quantity = amount;
+
+        if (quantity < 0) {
+            throw new InvalidItemQuantityException()
+        }
+        this.quantity = quantity;
     }
 
     public long getId() {
@@ -31,10 +41,16 @@ public class Item {
     }
 
     public void setPrice(double price) {
+        if (price < 0) {
+            throw new InvalidItemPriceException();
+        }
         this.price = price;
     }
 
     public void setQuantity(int amount) {
+        if (amount > 0) {
+            throw new InvalidItemQuantityException();
+        }
         this.quantity = amount;
     }
 

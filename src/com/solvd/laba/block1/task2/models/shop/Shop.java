@@ -4,6 +4,7 @@ import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.shop.components.*;
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Discountable;
 
@@ -162,13 +163,17 @@ public final class Shop implements Balanceable, Discountable {
 
     public void applyPromoCode(Customer customer, String code) {
         Cart cart = customerCart.get(customer);
-        if (promoCode.getCode().equals(code)) {
-            double newTotalPrice = cart.getTotalPrice() * 0.9;
-            newTotalPrice = (double) Math.round(newTotalPrice * 100) / 100;
-            cart.setTotalPrice(newTotalPrice);
-            System.out.printf("Congratulation! You applied a promo code. You new total price is %.2f$%n", cart.getTotalPrice());
-        } else {
-            System.out.printf("%s promo code is invalid!%n", code);
+        try {
+            if (promoCode.getCode().equals(code)) {
+                double newTotalPrice = cart.getTotalPrice() * 0.9;
+                newTotalPrice = (double) Math.round(newTotalPrice * 100) / 100;
+                cart.setTotalPrice(newTotalPrice);
+                System.out.printf("Congratulation! You applied a promo code. You new total price is %.2f$%n", cart.getTotalPrice());
+            } else {
+                throw new InvalidPromoCodeException("Invalid promo code: " + code);
+            }
+        } catch (InvalidPromoCodeException e) {
+            System.out.printf("Error: %s%n", e.getMessage());
         }
     }
 
