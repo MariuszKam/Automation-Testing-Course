@@ -40,7 +40,7 @@ public class Main {
         shop.printCart(customer1);
         //Filling up cart again
         shop.addItemToCustomerCart(customer1, "Pencil", 9);
-        shop.addItemToCustomerCart(customer1, "Book", 5);
+        shop.addItemToCustomerCart(customer1, "Book", 11);
         shop.addItemToCustomerCart(customer1, "Sunglasses", 13);
         shop.addItemToCustomerCart(customer1, "Ball", 1);
         //Polymorphism Interfaces

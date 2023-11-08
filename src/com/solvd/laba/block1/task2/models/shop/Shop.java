@@ -144,11 +144,6 @@ public final class Shop implements Balanceable, Discountable {
             }
             //Retrieve item from cart
             Item item = cart.getItemByName(itemName);
-            //Check quantity
-            if (item.getQuantity() < quantity) {
-                System.out.printf("You do not have %s %s in your cart%n", quantity, item.getName());
-                return;
-            }
             //Removing item if equals to quantity
             if (item.getQuantity() == quantity) {
                 cart.removeItem(item);
@@ -193,16 +188,20 @@ public final class Shop implements Balanceable, Discountable {
 
     private void confirmOrder(Customer customer) {
         Cart cart = customerCart.get(customer);
-        for (Item item : cart.getItems()) {
-            Item inStorage = storage.getItemByName(item.getName());
-            inStorage.setQuantity(inStorage.getQuantity() - item.getQuantity());
-        }
+//        for (Item item : cart.getItems()) {
+//            Item inStorage = storage.getItemByName(item.getName()); Try to do reverse action to upgrade
+//            inStorage.setQuantity(inStorage.getQuantity() - item.getQuantity());
+//        }
         cart.getItems().clear();
         System.out.println("Thank you for choosing our shop!");
     }
 
     public void rejectOrder(Customer customer) {
         Cart cart = customerCart.get(customer);
+        for (Item item : cart.getItems()) {
+            Item inStorage = storage.getItemByName(item.getName());
+            inStorage.setQuantity(inStorage.getQuantity() + item.getQuantity());
+        }
         cart.getItems().clear();
         System.out.println("Order rejected!");
     }

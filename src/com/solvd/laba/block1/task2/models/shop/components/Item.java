@@ -19,7 +19,7 @@ public class Item {
         this.price = price;
 
         if (quantity < 0) {
-            throw new InvalidItemQuantityException()
+            throw new InvalidItemQuantityException();
         }
         this.quantity = quantity;
     }
@@ -48,7 +48,7 @@ public class Item {
     }
 
     public void setQuantity(int amount) {
-        if (amount > 0) {
+        if (amount < 0) {
             throw new InvalidItemQuantityException();
         }
         this.quantity = amount;
