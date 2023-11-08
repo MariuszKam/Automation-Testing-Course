@@ -8,12 +8,14 @@ import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Discountable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class Shop implements Balanceable, Discountable {
     private List<Employee> employees;
     private final Storage storage;
-    private Cart cart;
+    private Map<Customer, Cart> customerCart;
     private final PromoCode promoCode;
     private final Payment payment;
     private double balance;
@@ -21,6 +23,7 @@ public final class Shop implements Balanceable, Discountable {
     public Shop() {
         this.employees = new ArrayList<>();
         this.storage = new Storage();
+        this.customerCart = new HashMap<>();
         this.promoCode = new PromoCode();
         this.payment = new Payment();
     }
@@ -37,16 +40,10 @@ public final class Shop implements Balanceable, Discountable {
         return storage;
     }
 
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
 
     public void assignCart(Customer customer) {
-        cart = new Cart(customer);
+        Cart cart = new Cart(customer);
+        customerCart.put(customer, cart);
     }
 
     public double getBalance() {

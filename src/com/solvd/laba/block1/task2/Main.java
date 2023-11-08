@@ -60,8 +60,8 @@ public class Main {
         //Changes in storage after successful transaction
         shop.printStorage();
         //Balance changes
-        System.out.println(customer1.getBalance());
-        System.out.println(shop.getBalance());
+        System.out.printf("Change in customer balance: %.2f$%n", customer1.getBalance());
+        System.out.printf("Change in shop balance: %.2f$%n", shop.getBalance());
 
         //Customer - Scenario two: Failed transaction.
         System.out.println("\nSecond case\n");
