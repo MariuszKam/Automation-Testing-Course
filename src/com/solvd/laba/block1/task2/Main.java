@@ -29,6 +29,7 @@ public class Main {
         //Customer - Scenario one: Successful transaction.
         System.out.println("\nFirst case\n");
         shop.assignCart(customer1); //Implement method where shop assigns cart to a customer
+        shop.checkout(customer1);
         //Storage before transaction
         shop.printStorage();
         //Adding and removing a PART of order

@@ -1,6 +1,8 @@
 package com.solvd.laba.block1.task2.models.shop.components;
 
+import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.shop.Shop;
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.InsufficientFundsException;
 
 public class Payment {
 
@@ -18,16 +20,17 @@ public class Payment {
         isSuccessful = successful;
     }
 
-    public boolean makePayment(Shop shop, Cart cart) {
-        double customerBalance = cart.getCustomer().getBalance();
-        double toPay = cart.getTotalPrice();
+    public boolean makePayment(Shop shop, Customer customer) {
+        double customerBalance = customer.getBalance();
+        double toPay = shop.getCustomerCart().get(customer).getTotalPrice();
         //Check if sufficient funds in balance
         if (customerBalance >= toPay) {
             //Set new balance of customer and shop
-            cart.getCustomer().decreaseBalance(toPay);
+            customer.decreaseBalance(toPay);
             shop.increaseBalance(toPay);
             return true;
         }
-        return false;
+        shop.rejectOrder(customer);
+        throw new InsufficientFundsException();
     }
 }

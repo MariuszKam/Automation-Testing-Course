@@ -4,6 +4,7 @@ import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.shop.components.*;
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Discountable;
@@ -162,25 +163,21 @@ public final class Shop implements Balanceable, Discountable {
     }
 
     public void checkout(Customer customer) {
-        Cart cart = customerCart.get(customer);
-        if (payment.makePayment(this, cart)) {
-            //Successful apply to storage and clear the cart
-            confirmOrder(customer);
-        } else {
-            //Nope! Do not apply to storage, but as well clear the cart
-            rejectOrder(customer);
-            System.out.printf("You have insufficient funds. Total cart price is %.2f$, but your account balance is %.2f$%n",
-                    cart.getTotalPrice(),
-                    cart.getCustomer().getBalance());
+        try {
+            if (customerCart.get(customer).getItems().isEmpty()) {
+                throw new CartEmptyException();
+            }
+            if (payment.makePayment(this, customer)) {
+                //Successful apply to storage and clear the cart
+                confirmOrder(customer);
+            }
+        } catch (CartEmptyException e) {
+            System.out.println(e.getMessage());
         }
     }
 
     private void confirmOrder(Customer customer) {
         Cart cart = customerCart.get(customer);
-//        for (Item item : cart.getItems()) {
-//            Item inStorage = storage.getItemByName(item.getName()); Try to do reverse action to upgrade
-//            inStorage.setQuantity(inStorage.getQuantity() - item.getQuantity());
-//        }
         cart.getItems().clear();
         System.out.println("Thank you for choosing our shop!");
     }
