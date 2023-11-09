@@ -3,7 +3,6 @@ package com.solvd.laba.block1.task2.models.shop;
 import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.persons.employees.Manager;
-import com.solvd.laba.block1.task2.models.shop.components.Item;
 
 public class ShopInitializer {
     private static final Shop shop;
@@ -30,15 +29,6 @@ public class ShopInitializer {
 
     private static void initializeItems() {
         //Creating products
-        Item item1 = new Item(1, "Pencil", 0.99, 500);
-        Item item2 = new Item(2, "Book", 14.99, 10);
-        Item item3 = new Item(3, "Ball", 50.99, 80);
-        Item item4 = new Item(4, "Sunglasses", 4.99, 250);
-
-        //Add products to shop
-        shop.getStorage().addItem(item1);
-        shop.getStorage().addItem(item2);
-        shop.getStorage().addItem(item3);
-        shop.getStorage().addItem(item4);
+        shop.getStorage().setItems(FileReader.itemLoader());
     }
 }

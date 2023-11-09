@@ -129,7 +129,7 @@ public final class Shop implements Balanceable, Discountable {
     public void removeItemFromCustomerCart(Customer customer, String itemName, int quantity) {
         if (hasCart(customer)) {
             Cart cart = customerCart.get(customer);
-            //Retrieve items
+            //Retrieve items.csv
             Item inCart = cart.getItemByName(itemName);
             //Change in Storage
             Item inStorage = storage.getItemByName(itemName);
