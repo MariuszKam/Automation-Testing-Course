@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import static com.solvd.laba.block1.task2.Main.logger;
+
 public class Storage implements Sortable, Storageable, Searchable {
     private List<Item> items;
 
@@ -67,8 +69,8 @@ public class Storage implements Sortable, Storageable, Searchable {
                 return Double.compare(o1.getPrice(), o2.getPrice());
             }
         });
-        System.out.println("Items in the Storage Sorted by Price");
-        sortedByPrice.forEach(System.out::println);
+        logger.info("Items in the Storage Sorted by Price");
+        sortedByPrice.forEach(logger::info);
     }
 
     @Override
@@ -80,7 +82,7 @@ public class Storage implements Sortable, Storageable, Searchable {
                 return Integer.compare(o1.getQuantity(), o2.getQuantity());
             }
         });
-        System.out.println("Items in the Storage Sorted by Quantity");
-        sortedByQuantity.forEach(System.out::println);
+        logger.info("Items in the Storage Sorted by Quantity");
+        sortedByQuantity.forEach(logger::info);
     }
 }

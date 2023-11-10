@@ -156,7 +156,8 @@ public final class Shop implements Balanceable, Discountable {
                 double newTotalPrice = cart.getTotalPrice() * 0.9;
                 newTotalPrice = (double) Math.round(newTotalPrice * 100) / 100;
                 cart.setTotalPrice(newTotalPrice);
-                System.out.printf("Congratulation! You applied a promo code. You new total price is %.2f$%n", cart.getTotalPrice());
+                String price = String.format("%.2f", cart.getTotalPrice());
+                logger.info("Congratulation! You applied a promo code. You new total price is {}", cart.getTotalPrice());
             } else {
                 throw new InvalidPromoCodeException("Invalid promo code: " + code);
             }
@@ -182,7 +183,7 @@ public final class Shop implements Balanceable, Discountable {
     private void confirmOrder(Customer customer) {
         Cart cart = customerCart.get(customer);
         cart.getItems().clear();
-        System.out.println("Thank you for choosing our shop!");
+        logger.info("Thank you for choosing our shop!");
     }
 
     public void rejectOrder(Customer customer) {
@@ -192,7 +193,7 @@ public final class Shop implements Balanceable, Discountable {
             inStorage.setQuantity(inStorage.getQuantity() + item.getQuantity());
         }
         cart.getItems().clear();
-        System.out.println("Order rejected!");
+        logger.warn("Order rejected!");
     }
 
     private boolean hasCart(Customer customer) {
