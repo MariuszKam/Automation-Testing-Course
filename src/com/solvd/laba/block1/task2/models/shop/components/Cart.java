@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import static com.solvd.laba.block1.task2.Main.logger;
+
 public final class Cart implements Sortable, Storageable, Searchable {
 
     private final Customer customer;
@@ -49,7 +51,7 @@ public final class Cart implements Sortable, Storageable, Searchable {
     public void addItem(Item item) {
         items.add(item);
         setTotalPrice(calculateCart());
-        System.out.printf("Item %s was added to the cart of user %s %s%n", item.getName(),
+        logger.info("Item {} was added to the cart of user {} {}", item.getName(),
                 customer.getName(),
                 customer.getLastname());
     }
@@ -58,14 +60,14 @@ public final class Cart implements Sortable, Storageable, Searchable {
     public void removeItem(Item item) {
         items.remove(item);
         setTotalPrice(calculateCart());
-        System.out.printf("Item %s was removed from your cart%n", item.getName());
+        logger.info("Item {} was removed from your cart", item.getName());
     }
 
     @Override
     public void decreaseQuantity(Item item, int quantity) {
         item.setQuantity(item.getQuantity() - quantity);
         setTotalPrice(calculateCart());
-        System.out.printf("Quantity was decreased by %d, now you have %d %s in your cart%n", quantity,
+        logger.info("Quantity was decreased by {}, now you have {} {} in your cart", quantity,
                 item.getQuantity(),
                 item.getName());
     }
@@ -74,7 +76,7 @@ public final class Cart implements Sortable, Storageable, Searchable {
     public void increaseQuantity(Item item, int quantity) {
         item.setQuantity(item.getQuantity() + quantity);
         setTotalPrice(calculateCart());
-        System.out.printf("Quantity was increased by %d, now you have %d %s in your cart%n", quantity,
+        logger.info("Quantity was increased by {}, now you have {} {} in your cart", quantity,
                 item.getQuantity(),
                 item.getName());
     }
@@ -98,8 +100,8 @@ public final class Cart implements Sortable, Storageable, Searchable {
                 return Integer.compare(o1.getQuantity(), o2.getQuantity());
             }
         });
-        System.out.println("Items in your cart sorted by price");
-        sortedByPrice.forEach(System.out::println);
+        logger.info("Items in your cart sorted by price");
+        sortedByPrice.forEach(logger::info);
     }
 
     @Override
@@ -111,7 +113,7 @@ public final class Cart implements Sortable, Storageable, Searchable {
                 return Integer.compare(o1.getQuantity(), o2.getQuantity());
             }
         });
-        System.out.println("Items in your cart sorted by quantity");
-        sortedByQuantity.forEach(System.out::println);
+        logger.info("Items in your cart sorted by quantity");
+        sortedByQuantity.forEach(logger::info);
     }
 }

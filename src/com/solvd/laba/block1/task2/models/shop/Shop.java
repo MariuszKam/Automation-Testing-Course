@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.solvd.laba.block1.task2.Main.logger;
+
 public final class Shop implements Balanceable, Discountable {
     private List<Employee> employees;
     private final Storage storage;
@@ -80,7 +82,7 @@ public final class Shop implements Balanceable, Discountable {
         balance -= amount;
         if (!isPositive()) {
             balance = savePoint;
-            System.out.println("Insufficient funds for operation");
+            logger.warn("Insufficient funds for operation");
         }
     }
 
@@ -91,24 +93,25 @@ public final class Shop implements Balanceable, Discountable {
                 return;
             }
         }
-        System.out.println("No customer service available");
+        logger.warn("No customer service available");
     }
 
     public void printStorage() {
-        storage.getItems().forEach(System.out::println);
+        storage.getItems().forEach(logger::info);
     }
 
     public void printCart(Customer customer) {
         Cart cart = customerCart.get(customer);
         if (cart.getItems().size() == 0) {
-            System.out.println("Your cart is empty");
+            logger.warn("Your cart is empty");
         }
-        cart.getItems().forEach(System.out::println);
+        cart.getItems().forEach(logger::info);
     }
 
     public void showTotalPrice(Customer customer) {
         Cart cart = customerCart.get(customer);
-        System.out.printf("Total price of your cart is: %.2f$%n", cart.getTotalPrice());
+        String price = String.format("%.2f", cart.getTotalPrice());
+        logger.info("Total price of your cart is: {}", price);
     }
 
     public void addItemToCustomerCart(Customer customer, String itemName, int quantity) {
@@ -120,7 +123,7 @@ public final class Shop implements Balanceable, Discountable {
             Item toCart = new Item(item.getId(), item.getName(), item.getPrice(), quantity);
             cart.addItem(toCart);
         } else {
-            System.out.printf("%s %s does not have a cart! Please assign a cart first",
+            logger.warn("{} {} does not have a cart! Please assign a cart first",
                     customer.getName(), customer.getLastname());
         }
 
@@ -141,7 +144,7 @@ public final class Shop implements Balanceable, Discountable {
             }
             cart.decreaseQuantity(inCart, quantity);
         } else {
-            System.out.printf("%s %s does not have a cart! Please assign a cart first",
+            logger.warn("{} {} does not have a cart! Please assign a cart first",
                     customer.getName(), customer.getLastname());
         }
     }

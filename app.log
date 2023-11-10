@@ -1,5 +1,454 @@
-14:28:37.181 [main] INFO  com.solvd.laba.block1.task2.Main - Inquiry From: Adam Smith regarding the quantity of Pencil in stock.
+15:09:25.266 [main] INFO  com.solvd.laba.block1.task2.Main - Inquiry From: Adam Smith regarding the quantity of Pencil in stock.
 Status: pending
-14:28:37.181 [main] INFO  com.solvd.laba.block1.task2.Main - Inquiry From: Adam Smith regarding the quantity of Pencil in stock.
+15:09:25.268 [main] INFO  com.solvd.laba.block1.task2.Main - Inquiry From: Adam Smith regarding the quantity of Pencil in stock.
 Status: solved
 Reply: Currently we have 500 in stock
+15:09:25.272 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 500
+15:09:25.281 [main] INFO  com.solvd.laba.block1.task2.Main - Item Pencil was added to the cart of user Adam Smith
+15:09:25.282 [main] INFO  com.solvd.laba.block1.task2.Main - Total price of your cart is: 2.9699999999999998
+15:09:25.282 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 497
+15:09:25.282 [main] INFO  com.solvd.laba.block1.task2.Main - Quantity was decreased by 2, now you have 1 Pencil in your cart
+15:09:25.283 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 499
+15:09:25.283 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 1
+15:09:25.283 [main] INFO  com.solvd.laba.block1.task2.Main - Item Pencil was removed from your cart
+15:09:25.284 [main] WARN  com.solvd.laba.block1.task2.Main - Your cart is empty
+15:09:25.284 [main] INFO  com.solvd.laba.block1.task2.Main - Item Pencil was added to the cart of user Adam Smith
+15:35:05.816 [main] INFO  com.solvd.laba.block1.task2.Main - Inquiry From: Adam Smith regarding the quantity of Pencil in stock.
+Status: pending
+15:35:05.818 [main] INFO  com.solvd.laba.block1.task2.Main - Inquiry From: Adam Smith regarding the quantity of Pencil in stock.
+Status: solved
+Reply: Currently we have 500 in stock
+15:35:05.822 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 500
+15:35:05.831 [main] INFO  com.solvd.laba.block1.task2.Main - Item Pencil was added to the cart of user Adam Smith
+15:35:05.831 [main] INFO  com.solvd.laba.block1.task2.Main - Total price of your cart is: 2,97
+15:35:05.831 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 497
+15:35:05.831 [main] INFO  com.solvd.laba.block1.task2.Main - Quantity was decreased by 2, now you have 1 Pencil in your cart
+15:35:05.832 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 499
+15:35:05.832 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 1
+15:35:05.832 [main] INFO  com.solvd.laba.block1.task2.Main - Item Pencil was removed from your cart
+15:35:05.833 [main] WARN  com.solvd.laba.block1.task2.Main - Your cart is empty
+15:35:05.833 [main] INFO  com.solvd.laba.block1.task2.Main - Item Pencil was added to the cart of user Adam Smith
+15:37:16.904 [main] INFO  com.solvd.laba.block1.task2.Main - Inquiry From: Adam Smith regarding the quantity of Pencil in stock.
+Status: pending
+15:37:16.906 [main] INFO  com.solvd.laba.block1.task2.Main - Inquiry From: Adam Smith regarding the quantity of Pencil in stock.
+Status: solved
+Reply: Currently we have 500 in stock
+15:37:16.910 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 500
+15:37:16.911 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Book
+Price: 14,99
+Quantity: 10
+15:37:16.911 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Ball
+Price: 50,99
+Quantity: 80
+15:37:16.911 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Sunglasses
+Price: 4,99
+Quantity: 250
+15:37:16.911 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Laptop
+Price: 799,99
+Quantity: 15
+15:37:16.911 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Headphones
+Price: 49,99
+Quantity: 100
+15:37:16.911 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Coffee Maker
+Price: 69,99
+Quantity: 20
+15:37:16.911 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Smartphone
+Price: 499,99
+Quantity: 30
+15:37:16.911 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Keyboard
+Price: 29,99
+Quantity: 50
+15:37:16.912 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Mouse
+Price: 9,99
+Quantity: 100
+15:37:16.912 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Watch
+Price: 79,99
+Quantity: 25
+15:37:16.912 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Backpack
+Price: 34,99
+Quantity: 40
+15:37:16.912 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Camera
+Price: 249,99
+Quantity: 5
+15:37:16.912 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Tablet
+Price: 199,99
+Quantity: 12
+15:37:16.912 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Printer
+Price: 129,99
+Quantity: 8
+15:37:16.912 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Desk
+Price: 119,99
+Quantity: 10
+15:37:16.912 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Chair
+Price: 79,99
+Quantity: 15
+15:37:16.912 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Shoes
+Price: 29,99
+Quantity: 60
+15:37:16.913 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: TV
+Price: 499,99
+Quantity: 7
+15:37:16.913 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Toaster
+Price: 19,99
+Quantity: 25
+15:37:16.913 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Microwave
+Price: 89,99
+Quantity: 10
+15:37:16.913 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Blender
+Price: 39,99
+Quantity: 20
+15:37:16.913 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Vacuum Cleaner
+Price: 69,99
+Quantity: 15
+15:37:16.913 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Sofa
+Price: 299,99
+Quantity: 5
+15:37:16.913 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Table
+Price: 49,99
+Quantity: 10
+15:37:16.922 [main] INFO  com.solvd.laba.block1.task2.Main - Item Pencil was added to the cart of user Adam Smith
+15:37:16.923 [main] INFO  com.solvd.laba.block1.task2.Main - Total price of your cart is: 2,97
+15:37:16.923 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 497
+15:37:16.923 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Book
+Price: 14,99
+Quantity: 10
+15:37:16.923 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Ball
+Price: 50,99
+Quantity: 80
+15:37:16.923 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Sunglasses
+Price: 4,99
+Quantity: 250
+15:37:16.923 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Laptop
+Price: 799,99
+Quantity: 15
+15:37:16.923 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Headphones
+Price: 49,99
+Quantity: 100
+15:37:16.923 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Coffee Maker
+Price: 69,99
+Quantity: 20
+15:37:16.923 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Smartphone
+Price: 499,99
+Quantity: 30
+15:37:16.924 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Keyboard
+Price: 29,99
+Quantity: 50
+15:37:16.924 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Mouse
+Price: 9,99
+Quantity: 100
+15:37:16.924 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Watch
+Price: 79,99
+Quantity: 25
+15:37:16.924 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Backpack
+Price: 34,99
+Quantity: 40
+15:37:16.924 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Camera
+Price: 249,99
+Quantity: 5
+15:37:16.924 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Tablet
+Price: 199,99
+Quantity: 12
+15:37:16.924 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Printer
+Price: 129,99
+Quantity: 8
+15:37:16.924 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Desk
+Price: 119,99
+Quantity: 10
+15:37:16.924 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Chair
+Price: 79,99
+Quantity: 15
+15:37:16.924 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Shoes
+Price: 29,99
+Quantity: 60
+15:37:16.925 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: TV
+Price: 499,99
+Quantity: 7
+15:37:16.925 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Toaster
+Price: 19,99
+Quantity: 25
+15:37:16.925 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Microwave
+Price: 89,99
+Quantity: 10
+15:37:16.925 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Blender
+Price: 39,99
+Quantity: 20
+15:37:16.925 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Vacuum Cleaner
+Price: 69,99
+Quantity: 15
+15:37:16.925 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Sofa
+Price: 299,99
+Quantity: 5
+15:37:16.925 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Table
+Price: 49,99
+Quantity: 10
+15:37:16.925 [main] INFO  com.solvd.laba.block1.task2.Main - Quantity was decreased by 2, now you have 1 Pencil in your cart
+15:37:16.926 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 499
+15:37:16.926 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Book
+Price: 14,99
+Quantity: 10
+15:37:16.926 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Ball
+Price: 50,99
+Quantity: 80
+15:37:16.926 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Sunglasses
+Price: 4,99
+Quantity: 250
+15:37:16.926 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Laptop
+Price: 799,99
+Quantity: 15
+15:37:16.926 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Headphones
+Price: 49,99
+Quantity: 100
+15:37:16.926 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Coffee Maker
+Price: 69,99
+Quantity: 20
+15:37:16.926 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Smartphone
+Price: 499,99
+Quantity: 30
+15:37:16.926 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Keyboard
+Price: 29,99
+Quantity: 50
+15:37:16.926 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Mouse
+Price: 9,99
+Quantity: 100
+15:37:16.927 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Watch
+Price: 79,99
+Quantity: 25
+15:37:16.927 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Backpack
+Price: 34,99
+Quantity: 40
+15:37:16.927 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Camera
+Price: 249,99
+Quantity: 5
+15:37:16.927 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Tablet
+Price: 199,99
+Quantity: 12
+15:37:16.927 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Printer
+Price: 129,99
+Quantity: 8
+15:37:16.927 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Desk
+Price: 119,99
+Quantity: 10
+15:37:16.927 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Chair
+Price: 79,99
+Quantity: 15
+15:37:16.927 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Shoes
+Price: 29,99
+Quantity: 60
+15:37:16.927 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: TV
+Price: 499,99
+Quantity: 7
+15:37:16.927 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Toaster
+Price: 19,99
+Quantity: 25
+15:37:16.927 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Microwave
+Price: 89,99
+Quantity: 10
+15:37:16.928 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Blender
+Price: 39,99
+Quantity: 20
+15:37:16.928 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Vacuum Cleaner
+Price: 69,99
+Quantity: 15
+15:37:16.928 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Sofa
+Price: 299,99
+Quantity: 5
+15:37:16.928 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Table
+Price: 49,99
+Quantity: 10
+15:37:16.928 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 1
+15:37:16.928 [main] INFO  com.solvd.laba.block1.task2.Main - Item Pencil was removed from your cart
+15:37:16.929 [main] WARN  com.solvd.laba.block1.task2.Main - Your cart is empty
+15:37:16.929 [main] INFO  com.solvd.laba.block1.task2.Main - Item Pencil was added to the cart of user Adam Smith
+15:37:16.929 [main] INFO  com.solvd.laba.block1.task2.Main - Item Book was added to the cart of user Adam Smith
+15:37:16.929 [main] INFO  com.solvd.laba.block1.task2.Main - Item Sunglasses was added to the cart of user Adam Smith
+15:37:16.929 [main] INFO  com.solvd.laba.block1.task2.Main - Item Ball was added to the cart of user Adam Smith
+15:37:16.933 [main] INFO  com.solvd.laba.block1.task2.Main - Items in your cart sorted by price
+15:37:16.933 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Ball
+Price: 50,99
+Quantity: 1
+15:37:16.933 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Book
+Price: 14,99
+Quantity: 7
+15:37:16.933 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 9
+15:37:16.933 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Sunglasses
+Price: 4,99
+Quantity: 13
+15:37:16.934 [main] INFO  com.solvd.laba.block1.task2.Main - Total price of your cart is: 229,70
+15:37:16.934 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 491
+15:37:16.934 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Book
+Price: 14,99
+Quantity: 3
+15:37:16.934 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Ball
+Price: 50,99
+Quantity: 79
+15:37:16.934 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Sunglasses
+Price: 4,99
+Quantity: 237
+15:37:16.934 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Laptop
+Price: 799,99
+Quantity: 15
+15:37:16.934 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Headphones
+Price: 49,99
+Quantity: 100
+15:37:16.934 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Coffee Maker
+Price: 69,99
+Quantity: 20
+15:37:16.935 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Smartphone
+Price: 499,99
+Quantity: 30
+15:37:16.935 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Keyboard
+Price: 29,99
+Quantity: 50
+15:37:16.935 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Mouse
+Price: 9,99
+Quantity: 100
+15:37:16.935 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Watch
+Price: 79,99
+Quantity: 25
+15:37:16.935 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Backpack
+Price: 34,99
+Quantity: 40
+15:37:16.935 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Camera
+Price: 249,99
+Quantity: 5
+15:37:16.935 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Tablet
+Price: 199,99
+Quantity: 12
+15:37:16.935 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Printer
+Price: 129,99
+Quantity: 8
+15:37:16.935 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Desk
+Price: 119,99
+Quantity: 10
+15:37:16.936 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Chair
+Price: 79,99
+Quantity: 15
+15:37:16.936 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Shoes
+Price: 29,99
+Quantity: 60
+15:37:16.936 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: TV
+Price: 499,99
+Quantity: 7
+15:37:16.936 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Toaster
+Price: 19,99
+Quantity: 25
+15:37:16.936 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Microwave
+Price: 89,99
+Quantity: 10
+15:37:16.936 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Blender
+Price: 39,99
+Quantity: 20
+15:37:16.936 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Vacuum Cleaner
+Price: 69,99
+Quantity: 15
+15:37:16.936 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Sofa
+Price: 299,99
+Quantity: 5
+15:37:16.936 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Table
+Price: 49,99
+Quantity: 10
+15:37:16.937 [main] INFO  com.solvd.laba.block1.task2.Main - Item Pencil was added to the cart of user Lucas Miller
+15:37:16.937 [main] INFO  com.solvd.laba.block1.task2.Main - Item Book was added to the cart of user Lucas Miller
+15:37:16.937 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Pencil
+Price: 0,99
+Quantity: 488
+15:37:16.937 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Book
+Price: 14,99
+Quantity: 1
+15:37:16.937 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Ball
+Price: 50,99
+Quantity: 79
+15:37:16.937 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Sunglasses
+Price: 4,99
+Quantity: 237
+15:37:16.937 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Laptop
+Price: 799,99
+Quantity: 15
+15:37:16.937 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Headphones
+Price: 49,99
+Quantity: 100
+15:37:16.938 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Coffee Maker
+Price: 69,99
+Quantity: 20
+15:37:16.938 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Smartphone
+Price: 499,99
+Quantity: 30
+15:37:16.938 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Keyboard
+Price: 29,99
+Quantity: 50
+15:37:16.938 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Mouse
+Price: 9,99
+Quantity: 100
+15:37:16.938 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Watch
+Price: 79,99
+Quantity: 25
+15:37:16.938 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Backpack
+Price: 34,99
+Quantity: 40
+15:37:16.938 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Camera
+Price: 249,99
+Quantity: 5
+15:37:16.938 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Tablet
+Price: 199,99
+Quantity: 12
+15:37:16.938 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Printer
+Price: 129,99
+Quantity: 8
+15:37:16.938 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Desk
+Price: 119,99
+Quantity: 10
+15:37:16.939 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Chair
+Price: 79,99
+Quantity: 15
+15:37:16.939 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Shoes
+Price: 29,99
+Quantity: 60
+15:37:16.939 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: TV
+Price: 499,99
+Quantity: 7
+15:37:16.939 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Toaster
+Price: 19,99
+Quantity: 25
+15:37:16.939 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Microwave
+Price: 89,99
+Quantity: 10
+15:37:16.939 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Blender
+Price: 39,99
+Quantity: 20
+15:37:16.939 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Vacuum Cleaner
+Price: 69,99
+Quantity: 15
+15:37:16.939 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Sofa
+Price: 299,99
+Quantity: 5
+15:37:16.939 [main] INFO  com.solvd.laba.block1.task2.Main - Name of product: Table
+Price: 49,99
+Quantity: 10
