@@ -6,14 +6,22 @@ import com.solvd.laba.block1.task2.models.shop.Shop;
 import com.solvd.laba.block1.task2.models.shop.ShopInitializer;
 import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Sortable;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+
+    static {
+        System.setProperty("log4j.configurationFile", "log4j2.xml");
+    }
+
+    private static final Logger logger = LogManager.getLogger(Main.class);
+
     public static void main(String[] args) {
 
-        
         //Creating Shop
         Shop shop = ShopInitializer.getShop();
 
@@ -23,9 +31,9 @@ public class Main {
 
         //Inquiry
         Inquiry inquiry = customer1.makeInquiry("Pencil");
-        System.out.println(inquiry);
+        logger.info(inquiry);
         shop.handleInquiry(inquiry);
-        System.out.println(inquiry);
+        logger.info(inquiry);
 
 
         //Customer - Scenario one: Successful transaction.
@@ -75,7 +83,7 @@ public class Main {
         shop.addItemToCustomerCart(customer2, "Pencil", 3);
         shop.addItemToCustomerCart(customer2, "Book", 2);
         //Try to finish transaction
-        shop.checkout(customer2);
+        //shop.checkout(customer2);
         //Possible to reject by public method
         //shop.rejectOrder();
         //Storage didn't change
