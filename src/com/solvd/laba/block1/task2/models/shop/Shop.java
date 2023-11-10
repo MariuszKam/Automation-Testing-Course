@@ -162,7 +162,7 @@ public final class Shop implements Balanceable, Discountable {
                 throw new InvalidPromoCodeException("Invalid promo code: " + code);
             }
         } catch (InvalidPromoCodeException e) {
-            System.out.printf("Error: %s%n", e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 
@@ -176,7 +176,7 @@ public final class Shop implements Balanceable, Discountable {
                 confirmOrder(customer);
             }
         } catch (CartEmptyException e) {
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 
