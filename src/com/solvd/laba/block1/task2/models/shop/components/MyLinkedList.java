@@ -15,11 +15,23 @@ public class MyLinkedList<T> {
 
     public void add(T element) {
         Node<T> newNode = new Node<>(element);
-        Node<T> currentNode = head;
+        //Checking head
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node<T> currentNode = head;
+            while (currentNode.next != null) {
+                currentNode = currentNode.next;
+            }
+            currentNode.next = newNode;
+        }
+    }
 
+    public void showList() {
+        Node<T> currentNode = head;
         while (currentNode != null) {
+            System.out.println(currentNode.element + " ");
             currentNode = currentNode.next;
         }
-        currentNode = newNode;
     }
 }
