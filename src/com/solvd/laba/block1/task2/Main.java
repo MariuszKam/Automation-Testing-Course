@@ -5,7 +5,6 @@ import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.shop.Shop;
 import com.solvd.laba.block1.task2.models.shop.ShopInitializer;
 import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
-import com.solvd.laba.block1.task2.models.shop.components.MyLinkedList;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Sortable;
 import org.apache.logging.log4j.LogManager;
@@ -99,12 +98,6 @@ public class Main {
         //shop.rejectOrder();
         //Storage didn't change
         shop.printStorage();
-
-        MyLinkedList<Customer> test = new MyLinkedList<>();
-        test.add(customer1);
-        test.showList();
-        test.add(customer2);
-        test.showList();
 
     }
 }

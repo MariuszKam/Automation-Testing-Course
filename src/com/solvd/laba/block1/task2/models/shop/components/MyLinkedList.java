@@ -27,6 +27,31 @@ public class MyLinkedList<T> {
         }
     }
 
+    public void remove(T element) {
+        //Checking head
+        if (head == null) {
+            return;
+        }
+        if (head.element.equals(element)) {
+            head = head.next;
+            return;
+        }
+        Node<T> current = head;
+        Node<T> previous = null;
+
+        while (current != null && !current.element.equals(element)) {
+            previous = current;
+            current = current.next;
+        }
+
+        if (current == null) {
+            return;
+        }
+
+        previous.next = current.next;
+
+    }
+
     public void showList() {
         Node<T> currentNode = head;
         while (currentNode != null) {
