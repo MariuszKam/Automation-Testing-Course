@@ -8,6 +8,7 @@ import com.solvd.laba.block1.task2.models.shop.components.interfaces.Storageable
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 
 import static com.solvd.laba.block1.task2.Main.logger;
@@ -20,7 +21,7 @@ public final class Cart implements Sortable, Storageable, Searchable {
 
     public Cart(Customer customer) {
         this.customer = customer;
-        this.items = new ArrayList<>();
+        this.items = new LinkedList<>();
     }
 
     public Customer getCustomer() {
