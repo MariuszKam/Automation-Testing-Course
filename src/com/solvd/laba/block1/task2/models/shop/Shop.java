@@ -123,8 +123,7 @@ public final class Shop implements Balanceable, Discountable {
             Item toCart = new Item(item.getId(), item.getName(), item.getPrice(), quantity);
             cart.addItem(toCart);
         } else {
-            logger.warn("{} {} does not have a cart! Please assign a cart first",
-                    customer.getName(), customer.getLastname());
+            logger.warn("{} {} does not have a cart! Please assign a cart first", customer.getName(), customer.getLastname());
         }
 
     }
@@ -144,26 +143,23 @@ public final class Shop implements Balanceable, Discountable {
             }
             cart.decreaseQuantity(inCart, quantity);
         } else {
-            logger.warn("{} {} does not have a cart! Please assign a cart first",
-                    customer.getName(), customer.getLastname());
+            logger.warn("{} {} does not have a cart! Please assign a cart first", customer.getName(), customer.getLastname());
         }
     }
 
-    public void applyPromoCode(Customer customer, String code) {
+    public void applyPromoCode(Customer customer, String code) throws InvalidPromoCodeException {
+        //Fix THIS throw!
         Cart cart = customerCart.get(customer);
-        try {
-            if (promoCode.getCode().equals(code)) {
-                double newTotalPrice = cart.getTotalPrice() * 0.9;
-                newTotalPrice = (double) Math.round(newTotalPrice * 100) / 100;
-                cart.setTotalPrice(newTotalPrice);
-                String price = String.format("%.2f", cart.getTotalPrice());
-                logger.info("Congratulation! You applied a promo code. You new total price is {}", cart.getTotalPrice());
-            } else {
-                throw new InvalidPromoCodeException("Invalid promo code: " + code);
-            }
-        } catch (InvalidPromoCodeException e) {
-            logger.error(e.getMessage());
+        if (promoCode.getCode().equals(code)) {
+            double newTotalPrice = cart.getTotalPrice() * 0.9;
+            newTotalPrice = (double) Math.round(newTotalPrice * 100) / 100;
+            cart.setTotalPrice(newTotalPrice);
+            String price = String.format("%.2f", cart.getTotalPrice());
+            logger.info("Congratulation! You applied a promo code. You new total price is {}", cart.getTotalPrice());
+        } else {
+            throw new InvalidPromoCodeException();
         }
+
     }
 
     public void checkout(Customer customer) {
