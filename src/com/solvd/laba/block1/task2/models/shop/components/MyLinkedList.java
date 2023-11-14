@@ -1,6 +1,9 @@
 package com.solvd.laba.block1.task2.models.shop.components;
 
-public class MyLinkedList<T> {
+
+import java.util.Iterator;
+
+public class MyLinkedList<T> implements Iterable<T> {
     private Node<T> head;
 
     private static class Node<T> {
@@ -57,6 +60,27 @@ public class MyLinkedList<T> {
         while (currentNode != null) {
             System.out.println(currentNode.element + " ");
             currentNode = currentNode.next;
+        }
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new MyIterator();
+    }
+
+    private class MyIterator implements Iterator<T> {
+        private Node<T> current = head;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public T next() {
+            T element = current.element;
+            current = current.next;
+            return element;
         }
     }
 }

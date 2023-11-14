@@ -93,7 +93,7 @@ public class Main {
         shop.addItemToCustomerCart(customer2, "Pencil", 3);
         shop.addItemToCustomerCart(customer2, "Book", 2);
         //Try to finish transaction
-        //shop.checkout(customer2);
+        shop.checkout(customer2);
         //Possible to reject by public method
         //shop.rejectOrder();
         //Storage didn't change

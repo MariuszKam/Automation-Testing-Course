@@ -10,14 +10,12 @@ import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Discountable;
 
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Set;
 
 import static com.solvd.laba.block1.task2.Main.logger;
 
 public final class Shop implements Balanceable, Discountable {
-    private Set<Employee> employees;
+    private MyLinkedList<Employee> employees;
     private final Storage storage;
     private final Map<Customer, Cart> customerCart;
     private final PromoCode promoCode;
@@ -25,18 +23,18 @@ public final class Shop implements Balanceable, Discountable {
     private double balance;
 
     public Shop() {
-        this.employees = new LinkedHashSet<>();
+        this.employees = new MyLinkedList<>();
         this.storage = new Storage();
         this.customerCart = new HashMap<>();
         this.promoCode = new PromoCode();
         this.payment = new Payment();
     }
 
-    public Set<Employee> getEmployees() {
+    public MyLinkedList<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(Set<Employee> employees) {
+    public void setEmployees(MyLinkedList<Employee> employees) {
         this.employees = employees;
     }
 
