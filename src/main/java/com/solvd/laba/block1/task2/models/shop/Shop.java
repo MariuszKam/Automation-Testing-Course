@@ -10,7 +10,9 @@ import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Discountable;
 
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Set;
 
 import static com.solvd.laba.block1.task2.Main.logger;
 
@@ -18,6 +20,7 @@ public final class Shop implements Balanceable, Discountable {
     private MyLinkedList<Employee> employees;
     private final Storage storage;
     private final Map<Customer, Cart> customerCart;
+    private final Set<Inquiry> inquiries;
     private final PromoCode promoCode;
     private final Payment payment;
     private double balance;
@@ -26,6 +29,7 @@ public final class Shop implements Balanceable, Discountable {
         this.employees = new MyLinkedList<>();
         this.storage = new Storage();
         this.customerCart = new HashMap<>();
+        this.inquiries = new LinkedHashSet<>();
         this.promoCode = new PromoCode();
         this.payment = new Payment();
     }
@@ -49,6 +53,14 @@ public final class Shop implements Balanceable, Discountable {
     public void assignCart(Customer customer) {
         Cart cart = new Cart(customer);
         customerCart.put(customer, cart);
+    }
+
+    public Set<Inquiry> getInquiries() {
+        return inquiries;
+    }
+
+    public void addInquiry(Inquiry inquiry) {
+        inquiries.add(inquiry);
     }
 
     public double getBalance() {
@@ -84,14 +96,15 @@ public final class Shop implements Balanceable, Discountable {
         }
     }
 
-    public void handleInquiry(Inquiry inquiry) {
-        for (Employee employee : employees) {
-            if (employee instanceof CustomerService customerservice) {
-                customerservice.solveInquiry(inquiry, storage);
-                return;
+    public void processInquiries() {
+        for (Inquiry inquiry : inquiries) {
+            for (Employee employee : employees) {
+                if (employee instanceof CustomerService customerservice) {
+                    customerservice.solveInquiry(inquiry, storage);
+                    inquiries.remove(inquiry);
+                }
             }
         }
-        logger.warn("No customer service available");
     }
 
     public void printStorage() {

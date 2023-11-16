@@ -9,7 +9,7 @@ public final class Customer extends Person {
     }
 
     public Inquiry makeInquiry(String itemName) {
-        return new Inquiry(name + " " + lastname, itemName);
+        return new Inquiry(this, itemName);
     }
 
     

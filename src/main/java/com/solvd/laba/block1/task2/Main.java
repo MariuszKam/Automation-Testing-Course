@@ -29,7 +29,8 @@ public class Main {
         //Inquiry
         Inquiry inquiry = customer1.makeInquiry("Pencil");
         logger.info(inquiry);
-        shop.handleInquiry(inquiry);
+        shop.addInquiry(inquiry);
+        shop.processInquiries();
         logger.info(inquiry);
 
 
