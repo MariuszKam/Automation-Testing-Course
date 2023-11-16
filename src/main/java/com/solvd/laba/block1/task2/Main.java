@@ -15,10 +15,6 @@ import java.util.List;
 
 public class Main {
 
-    static {
-        System.setProperty("log4j.configurationFile", "log4j2.xml");
-    }
-
     public static final Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
