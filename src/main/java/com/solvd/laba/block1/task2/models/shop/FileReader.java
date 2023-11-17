@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class FileReader {
 
-    private static final String URL = "src/main/java/com/solvd/laba/block1/task2/resources/items.csv";
+    private static final String URL = "src/main/resources/task2/items.csv";
 
     public static List<Item> itemLoader() {
         List<Item> items = new ArrayList<>();
