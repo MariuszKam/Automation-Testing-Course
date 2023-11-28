@@ -149,7 +149,7 @@ public final class Shop implements Balanceable, Discountable {
     public void removeItemFromCustomerCart(Customer customer, String itemName, int quantity) {
         if (hasCart(customer)) {
             Cart cart = customerCart.get(customer);
-            //Retrieve items.csv
+            //Retrieve item
             Item inCart = cart.getItemByName(itemName);
             //Change in Storage
             Item inStorage = storage.getItemByName(itemName);
@@ -158,6 +158,9 @@ public final class Shop implements Balanceable, Discountable {
             if (inCart.getQuantity() == quantity) {
                 cart.removeItem(inCart);
                 return;
+            }
+            if (!quantityChecker.isQuantitySufficient(inCart, quantity)) {
+                throw new InvalidQuantityException("remove from cart");
             }
             cart.decreaseQuantity(inCart, quantity);
         } else {
