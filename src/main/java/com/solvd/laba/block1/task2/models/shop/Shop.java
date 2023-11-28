@@ -6,6 +6,8 @@ import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.shop.components.*;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidQuantityException;
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.NegativeQuantityException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Discountable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.QuantityChecker;
@@ -133,7 +135,7 @@ public final class Shop implements Balanceable, Discountable {
             //Retrieve item from storage
             Item item = storage.getItemByName(itemName);
             if (!quantityChecker.isQuantitySufficient(item, quantity)) {
-                throw new
+                throw new InvalidQuantityException("add to cart");
             }
             item.setQuantity(item.getQuantity() - quantity);
             Item toCart = new Item(item.getId(), item.getName(), item.getPrice(), quantity);
