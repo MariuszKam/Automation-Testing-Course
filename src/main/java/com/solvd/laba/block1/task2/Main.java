@@ -5,6 +5,7 @@ import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.shop.Shop;
 import com.solvd.laba.block1.task2.models.shop.ShopInitializer;
 import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Sortable;
 import org.apache.logging.log4j.LogManager;
@@ -76,7 +77,11 @@ public class Main {
         //Lend some money to customer
         customer1.increaseBalance(500);
         //Finishing transaction
-        shop.checkout(customer1);
+        try {
+            shop.checkout(customer1);
+        } catch (CartEmptyException e) {
+            logger.warn(e.getMessage());
+        }
         //Changes in storage after successful transaction
         shop.printStorage();
         //Balance changes
@@ -90,7 +95,11 @@ public class Main {
         shop.addItemToCustomerCart(customer2, "Pencil", 3);
         shop.addItemToCustomerCart(customer2, "Book", 2);
         //Try to finish transaction
-        shop.checkout(customer2);
+        try {
+            shop.checkout(customer2);
+        } catch (CartEmptyException e) {
+            logger.warn(e.getMessage());
+        }
         //Possible to reject by public method
         //shop.rejectOrder();
         //Storage didn't change

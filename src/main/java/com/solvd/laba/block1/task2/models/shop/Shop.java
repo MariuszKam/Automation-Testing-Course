@@ -173,17 +173,13 @@ public final class Shop implements Balanceable, Discountable {
 
     }
 
-    public void checkout(Customer customer) {
-        try {
-            if (customerCart.get(customer).getItems().isEmpty()) {
-                throw new CartEmptyException();
-            }
-            if (payment.makePayment(this, customer)) {
-                //Successful apply to storage and clear the cart
-                confirmOrder(customer);
-            }
-        } catch (CartEmptyException e) {
-            logger.error(e.getMessage());
+    public void checkout(Customer customer) throws CartEmptyException {
+        if (customerCart.get(customer).getItems().isEmpty()) {
+            throw new CartEmptyException();
+        }
+        if (payment.makePayment(this, customer)) {
+            //Successful apply to storage and clear the cart
+            confirmOrder(customer);
         }
     }
 
