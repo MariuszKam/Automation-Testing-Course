@@ -1,7 +1,7 @@
 package com.solvd.laba.block1.task2.models.shop.components;
 
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidItemPriceException;
-import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidItemQuantityException;
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.NegativeQuantityException;
 
 public class Item {
 
@@ -19,7 +19,7 @@ public class Item {
         this.price = price;
 
         if (quantity < 0) {
-            throw new InvalidItemQuantityException();
+            throw new NegativeQuantityException();
         }
         this.quantity = quantity;
     }
@@ -49,7 +49,7 @@ public class Item {
 
     public void setQuantity(int amount) {
         if (amount < 0) {
-            throw new InvalidItemQuantityException();
+            throw new NegativeQuantityException();
         }
         this.quantity = amount;
     }

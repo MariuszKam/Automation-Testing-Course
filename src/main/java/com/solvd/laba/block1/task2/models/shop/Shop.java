@@ -8,6 +8,7 @@ import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyEx
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Discountable;
+import com.solvd.laba.block1.task2.models.shop.components.interfaces.QuantityChecker;
 
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -24,6 +25,7 @@ public final class Shop implements Balanceable, Discountable {
     private final PromoCode promoCode;
     private final Payment payment;
     private double balance;
+    private final QuantityChecker<Item> quantityChecker = (item, requiredQuantity) -> item.getQuantity() >= requiredQuantity;
 
     public Shop() {
         this.employees = new MyLinkedList<>();
@@ -130,6 +132,9 @@ public final class Shop implements Balanceable, Discountable {
             Cart cart = customerCart.get(customer);
             //Retrieve item from storage
             Item item = storage.getItemByName(itemName);
+            if (!quantityChecker.isQuantitySufficient(item, quantity)) {
+                throw new
+            }
             item.setQuantity(item.getQuantity() - quantity);
             Item toCart = new Item(item.getId(), item.getName(), item.getPrice(), quantity);
             cart.addItem(toCart);
@@ -159,7 +164,6 @@ public final class Shop implements Balanceable, Discountable {
     }
 
     public void applyPromoCode(Customer customer, String code) throws InvalidPromoCodeException {
-        //Fix THIS throw!
         Cart cart = customerCart.get(customer);
         if (promoCode.getCode().equals(code)) {
             double newTotalPrice = cart.getTotalPrice() * 0.9;
