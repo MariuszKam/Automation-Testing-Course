@@ -2,7 +2,6 @@ package com.solvd.laba.block1.task2;
 
 
 import com.solvd.laba.block1.task2.models.persons.Customer;
-import com.solvd.laba.block1.task2.models.persons.employees.Position;
 import com.solvd.laba.block1.task2.models.shop.Shop;
 import com.solvd.laba.block1.task2.models.shop.ShopInitializer;
 import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
@@ -96,7 +95,6 @@ public class Main {
         //shop.rejectOrder();
         //Storage didn't change
         shop.printStorage();
-        Position.MANAGER.name();
 
     }
 }
