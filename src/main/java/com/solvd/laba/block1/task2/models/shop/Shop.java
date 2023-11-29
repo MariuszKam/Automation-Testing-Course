@@ -27,7 +27,8 @@ public final class Shop implements Balanceable, Discountable {
     private final PromoCode promoCode;
     private final Payment payment;
     private double balance;
-    private final QuantityChecker<Item> quantityChecker = (item, requiredQuantity) -> item.getQuantity() >= requiredQuantity;
+    private final QuantityChecker<Item> isEnough = (item, requiredQuantity) -> item.getQuantity() >= requiredQuantity;
+    private final QuantityChecker<Item> isEqual = ((item, requiredQuantity) -> item.getQuantity() == requiredQuantity);
 
     public Shop() {
         this.employees = new MyLinkedList<>();
@@ -117,7 +118,7 @@ public final class Shop implements Balanceable, Discountable {
 
     public void printCart(Customer customer) {
         Cart cart = customerCart.get(customer);
-        if (cart.getItems().size() == 0) {
+        if (cart.getItems().isEmpty()) {
             logger.warn("Your cart is empty");
         }
         cart.getItems().forEach(logger::info);
@@ -134,7 +135,7 @@ public final class Shop implements Balanceable, Discountable {
             Cart cart = customerCart.get(customer);
             //Retrieve item from storage
             Item item = storage.getItemByName(itemName);
-            if (!quantityChecker.isQuantitySufficient(item, quantity)) {
+            if (!isEnough.checkQuantity(item, quantity)) {
                 throw new InvalidQuantityException("add to cart");
             }
             item.setQuantity(item.getQuantity() - quantity);
@@ -155,11 +156,11 @@ public final class Shop implements Balanceable, Discountable {
             Item inStorage = storage.getItemByName(itemName);
             inStorage.setQuantity(inStorage.getQuantity() + quantity);
             //Removing item if equals to quantity
-            if (inCart.getQuantity() == quantity) {
+            if (isEqual.checkQuantity(inCart, quantity)) {
                 cart.removeItem(inCart);
                 return;
             }
-            if (!quantityChecker.isQuantitySufficient(inCart, quantity)) {
+            if (!isEnough.checkQuantity(inCart, quantity)) {
                 throw new InvalidQuantityException("remove from cart");
             }
             cart.decreaseQuantity(inCart, quantity);
