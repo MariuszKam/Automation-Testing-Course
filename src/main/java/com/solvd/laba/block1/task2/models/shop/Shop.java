@@ -4,10 +4,10 @@ import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.shop.components.*;
+import com.solvd.laba.block1.task2.models.shop.components.discount.PromoCode;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidQuantityException;
-import com.solvd.laba.block1.task2.models.shop.components.exceptions.NegativeQuantityException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Discountable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.QuantityChecker;
@@ -175,7 +175,6 @@ public final class Shop implements Balanceable, Discountable {
             double newTotalPrice = cart.getTotalPrice() * 0.9;
             newTotalPrice = (double) Math.round(newTotalPrice * 100) / 100;
             cart.setTotalPrice(newTotalPrice);
-            String price = String.format("%.2f", cart.getTotalPrice());
             logger.info("Congratulation! You applied a promo code. You new total price is {}", cart.getTotalPrice());
         } else {
             throw new InvalidPromoCodeException();

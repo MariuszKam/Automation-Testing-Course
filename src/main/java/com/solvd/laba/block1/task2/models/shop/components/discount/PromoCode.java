@@ -1,4 +1,4 @@
-package com.solvd.laba.block1.task2.models.shop.components;
+package com.solvd.laba.block1.task2.models.shop.components.discount;
 
 public class PromoCode {
     private final String code;
