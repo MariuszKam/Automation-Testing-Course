@@ -9,4 +9,12 @@ public class DiscountService {
     public DiscountService() {
         this.promoCodes = new HashSet<>();
     }
+
+    public Set<PromoCode> getPromoCodes() {
+        return promoCodes;
+    }
+
+    public void addPromoCode(PromoCode promoCode) {
+        promoCodes.add(promoCode);
+    }
 }

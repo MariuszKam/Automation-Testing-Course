@@ -64,7 +64,7 @@ public class Main {
         //Printing total price
         shop.showTotalPrice(customer1);
         //Applying promo code
-        try {
+        /*try {
             shop.applyPromoCode(customer1, "NONEXISTENT");
         } catch (InvalidPromoCodeException e) {
             logger.warn(e.getMessage());
@@ -81,7 +81,7 @@ public class Main {
             shop.checkout(customer1);
         } catch (CartEmptyException e) {
             logger.warn(e.getMessage());
-        }
+        }*/
         //Changes in storage after successful transaction
         shop.printStorage();
         //Balance changes

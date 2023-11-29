@@ -4,6 +4,7 @@ import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.shop.components.*;
+import com.solvd.laba.block1.task2.models.shop.components.discount.DiscountService;
 import com.solvd.laba.block1.task2.models.shop.components.discount.PromoCode;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
@@ -19,12 +20,12 @@ import java.util.Set;
 
 import static com.solvd.laba.block1.task2.Main.logger;
 
-public final class Shop implements Balanceable, Discountable {
+public final class Shop implements Balanceable/*, Discountable*/ {
     private MyLinkedList<Employee> employees;
     private final Storage storage;
     private final Map<Customer, Cart> customerCart;
     private final Set<Inquiry> inquiries;
-    private final PromoCode promoCode;
+    private final DiscountService discountService;
     private final Payment payment;
     private double balance;
     private final QuantityChecker<Item> isEnough = (item, requiredQuantity) -> item.getQuantity() >= requiredQuantity;
@@ -35,7 +36,7 @@ public final class Shop implements Balanceable, Discountable {
         this.storage = new Storage();
         this.customerCart = new HashMap<>();
         this.inquiries = new LinkedHashSet<>();
-        this.promoCode = new PromoCode();
+        this.discountService = new DiscountService();
         this.payment = new Payment();
     }
 
@@ -66,6 +67,10 @@ public final class Shop implements Balanceable, Discountable {
 
     public void addInquiry(Inquiry inquiry) {
         inquiries.add(inquiry);
+    }
+
+    public DiscountService getDiscountService() {
+        return discountService;
     }
 
     public double getBalance() {
@@ -169,18 +174,18 @@ public final class Shop implements Balanceable, Discountable {
         }
     }
 
-    public void applyPromoCode(Customer customer, String code) throws InvalidPromoCodeException {
-        Cart cart = customerCart.get(customer);
-        if (promoCode.getCode().equals(code)) {
-            double newTotalPrice = cart.getTotalPrice() * 0.9;
-            newTotalPrice = (double) Math.round(newTotalPrice * 100) / 100;
-            cart.setTotalPrice(newTotalPrice);
-            logger.info("Congratulation! You applied a promo code. You new total price is {}", cart.getTotalPrice());
-        } else {
-            throw new InvalidPromoCodeException();
-        }
-
-    }
+//    public void applyPromoCode(Customer customer, String code) throws InvalidPromoCodeException {
+//        Cart cart = customerCart.get(customer);
+//        if (promoCode.getCode().equals(code)) {
+//            double newTotalPrice = cart.getTotalPrice() * 0.9;
+//            newTotalPrice = (double) Math.round(newTotalPrice * 100) / 100;
+//            cart.setTotalPrice(newTotalPrice);
+//            logger.info("Congratulation! You applied a promo code. You new total price is {}", cart.getTotalPrice());
+//        } else {
+//            throw new InvalidPromoCodeException();
+//        }
+//
+//    }
 
     public void checkout(Customer customer) throws CartEmptyException {
         if (customerCart.get(customer).getItems().isEmpty()) {
