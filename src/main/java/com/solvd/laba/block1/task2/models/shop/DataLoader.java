@@ -1,7 +1,11 @@
 package com.solvd.laba.block1.task2.models.shop;
 
+import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
+import com.solvd.laba.block1.task2.models.persons.employees.Manager;
+import com.solvd.laba.block1.task2.models.persons.employees.Position;
 import com.solvd.laba.block1.task2.models.shop.components.Item;
+import com.solvd.laba.block1.task2.models.shop.components.MyLinkedList;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -40,5 +44,27 @@ public class DataLoader {
     }
 
     //Employees loader
+    private static Employee parseEmployee(String[] employeesData) {
+        long id = Long.parseLong(employeesData[0]);
+        String firstName = employeesData[1];
+        String lastName = employeesData[2];
+        double salary = Double.parseDouble(employeesData[3]);
+        Position position = Position.valueOf(employeesData[4]);
+
+        switch (position) {
+            case MANAGER -> {
+                return new Manager(id, firstName, lastName, salary);
+            }
+            case CUSTOMER_SERVICE -> {
+                return new CustomerService(id, firstName, lastName, salary);
+            }
+            default -> throw new IllegalArgumentException("Unknown position: " + position);
+        }
+
+    }
+
+    public static List<Employee> employeesLoader(String filePath) {
+        return loadData(filePath, DataLoader::parseEmployee);
+    }
 
 }

@@ -13,15 +13,12 @@ import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Discountable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.QuantityChecker;
 
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static com.solvd.laba.block1.task2.Main.logger;
 
 public final class Shop implements Balanceable/*, Discountable*/ {
-    private MyLinkedList<Employee> employees;
+    private List<Employee> employees;
     private final Storage storage;
     private final Map<Customer, Cart> customerCart;
     private final Set<Inquiry> inquiries;
@@ -32,7 +29,7 @@ public final class Shop implements Balanceable/*, Discountable*/ {
     private final QuantityChecker<Item> isEqual = ((item, requiredQuantity) -> item.getQuantity() == requiredQuantity);
 
     public Shop() {
-        this.employees = new MyLinkedList<>();
+        this.employees = new ArrayList<>();
         this.storage = new Storage();
         this.customerCart = new HashMap<>();
         this.inquiries = new LinkedHashSet<>();
@@ -40,11 +37,11 @@ public final class Shop implements Balanceable/*, Discountable*/ {
         this.payment = new Payment();
     }
 
-    public MyLinkedList<Employee> getEmployees() {
+    public List<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(MyLinkedList<Employee> employees) {
+    public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
 

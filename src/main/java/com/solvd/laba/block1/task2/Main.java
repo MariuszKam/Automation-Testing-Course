@@ -88,6 +88,10 @@ public class Main {
         System.out.printf("Change in customer balance: %.2f$%n", customer1.getBalance());
         System.out.printf("Change in shop balance: %.2f$%n", shop.getBalance());
 
+        //New features testing
+        System.out.println(shop.getEmployees().get(0));
+        shop.getEmployees().forEach(System.out::println);
+
         //Customer - Scenario two: Failed transaction.
         System.out.println("\nSecond case\n");
         shop.assignCart(customer2);
