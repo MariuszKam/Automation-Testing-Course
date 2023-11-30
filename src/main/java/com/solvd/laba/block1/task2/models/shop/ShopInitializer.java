@@ -9,6 +9,7 @@ public class ShopInitializer {
         shop = new Shop();
         initializeEmployees();
         initializeItems();
+        initializeCustomers();
     }
 
     public static Shop getShop() {
@@ -16,11 +17,16 @@ public class ShopInitializer {
     }
 
     private static void initializeEmployees() {
+        //Creating employees
         shop.setEmployees(DataLoader.employeesLoader(URL + "employees.csv"));
     }
 
     private static void initializeItems() {
         //Creating products
         shop.getStorage().setItems(DataLoader.itemLoader(URL + "items.csv"));
+    }
+
+    private static void initializeCustomers() {
+        DataLoader.customersLoader(URL + "customers.csv").forEach(shop::assignCart);
     }
 }

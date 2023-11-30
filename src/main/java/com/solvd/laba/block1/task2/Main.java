@@ -23,9 +23,8 @@ public class Main {
         //Creating Shop
         Shop shop = ShopInitializer.getShop(); //Work on it
 
-        //Creating customers
-        Customer customer1 = new Customer(1, "Adam", "Smith");
-        Customer customer2 = new Customer(2, "Lucas", "Miller");
+        Customer customer1 = shop.getCustomerCart().keySet().iterator().next();
+        Customer customer2 = shop.getCustomerCart().keySet().iterator().next();
 
         //Inquiry
         Inquiry inquiry = customer1.makeInquiry("Pencil");
@@ -89,8 +88,8 @@ public class Main {
         System.out.printf("Change in shop balance: %.2f$%n", shop.getBalance());
 
         //New features testing
-        System.out.println(shop.getEmployees().get(0));
-        shop.getEmployees().forEach(System.out::println);
+        shop.getCustomerCart().forEach((customer, cart) ->
+                System.out.println("Customer: " + customer + ", Cart: " + cart));
 
         //Customer - Scenario two: Failed transaction.
         System.out.println("\nSecond case\n");

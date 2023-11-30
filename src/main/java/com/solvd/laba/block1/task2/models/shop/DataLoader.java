@@ -1,5 +1,6 @@
 package com.solvd.laba.block1.task2.models.shop;
 
+import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.persons.employees.Manager;
@@ -65,6 +66,18 @@ public class DataLoader {
 
     public static List<Employee> employeesLoader(String filePath) {
         return loadData(filePath, DataLoader::parseEmployee);
+    }
+
+    //Customer loader
+    private static Customer parseCustomer(String[] customersData) {
+        long id = Long.parseLong(customersData[0]);
+        String firstName = customersData[1];
+        String lastName = customersData[2];
+        return new Customer(id, firstName, lastName);
+    }
+
+    public static List<Customer> customersLoader(String filePath) {
+        return loadData(filePath, DataLoader::parseCustomer);
     }
 
 }
