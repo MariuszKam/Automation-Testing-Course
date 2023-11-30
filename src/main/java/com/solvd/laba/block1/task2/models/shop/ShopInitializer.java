@@ -29,6 +29,6 @@ public class ShopInitializer {
 
     private static void initializeItems() {
         //Creating products
-        shop.getStorage().setItems(FileReader.itemLoader());
+        shop.getStorage().setItems(DataLoader.itemLoader());
     }
 }

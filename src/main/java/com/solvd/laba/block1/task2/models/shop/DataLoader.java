@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FileReader {
+public class DataLoader {
 
-    private static final String URL = "src/main/resources/task2/items.csv";
+    private static final String ITEMS_URL = "src/main/resources/task2/items.csv";
 
     public static List<Item> itemLoader() {
         List<Item> items = new ArrayList<>();
-        try (Scanner scanner = new Scanner(Paths.get(URL))) {
+        try (Scanner scanner = new Scanner(Paths.get(ITEMS_URL))) {
             while (scanner.hasNext()) {
                 String line = scanner.nextLine();
                 String[] splitLine = line.split(",");

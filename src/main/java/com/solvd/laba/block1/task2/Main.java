@@ -21,7 +21,7 @@ public class Main {
     public static void main(String[] args) {
 
         //Creating Shop
-        Shop shop = ShopInitializer.getShop();
+        Shop shop = ShopInitializer.getShop(); //Work on it
 
         //Creating customers
         Customer customer1 = new Customer(1, "Adam", "Smith");
@@ -37,7 +37,7 @@ public class Main {
 
         //Customer - Scenario one: Successful transaction.
         System.out.println("\nFirst case\n");
-        shop.assignCart(customer1); //Implement method where shop assigns cart to a customer
+        shop.assignCart(customer1); //Implementmethod where shop assigns cart to a customer
         //Storage before transaction
         shop.printStorage();
         //Adding and removing a PART of order
