@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class DataLoader {
 
 
-    public static <T> List<T> loadData(String filePath, DataParser<T> parser) {
+    private static <T> List<T> loadData(String filePath, DataParser<T> parser) {
         List<T> data = new ArrayList<>();
         try (Scanner scanner = new Scanner(Paths.get(filePath))){
             while (scanner.hasNext()) {
@@ -28,7 +28,7 @@ public class DataLoader {
     }
 
     //Item loader
-    public static Item parseItem(String[] itemsData) {
+    private static Item parseItem(String[] itemsData) {
         long id = Long.parseLong(itemsData[0]);
         double price = Double.parseDouble(itemsData[2]);
         int quantity = Integer.parseInt(itemsData[3]);
