@@ -12,23 +12,6 @@ import java.util.Scanner;
 public class DataLoader {
 
 
-//    public static List<Item> itemLoader() {
-//        List<Item> items = new ArrayList<>();
-//        try (Scanner scanner = new Scanner(Paths.get(ITEMS_URL))) {
-//            while (scanner.hasNext()) {
-//                String line = scanner.nextLine();
-//                String[] splitLine = line.split(",");
-//                long id = Long.parseLong(splitLine[0]);
-//                double price = Double.parseDouble(splitLine[2]);
-//                int quantity = Integer.parseInt(splitLine[3]);
-//                items.add(new Item(id, splitLine[1], price, quantity));
-//            }
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//        }
-//        return items;
-//    }
-
     public static <T> List<T> loadData(String filePath, DataParser<T> parser) {
         List<T> data = new ArrayList<>();
         try (Scanner scanner = new Scanner(Paths.get(filePath))){
@@ -44,6 +27,7 @@ public class DataLoader {
         return data;
     }
 
+    //Item loader
     public static Item parseItem(String[] itemsData) {
         long id = Long.parseLong(itemsData[0]);
         double price = Double.parseDouble(itemsData[2]);
@@ -54,4 +38,7 @@ public class DataLoader {
     public static List<Item> itemLoader(String filePath) {
         return loadData(filePath, DataLoader::parseItem);
     }
+
+    //Employees loader
+
 }

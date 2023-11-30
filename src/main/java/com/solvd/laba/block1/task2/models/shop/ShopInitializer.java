@@ -6,7 +6,7 @@ import com.solvd.laba.block1.task2.models.persons.employees.Manager;
 
 public class ShopInitializer {
     private static final Shop shop;
-    private static final String ITEMS_URL = "src/main/resources/task2/items.csv";
+    private static final String URL = "src/main/resources/task2/";
 
     static {
         shop = new Shop();
@@ -30,6 +30,6 @@ public class ShopInitializer {
 
     private static void initializeItems() {
         //Creating products
-        shop.getStorage().setItems(DataLoader.itemLoader(ITEMS_URL));
+        shop.getStorage().setItems(DataLoader.itemLoader(URL + "items.csv"));
     }
 }
