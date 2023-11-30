@@ -36,7 +36,6 @@ public class Main {
 
         //Customer - Scenario one: Successful transaction.
         System.out.println("\nFirst case\n");
-        shop.assignCart(customer1); //Implementmethod where shop assigns cart to a customer
         //Storage before transaction
         shop.printStorage();
         //Adding and removing a PART of order
@@ -93,7 +92,6 @@ public class Main {
 
         //Customer - Scenario two: Failed transaction.
         System.out.println("\nSecond case\n");
-        shop.assignCart(customer2);
         //Filling up cart
         shop.addItemToCustomerCart(customer2, "Pencil", 3);
         shop.addItemToCustomerCart(customer2, "Book", 2);
