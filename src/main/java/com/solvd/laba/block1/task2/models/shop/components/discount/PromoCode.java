@@ -3,16 +3,35 @@ package com.solvd.laba.block1.task2.models.shop.components.discount;
 import java.util.Objects;
 
 public class PromoCode {
+    private final long id;
     private final String code;
+
+    private final double value;
+    private final boolean flat;
     private boolean available;
 
-    public PromoCode(String code) {
+    public PromoCode(long id, String code, double value, boolean flat) {
+        this.id = id;
         this.code = code;
+        this.value = value;
+        this.flat = flat;
         this.available = true;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getCode() {
         return code;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public boolean isFlat() {
+        return flat;
     }
 
     public boolean isAvailable() {

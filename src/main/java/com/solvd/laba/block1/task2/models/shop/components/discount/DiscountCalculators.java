@@ -1,7 +1,6 @@
 package com.solvd.laba.block1.task2.models.shop.components.discount;
 
 import com.solvd.laba.block1.task2.models.shop.components.Item;
-import com.solvd.laba.block1.task2.models.shop.components.interfaces.DiscountCalculator;
 
 public class DiscountCalculators {
 

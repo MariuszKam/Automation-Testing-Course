@@ -1,4 +1,4 @@
-package com.solvd.laba.block1.task2.models.shop.components.interfaces;
+package com.solvd.laba.block1.task2.models.shop.components.discount;
 
 import com.solvd.laba.block1.task2.models.shop.components.Item;
 

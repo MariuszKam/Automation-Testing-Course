@@ -1,20 +1,21 @@
 package com.solvd.laba.block1.task2.models.shop.components.discount;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class DiscountService {
-    private final Set<PromoCode> promoCodes;
+    private final Map<String, PromoCode> promoCodes;
 
     public DiscountService() {
-        this.promoCodes = new HashSet<>();
+        this.promoCodes = new HashMap<>();
     }
 
-    public Set<PromoCode> getPromoCodes() {
+    public Map<String, PromoCode> getPromoCodes() {
         return promoCodes;
     }
 
     public void addPromoCode(PromoCode promoCode) {
-        promoCodes.add(promoCode);
+        promoCodes.put(promoCode.getCode(), promoCode);
     }
 }
