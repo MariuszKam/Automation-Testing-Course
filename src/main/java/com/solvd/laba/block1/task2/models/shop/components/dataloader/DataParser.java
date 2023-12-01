@@ -1,4 +1,4 @@
-package com.solvd.laba.block1.task2.models.shop;
+package com.solvd.laba.block1.task2.models.shop.components.dataloader;
 
 @FunctionalInterface
 public interface DataParser<T> {

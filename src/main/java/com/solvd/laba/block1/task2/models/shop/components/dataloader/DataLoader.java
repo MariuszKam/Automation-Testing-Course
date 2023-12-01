@@ -1,4 +1,4 @@
-package com.solvd.laba.block1.task2.models.shop;
+package com.solvd.laba.block1.task2.models.shop.components.dataloader;
 
 import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
@@ -6,7 +6,6 @@ import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.persons.employees.Manager;
 import com.solvd.laba.block1.task2.models.persons.employees.Position;
 import com.solvd.laba.block1.task2.models.shop.components.Item;
-import com.solvd.laba.block1.task2.models.shop.components.MyLinkedList;
 
 import java.io.IOException;
 import java.nio.file.Paths;

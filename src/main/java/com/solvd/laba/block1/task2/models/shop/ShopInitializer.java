@@ -1,6 +1,8 @@
 package com.solvd.laba.block1.task2.models.shop;
 
 
+import com.solvd.laba.block1.task2.models.shop.components.dataloader.DataLoader;
+
 public class ShopInitializer {
     private static final Shop shop;
     private static final String URL = "src/main/resources/task2/";
