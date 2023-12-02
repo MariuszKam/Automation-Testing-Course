@@ -6,6 +6,7 @@ import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.persons.employees.Manager;
 import com.solvd.laba.block1.task2.models.persons.employees.Position;
 import com.solvd.laba.block1.task2.models.shop.components.Item;
+import com.solvd.laba.block1.task2.models.shop.components.discount.PromoCode;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -77,6 +78,19 @@ public class DataLoader {
 
     public static List<Customer> customersLoader(String filePath) {
         return loadData(filePath, DataLoader::parseCustomer);
+    }
+
+    //Promo codes loader
+    private static PromoCode parsePromoCode(String[] promoCodesData) {
+        long id = Long.parseLong(promoCodesData[0]);
+        String code = promoCodesData[1];
+        double value = Double.parseDouble(promoCodesData[2]);
+        boolean flat = Boolean.getBoolean(promoCodesData[3]);
+        return new PromoCode(id, code, value, flat);
+    }
+
+    public static List<PromoCode> promoCodesLoader(String filePath) {
+        return loadData(filePath, DataLoader::parsePromoCode);
     }
 
 }

@@ -12,6 +12,8 @@ public class ShopInitializer {
         initializeEmployees();
         initializeItems();
         initializeCustomers();
+        initializePromoCodes();
+
     }
 
     public static Shop getShop() {
@@ -29,6 +31,12 @@ public class ShopInitializer {
     }
 
     private static void initializeCustomers() {
+        //Creating customers in with carts
         DataLoader.customersLoader(URL + "customers.csv").forEach(shop::assignCart);
+    }
+
+    private static void initializePromoCodes() {
+        //Creating promo codes
+        DataLoader.promoCodesLoader(URL + "promocodes.csv").forEach(shop.getDiscountService()::addPromoCode);
     }
 }
