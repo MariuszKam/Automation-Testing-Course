@@ -171,18 +171,17 @@ public final class Shop implements Balanceable/*, Discountable*/ {
         }
     }
 
-//    public void applyPromoCode(Customer customer, String code) throws InvalidPromoCodeException {
-//        Cart cart = customerCart.get(customer);
-//        if (promoCode.getCode().equals(code)) {
-//            double newTotalPrice = cart.getTotalPrice() * 0.9;
-//            newTotalPrice = (double) Math.round(newTotalPrice * 100) / 100;
-//            cart.setTotalPrice(newTotalPrice);
-//            logger.info("Congratulation! You applied a promo code. You new total price is {}", cart.getTotalPrice());
-//        } else {
-//            throw new InvalidPromoCodeException();
-//        }
-//
-//    }
+    public void applyPromoCode(Customer customer, String code) {
+        Cart cart = customerCart.get(customer);
+        try {
+            discountService.processCode(code, cart);
+        } catch (InvalidPromoCodeException e) {
+            logger.warn(e.getMessage());
+        }
+    }
+
+
+
 
     public void checkout(Customer customer) throws CartEmptyException {
         if (customerCart.get(customer).getItems().isEmpty()) {
