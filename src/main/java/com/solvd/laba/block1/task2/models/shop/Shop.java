@@ -5,13 +5,11 @@ import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.shop.components.*;
 import com.solvd.laba.block1.task2.models.shop.components.discount.DiscountService;
-import com.solvd.laba.block1.task2.models.shop.components.discount.PromoCode;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidQuantityException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Discountable;
-import com.solvd.laba.block1.task2.models.shop.components.interfaces.QuantityChecker;
 
 import java.util.*;
 
@@ -25,8 +23,6 @@ public final class Shop implements Balanceable, Discountable {
     private final DiscountService discountService;
     private final Payment payment;
     private double balance;
-    private final QuantityChecker<Item> isEnough = (item, requiredQuantity) -> item.getQuantity() >= requiredQuantity;
-    private final QuantityChecker<Item> isEqual = ((item, requiredQuantity) -> item.getQuantity() == requiredQuantity);
 
     public Shop() {
         this.employees = new ArrayList<>();
@@ -137,7 +133,7 @@ public final class Shop implements Balanceable, Discountable {
             Cart cart = customerCart.get(customer);
             //Retrieve item from storage
             Item item = storage.getItemByName(itemName);
-            if (!isEnough.checkQuantity(item, quantity)) {
+            if (item.getQuantity() < quantity) {
                 throw new InvalidQuantityException("add to cart");
             }
             item.setQuantity(item.getQuantity() - quantity);
@@ -158,11 +154,11 @@ public final class Shop implements Balanceable, Discountable {
             Item inStorage = storage.getItemByName(itemName);
             inStorage.setQuantity(inStorage.getQuantity() + quantity);
             //Removing item if equals to quantity
-            if (isEqual.checkQuantity(inCart, quantity)) {
+            if (inCart.getQuantity() == quantity) {
                 cart.removeItem(inCart);
                 return;
             }
-            if (!isEnough.checkQuantity(inCart, quantity)) {
+            if (inCart.getQuantity() < quantity) {
                 throw new InvalidQuantityException("remove from cart");
             }
             cart.decreaseQuantity(inCart, quantity);
