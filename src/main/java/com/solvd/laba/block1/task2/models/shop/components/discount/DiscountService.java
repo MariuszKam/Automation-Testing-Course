@@ -1,20 +1,16 @@
 package com.solvd.laba.block1.task2.models.shop.components.discount;
 
 
+import com.solvd.laba.block1.task2.models.shop.Initializer;
 import com.solvd.laba.block1.task2.models.shop.components.Cart;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
 
-import java.util.HashMap;
 import java.util.Map;
 
 
 
 public class DiscountService {
-    private final Map<String, PromoCode> promoCodes;
-
-    public DiscountService() {
-        this.promoCodes = new HashMap<>();
-    }
+    private static final Map<String, PromoCode> promoCodes = Initializer.initializePromoCodes();
 
     public Map<String, PromoCode> getPromoCodes() {
         return promoCodes;
@@ -25,7 +21,7 @@ public class DiscountService {
     }
 
 
-    public double countPrice(String code, Cart cart) throws InvalidPromoCodeException {
+    public static double countPrice(String code, Cart cart) throws InvalidPromoCodeException {
         //Need to make discount to items in cart!
         //Check if promo Code exists
         if (promoCodes.containsKey(code)) {

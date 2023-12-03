@@ -20,7 +20,6 @@ public final class Shop implements Balanceable, Discountable {
     private final Storage storage;
     private final Map<Customer, Cart> customerCart;
     private final Set<Inquiry> inquiries;
-    private final DiscountService discountService;
     private final Payment payment;
     private double balance;
 
@@ -29,7 +28,6 @@ public final class Shop implements Balanceable, Discountable {
         this.storage = new Storage();
         this.customerCart = new HashMap<>();
         this.inquiries = new LinkedHashSet<>();
-        this.discountService = new DiscountService();
         this.payment = new Payment();
     }
 
@@ -60,10 +58,6 @@ public final class Shop implements Balanceable, Discountable {
 
     public void addInquiry(Inquiry inquiry) {
         inquiries.add(inquiry);
-    }
-
-    public DiscountService getDiscountService() {
-        return discountService;
     }
 
     public double getBalance() {
@@ -171,7 +165,7 @@ public final class Shop implements Balanceable, Discountable {
         //TODO: Make Try-catch and exception here for cart <if customer doesn't have one>
         Cart cart = customerCart.get(customer);
         try {
-            cart.setTotalPrice(discountService.countPrice(code, cart));
+            cart.setTotalPrice(DiscountService.countPrice(code, cart));
             logger.info("Code applied!");
             showTotalPrice(customer);
         } catch (InvalidPromoCodeException e) {

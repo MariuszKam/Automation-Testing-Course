@@ -2,8 +2,11 @@ package com.solvd.laba.block1.task2.models.shop;
 
 
 import com.solvd.laba.block1.task2.models.shop.components.dataloader.DataLoader;
+import com.solvd.laba.block1.task2.models.shop.components.discount.PromoCode;
 
-public class ShopInitializer {
+import java.util.Map;
+
+public final class Initializer {
     private static final Shop shop;
     private static final String URL = "src/main/resources/task2/";
 
@@ -12,8 +15,6 @@ public class ShopInitializer {
         initializeEmployees();
         initializeItems();
         initializeCustomers();
-        initializePromoCodes();
-
     }
 
     public static Shop getShop() {
@@ -35,8 +36,8 @@ public class ShopInitializer {
         DataLoader.customersLoader(URL + "customers.csv").forEach(shop::assignCart);
     }
 
-    private static void initializePromoCodes() {
+    public static Map<String, PromoCode> initializePromoCodes() {
         //Creating promo codes
-        DataLoader.promoCodesLoader(URL + "promocodes.csv").forEach(shop.getDiscountService()::addPromoCode);
+        return DataLoader.promoCodesLoader(URL + "promocodes.csv");
     }
 }

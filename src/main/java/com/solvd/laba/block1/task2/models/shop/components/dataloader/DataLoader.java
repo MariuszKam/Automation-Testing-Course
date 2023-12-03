@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class DataLoader {
 
@@ -89,8 +91,10 @@ public class DataLoader {
         return new PromoCode(id, code, value, flat);
     }
 
-    public static List<PromoCode> promoCodesLoader(String filePath) {
-        return loadData(filePath, DataLoader::parsePromoCode);
+    public static Map<String, PromoCode> promoCodesLoader(String filePath) {
+        List<PromoCode> promoCodes = loadData(filePath, DataLoader::parsePromoCode);
+        return promoCodes.stream()
+                .collect(Collectors.toMap(PromoCode::getCode, promoCode -> promoCode));
     }
 
 }

@@ -3,10 +3,9 @@ package com.solvd.laba.block1.task2;
 
 import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.shop.Shop;
-import com.solvd.laba.block1.task2.models.shop.ShopInitializer;
+import com.solvd.laba.block1.task2.models.shop.Initializer;
 import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
-import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Sortable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
 
         //Creating Shop
-        Shop shop = ShopInitializer.getShop(); //Work on it
+        Shop shop = Initializer.getShop(); //Work on it
 
         Customer customer1 = shop.getCustomerCart().keySet().iterator().next();
         Customer customer2 = shop.getCustomerCart().keySet().iterator().next();
