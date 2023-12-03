@@ -1,6 +1,7 @@
 package com.solvd.laba.block1.task2.models.shop.components.discount;
 
 import com.solvd.laba.block1.task2.models.shop.components.Cart;
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.NegativePriceException;
 
 public class DiscountCalculators {
 
@@ -10,6 +11,11 @@ public class DiscountCalculators {
 
     // Lambda expression for calculating discount based on a fixed amount
     public static final DiscountCalculator<Cart> FIXED_AMOUNT_DISCOUNT = (cart, discount) ->
-            cart.getTotalPrice() - discount;
+    {
+        if (cart.getTotalPrice() < discount) {
+            throw new NegativePriceException();
+        }
+        return cart.getTotalPrice() - discount;
+    };
 
 }

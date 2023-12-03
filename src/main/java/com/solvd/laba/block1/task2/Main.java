@@ -62,7 +62,6 @@ public class Main {
         //Printing total price
         shop.showTotalPrice(customer1);
         //Applying promo code
-        System.out.println("------------------------------------------------------------Apply PROMO CODES------------------------");
         shop.applyPromoCode(customer1, "NONEXISTENT");
         shop.applyPromoCode(customer1, "PROMO5");
         //Lend some money to customer
