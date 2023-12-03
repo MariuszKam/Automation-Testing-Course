@@ -12,7 +12,4 @@ public class DiscountCalculators {
     public static final DiscountCalculator<Cart> FIXED_AMOUNT_DISCOUNT = (cart, discount) ->
             cart.getTotalPrice() - discount;
 
-    // Method reference for calculating a flat 10% discount
-    public static final DiscountCalculator<Cart> FLAT_TEN_PERCENT_DISCOUNT = (cart, discount) ->
-            PERCENTAGE_DISCOUNT.calculateDiscount(cart, 10);
 }

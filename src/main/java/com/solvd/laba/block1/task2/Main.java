@@ -62,16 +62,9 @@ public class Main {
         //Printing total price
         shop.showTotalPrice(customer1);
         //Applying promo code
-        /*try {
-            shop.applyPromoCode(customer1, "NONEXISTENT");
-        } catch (InvalidPromoCodeException e) {
-            logger.warn(e.getMessage());
-        }
-        try {
-            shop.applyPromoCode(customer1, "10NOW");
-        } catch (InvalidPromoCodeException e) {
-            logger.warn(e.getMessage());
-        }
+        System.out.println("------------------------------------------------------------Apply PROMO CODES------------------------");
+        shop.applyPromoCode(customer1, "NONEXISTENT");
+        shop.applyPromoCode(customer1, "PROMO5");
         //Lend some money to customer
         customer1.increaseBalance(500);
         //Finishing transaction
@@ -79,16 +72,12 @@ public class Main {
             shop.checkout(customer1);
         } catch (CartEmptyException e) {
             logger.warn(e.getMessage());
-        }*/
+        }
         //Changes in storage after successful transaction
         shop.printStorage();
         //Balance changes
         System.out.printf("Change in customer balance: %.2f$%n", customer1.getBalance());
         System.out.printf("Change in shop balance: %.2f$%n", shop.getBalance());
-
-        //New features testing
-        shop.getCustomerCart().forEach((customer, cart) ->
-                System.out.println("Customer: " + customer + ", Cart: " + cart));
 
         //Customer - Scenario two: Failed transaction.
         System.out.println("\nSecond case\n");

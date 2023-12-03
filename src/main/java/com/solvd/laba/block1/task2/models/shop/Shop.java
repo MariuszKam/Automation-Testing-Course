@@ -17,7 +17,7 @@ import java.util.*;
 
 import static com.solvd.laba.block1.task2.Main.logger;
 
-public final class Shop implements Balanceable/*, Discountable*/ {
+public final class Shop implements Balanceable, Discountable {
     private List<Employee> employees;
     private final Storage storage;
     private final Map<Customer, Cart> customerCart;
@@ -172,9 +172,12 @@ public final class Shop implements Balanceable/*, Discountable*/ {
     }
 
     public void applyPromoCode(Customer customer, String code) {
+        //TODO: Make Try-catch and exception here for cart <if customer doesn't have one>
         Cart cart = customerCart.get(customer);
         try {
-            discountService.processCode(code, cart);
+            cart.setTotalPrice(discountService.countPrice(code, cart));
+            logger.info("Code applied!");
+            showTotalPrice(customer);
         } catch (InvalidPromoCodeException e) {
             logger.warn(e.getMessage());
         }

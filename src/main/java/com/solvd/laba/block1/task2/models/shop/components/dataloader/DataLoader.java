@@ -85,7 +85,7 @@ public class DataLoader {
         long id = Long.parseLong(promoCodesData[0]);
         String code = promoCodesData[1];
         double value = Double.parseDouble(promoCodesData[2]);
-        boolean flat = Boolean.getBoolean(promoCodesData[3]);
+        boolean flat = Boolean.parseBoolean(promoCodesData[3]);
         return new PromoCode(id, code, value, flat);
     }
 

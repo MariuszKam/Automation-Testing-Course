@@ -1,12 +1,12 @@
 package com.solvd.laba.block1.task2.models.shop.components.discount;
 
 
-
 import com.solvd.laba.block1.task2.models.shop.components.Cart;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 
 public class DiscountService {
@@ -24,16 +24,26 @@ public class DiscountService {
         promoCodes.put(promoCode.getCode(), promoCode);
     }
 
-    public void processCode(String code, Cart cart) throws InvalidPromoCodeException {
+
+    public double countPrice(String code, Cart cart) throws InvalidPromoCodeException {
         //Need to make discount to items in cart!
         //Check if promo Code exists
         if (promoCodes.containsKey(code)) {
             //Proceed promotion!
-
-
+            PromoCode promoCode = promoCodes.get(code);
+            DiscountCalculator<Cart> discountCalculator;
+            //Check if it's flat or not and set implementation
+            if (promoCode.isFlat()) {
+                discountCalculator = DiscountCalculators.FIXED_AMOUNT_DISCOUNT;
+            } else {
+                discountCalculator = DiscountCalculators.PERCENTAGE_DISCOUNT;
+            }
+            return finalPrice(cart, promoCode.getValue(), discountCalculator);
         }
-        throw  new InvalidPromoCodeException();
+        throw new InvalidPromoCodeException();
     }
 
-    private
+    private static double finalPrice(Cart cart, double discount, DiscountCalculator<Cart> discountCalculator) {
+        return Math.round(discountCalculator.calculateDiscount(cart, discount) * 100.00) / 100.00;
+    }
 }
