@@ -1,6 +1,6 @@
 package com.solvd.laba.block1.task2.models.shop.components.discount;
 
-import com.solvd.laba.block1.task2.models.shop.components.Cart;
+import com.solvd.laba.block1.task2.models.shop.components.shopping.Cart;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.NegativePriceException;
 
 public class DiscountCalculators {

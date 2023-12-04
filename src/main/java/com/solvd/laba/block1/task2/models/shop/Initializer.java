@@ -33,7 +33,7 @@ public final class Initializer {
 
     private static void initializeCustomers() {
         //Creating customers in with carts
-        DataLoader.customersLoader(URL + "customers.csv").forEach(shop::assignCart);
+        shop.setCustomers(DataLoader.customersLoader(URL + "customers.csv"));
     }
 
     public static Map<String, PromoCode> initializePromoCodes() {

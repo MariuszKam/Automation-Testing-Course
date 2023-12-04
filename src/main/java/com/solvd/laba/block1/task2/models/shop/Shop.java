@@ -10,15 +10,18 @@ import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidProm
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidQuantityException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Discountable;
+import com.solvd.laba.block1.task2.models.shop.components.shopping.Cart;
+import com.solvd.laba.block1.task2.models.shop.components.shopping.CartAction;
+import com.solvd.laba.block1.task2.models.shop.components.shopping.ShoppingService;
 
 import java.util.*;
 
 import static com.solvd.laba.block1.task2.Main.logger;
 
-public final class Shop implements Balanceable, Discountable {
+public final class Shop implements Balanceable/*, Discountable*/ {
     private List<Employee> employees;
     private final Storage storage;
-    private final Map<Customer, Cart> customerCart;
+    private List<Customer> customers;
     private final Set<Inquiry> inquiries;
     private final Payment payment;
     private double balance;
@@ -26,7 +29,7 @@ public final class Shop implements Balanceable, Discountable {
     public Shop() {
         this.employees = new ArrayList<>();
         this.storage = new Storage();
-        this.customerCart = new HashMap<>();
+        this.customers = new LinkedList<>();
         this.inquiries = new LinkedHashSet<>();
         this.payment = new Payment();
     }
@@ -43,13 +46,12 @@ public final class Shop implements Balanceable, Discountable {
         return storage;
     }
 
-    public Map<Customer, Cart> getCustomerCart() {
-        return customerCart;
+    public List<Customer> getCustomers() {
+        return customers;
     }
 
-    public void assignCart(Customer customer) {
-        Cart cart = new Cart(customer);
-        customerCart.put(customer, cart);
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 
     public Set<Inquiry> getInquiries() {
@@ -108,64 +110,55 @@ public final class Shop implements Balanceable, Discountable {
         storage.getItems().forEach(logger::info);
     }
 
+
+    public void performCartAction(Customer customer, CartAction cartAction, String itemName, int quantity) {
+        cartAction.perform(customer.getCart(), storage.getItemByName(itemName), quantity);
+    }
+
     public void printCart(Customer customer) {
-        Cart cart = customerCart.get(customer);
-        if (cart.getItems().isEmpty()) {
+        if (customer.getCart().getItems().isEmpty()) {
             logger.warn("Your cart is empty");
         }
-        cart.getItems().forEach(logger::info);
+        customer.getCart().getItems().forEach(logger::info);
     }
 
     public void showTotalPrice(Customer customer) {
-        Cart cart = customerCart.get(customer);
-        String price = String.format("%.2f", cart.getTotalPrice());
+        String price = String.format("%.2f", customer.getCart().getTotalPrice());
         logger.info("Total price of your cart is: {}", price);
     }
 
     public void addItemToCustomerCart(Customer customer, String itemName, int quantity) {
-        if (hasCart(customer)) {
-            Cart cart = customerCart.get(customer);
-            //Retrieve item from storage
-            Item item = storage.getItemByName(itemName);
-            if (item.getQuantity() < quantity) {
-                throw new InvalidQuantityException("add to cart");
-            }
-            item.setQuantity(item.getQuantity() - quantity);
-            Item toCart = new Item(item.getId(), item.getName(), item.getPrice(), quantity);
-            cart.addItem(toCart);
-        } else {
-            logger.warn("{} {} does not have a cart! Please assign a cart first", customer.getName(), customer.getLastname());
+        //Retrieve item from storage
+        Item item = storage.getItemByName(itemName);
+        if (item.getQuantity() < quantity) {
+            throw new InvalidQuantityException("add to cart");
         }
-
+        item.setQuantity(item.getQuantity() - quantity);
+        Item toCart = new Item(item.getId(), item.getName(), item.getPrice(), quantity);
+        customer.getCart().addItem(toCart);
     }
 
     public void removeItemFromCustomerCart(Customer customer, String itemName, int quantity) {
-        if (hasCart(customer)) {
-            Cart cart = customerCart.get(customer);
-            //Retrieve item
-            Item inCart = cart.getItemByName(itemName);
-            //Change in Storage
-            Item inStorage = storage.getItemByName(itemName);
-            inStorage.setQuantity(inStorage.getQuantity() + quantity);
-            //Removing item if equals to quantity
-            if (inCart.getQuantity() == quantity) {
-                cart.removeItem(inCart);
-                return;
-            }
-            if (inCart.getQuantity() < quantity) {
-                throw new InvalidQuantityException("remove from cart");
-            }
-            cart.decreaseQuantity(inCart, quantity);
-        } else {
-            logger.warn("{} {} does not have a cart! Please assign a cart first", customer.getName(), customer.getLastname());
+        //Retrieve item
+        Item inCart = customer.getCart().getItemByName(itemName);
+        //Change in Storage
+        Item inStorage = storage.getItemByName(itemName);
+        inStorage.setQuantity(inStorage.getQuantity() + quantity);
+        //Removing item if equals to quantity
+        if (inCart.getQuantity() == quantity) {
+            customer.getCart().removeItem(inCart);
+            return;
         }
+        if (inCart.getQuantity() < quantity) {
+            throw new InvalidQuantityException("remove from cart");
+        }
+        customer.getCart().decreaseQuantity(inCart, quantity);
     }
 
     public void applyPromoCode(Customer customer, String code) {
         //TODO: Make Try-catch and exception here for cart <if customer doesn't have one>
-        Cart cart = customerCart.get(customer);
         try {
-            cart.setTotalPrice(DiscountService.countPrice(code, cart));
+            customer.getCart().setTotalPrice(DiscountService.countPrice(code, customer.getCart()));
             logger.info("Code applied!");
             showTotalPrice(customer);
         } catch (InvalidPromoCodeException e) {
@@ -174,36 +167,28 @@ public final class Shop implements Balanceable, Discountable {
     }
 
 
-
-
-    public void checkout(Customer customer) throws CartEmptyException {
-        if (customerCart.get(customer).getItems().isEmpty()) {
-            throw new CartEmptyException();
-        }
-        if (payment.makePayment(this, customer)) {
-            //Successful apply to storage and clear the cart
-            confirmOrder(customer);
-        }
-    }
+//    public void checkout(Customer customer) throws CartEmptyException {
+//        if (customerCart.get(customer).getItems().isEmpty()) {
+//            throw new CartEmptyException();
+//        }
+//        if (payment.makePayment(this, customer)) {
+//            //Successful apply to storage and clear the cart
+//            confirmOrder(customer);
+//        }
+//    }
 
     private void confirmOrder(Customer customer) {
-        Cart cart = customerCart.get(customer);
-        cart.getItems().clear();
+        customer.getCart().getItems().clear();
         logger.info("Thank you for choosing our shop!");
     }
 
     public void rejectOrder(Customer customer) {
-        Cart cart = customerCart.get(customer);
-        for (Item item : cart.getItems()) {
+        for (Item item : customer.getCart().getItems()) {
             Item inStorage = storage.getItemByName(item.getName());
             inStorage.setQuantity(inStorage.getQuantity() + item.getQuantity());
         }
-        cart.getItems().clear();
+        customer.getCart().getItems().clear();
         logger.warn("Order rejected!");
-    }
-
-    private boolean hasCart(Customer customer) {
-        return customerCart.containsKey(customer);
     }
 
 }

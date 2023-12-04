@@ -20,17 +20,17 @@ public class Payment {
         isSuccessful = successful;
     }
 
-    public boolean makePayment(Shop shop, Customer customer) {
-        double customerBalance = customer.getBalance();
-        double toPay = shop.getCustomerCart().get(customer).getTotalPrice();
-        //Check if sufficient funds in balance
-        if (customerBalance >= toPay) {
-            //Set new balance of customer and shop
-            customer.decreaseBalance(toPay);
-            shop.increaseBalance(toPay);
-            return true;
-        }
-        shop.rejectOrder(customer);
-        throw new InsufficientFundsException();
-    }
+//    public boolean makePayment(Shop shop, Customer customer) {
+//        double customerBalance = customer.getBalance();
+//        double toPay = shop.getCustomerCart().get(customer).getTotalPrice();
+//        //Check if sufficient funds in balance
+//        if (customerBalance >= toPay) {
+//            //Set new balance of customer and shop
+//            customer.decreaseBalance(toPay);
+//            shop.increaseBalance(toPay);
+//            return true;
+//        }
+//        shop.rejectOrder(customer);
+//        throw new InsufficientFundsException();
+//    }
 }
