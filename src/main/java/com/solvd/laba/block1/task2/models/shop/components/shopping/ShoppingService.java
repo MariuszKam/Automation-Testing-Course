@@ -15,33 +15,6 @@ public final class ShoppingService {
         ShoppingService.shop = shop;
     }
 
-    public static void performCartAction(Customer customer, CartAction cartAction, String itemName, int quantity) {
-        cartAction.perform(customer.getCart(), shop.getStorage().getItemByName(itemName), quantity);
-    }
-
-    public static void printCart(Customer customer) {
-        if (customer.getCart().getItems().isEmpty()) {
-            logger.warn("Your cart is empty");
-        }
-        customer.getCart().getItems().forEach(logger::info);
-    }
-
-    private static void showTotalPrice(Customer customer) {
-        String price = String.format("%.2f", customer.getCart().getTotalPrice());
-        logger.info("Total price of your cart is: {}", price);
-    }
-
-    public static void applyPromoCode(Customer customer, String code) {
-        //TODO: Make Try-catch and exception here for cart <if customer doesn't have one>
-        try {
-            customer.getCart().setTotalPrice(DiscountService.countPrice(code, customer.getCart()));
-            logger.info("Code applied!");
-            showTotalPrice(customer);
-        } catch (InvalidPromoCodeException e) {
-            logger.warn(e.getMessage());
-        }
-    }
-
 //    public void checkout(Customer customer) throws CartEmptyException {
 //        if (customerCart.get(customer).getItems().isEmpty()) {
 //            throw new CartEmptyException();

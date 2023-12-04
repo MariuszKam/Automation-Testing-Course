@@ -1,6 +1,13 @@
 package com.solvd.laba.block1.task2.models.shop.components.shopping;
 
+import com.solvd.laba.block1.task2.models.shop.components.discount.DiscountService;
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidQuantityException;
+
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+
+import static com.solvd.laba.block1.task2.Main.logger;
 
 public class CartActions {
     //Adding item to cart - implementation
@@ -23,6 +30,7 @@ public class CartActions {
 
         //Remove item from cart
         if (cartItem.getQuantity() == quantity) {
+            item.setQuantity(item.getQuantity() + quantity);
             cart.removeItem(cartItem);
             return;
         }
@@ -31,5 +39,27 @@ public class CartActions {
         }
         item.setQuantity(item.getQuantity() + quantity);
         cart.decreaseQuantity(cartItem, quantity);
+    };
+
+    public static final Consumer<Cart> PRINT_CART = (cart) -> {
+        if (cart.getItems().isEmpty()) {
+            logger.warn("Your cart is empty");
+        }
+        cart.getItems().forEach(logger::info);
+    };
+
+    public static final Consumer<Cart> SHOW_PRICE = (cart) -> {
+        String price = String.format("%.2f", cart.getTotalPrice());
+        logger.info("Total price of your cart is: {}", price);
+    };
+
+    public static final BiConsumer<Cart, String> APPLY_CODE = (cart, code) -> {
+        try {
+            cart.setTotalPrice(DiscountService.countPrice(code, cart));
+            logger.info("Code applied!");
+            CartActions.SHOW_PRICE.accept(cart);
+        } catch (InvalidPromoCodeException e) {
+            logger.warn(e.getMessage());
+        }
     };
 }

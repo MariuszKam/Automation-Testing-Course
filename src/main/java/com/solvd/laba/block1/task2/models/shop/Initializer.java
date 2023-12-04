@@ -16,7 +16,6 @@ public final class Initializer {
         initializeEmployees();
         initializeItems();
         initializeCustomers();
-        ShoppingService.setShop(shop);
     }
 
     public static Shop getShop() {

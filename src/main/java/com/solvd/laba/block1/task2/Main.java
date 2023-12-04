@@ -7,6 +7,7 @@ import com.solvd.laba.block1.task2.models.shop.Initializer;
 import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Sortable;
+import com.solvd.laba.block1.task2.models.shop.components.shopping.CartAction;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.CartActions;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.ShoppingService;
 import org.apache.logging.log4j.LogManager;
@@ -27,6 +28,7 @@ public class Main {
         Customer customer1 = shop.getCustomers().get(0);
         Customer customer2 = shop.getCustomers().get(1);
 
+
         //Inquiry
         Inquiry inquiry = customer1.makeInquiry("Pencil");
         logger.info(inquiry);
@@ -38,41 +40,31 @@ public class Main {
         //Customer - Scenario one: Successful transaction.
         System.out.println("\nFirst case\n");
         //Storage before transaction
-//        shop.printStorage();
+        shop.printStorage();
         //Adding and removing a PART of order
-        ShoppingService.performCartAction(customer1, CartActions.ADD_ITEM, "Pencil", 3);
-        ShoppingService.printCart(customer1);
+        CartActions.ADD_ITEM.perform(customer1.getCart(), shop.getStorage().getItemByName("Pencil"), 3);
+        CartActions.PRINT_CART.accept(customer1.getCart());
         System.out.println(shop.getStorage().getItemByName("Pencil"));
-        ShoppingService.performCartAction(customer1, CartActions.REMOVE_ITEM, "Pencil", 3);
-        ShoppingService.printCart(customer1);
+        CartActions.REMOVE_ITEM.perform(customer1.getCart(), shop.getStorage().getItemByName("Pencil"), 2);
+        CartActions.PRINT_CART.accept(customer1.getCart());
         System.out.println(shop.getStorage().getItemByName("Pencil"));
-//        shop.addItemToCustomerCart(customer1, "Pencil", 3);
-//        shop.showTotalPrice(customer1);
-//        shop.printStorage();
-//        shop.removeItemFromCustomerCart(customer1, "Pencil", 2);
-//        shop.printStorage();
-//        shop.printCart(customer1);
-//        //Finally removing entire order
-//        shop.removeItemFromCustomerCart(customer1, "Pencil", 1);
-//        shop.printCart(customer1);
-//        //Filling up cart again
-//        shop.addItemToCustomerCart(customer1, "Pencil", 9);
-//        shop.addItemToCustomerCart(customer1, "Book", 7);
-//        shop.addItemToCustomerCart(customer1, "Sunglasses", 13);
-//        shop.addItemToCustomerCart(customer1, "Ball", 1);
-//        //Polymorphism Interfaces
-//        System.out.println("Polymorphism Interfaces: ");
-//        List<Sortable> sortableList = new ArrayList<>();
-//        sortableList.add(shop.getStorage());
-//        sortableList.add(shop.getCustomerCart().get(customer1));
-//        sortableList.forEach(Sortable::sortByPrice);
-//        //Printing total price
-//        shop.showTotalPrice(customer1);
-//        //Applying promo code
-//        shop.applyPromoCode(customer1, "NONEXISTENT");
-//        shop.applyPromoCode(customer1, "PROMO5");
-//        //Lend some money to customer
-//        customer1.increaseBalance(500);
+        //Finally removing entire order
+        CartActions.REMOVE_ITEM.perform(customer1.getCart(), shop.getStorage().getItemByName("Pencil"), 1);
+        CartActions.PRINT_CART.accept(customer1.getCart());
+        System.out.println(shop.getStorage().getItemByName("Pencil"));
+        //Filling up cart again
+        CartActions.ADD_ITEM.perform(customer1.getCart(), shop.getStorage().getItemByName("Pencil"), 9);
+        CartActions.ADD_ITEM.perform(customer1.getCart(), shop.getStorage().getItemByName("Book"), 7 );
+        CartActions.ADD_ITEM.perform(customer1.getCart(), shop.getStorage().getItemByName("Sunglasses"), 13);
+        CartActions.ADD_ITEM.perform(customer1.getCart(), shop.getStorage().getItemByName("Ball"), 1);
+
+        //Printing total price
+        CartActions.SHOW_PRICE.accept(customer1.getCart());
+        //Applying promo code
+        CartActions.APPLY_CODE.accept(customer1.getCart(), "NONEXISTENT");
+        CartActions.APPLY_CODE.accept(customer1.getCart(), "PROMO5");
+        //Lend some money to customer
+        customer1.increaseBalance(500);
 //        //Finishing transaction
 //        try {
 //            shop.checkout(customer1);
@@ -84,7 +76,7 @@ public class Main {
 //        //Balance changes
 //        System.out.printf("Change in customer balance: %.2f$%n", customer1.getBalance());
 //        System.out.printf("Change in shop balance: %.2f$%n", shop.getBalance());
-//
+
 //        //Customer - Scenario two: Failed transaction.
 //        System.out.println("\nSecond case\n");
 //        //Filling up cart
