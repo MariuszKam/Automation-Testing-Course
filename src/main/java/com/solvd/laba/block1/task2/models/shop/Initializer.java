@@ -3,7 +3,6 @@ package com.solvd.laba.block1.task2.models.shop;
 
 import com.solvd.laba.block1.task2.models.shop.components.dataloader.DataLoader;
 import com.solvd.laba.block1.task2.models.shop.components.discount.PromoCode;
-import com.solvd.laba.block1.task2.models.shop.components.shopping.ShoppingService;
 
 import java.util.Map;
 

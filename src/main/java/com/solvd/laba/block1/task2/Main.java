@@ -6,15 +6,9 @@ import com.solvd.laba.block1.task2.models.shop.Shop;
 import com.solvd.laba.block1.task2.models.shop.Initializer;
 import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
-import com.solvd.laba.block1.task2.models.shop.components.interfaces.Sortable;
-import com.solvd.laba.block1.task2.models.shop.components.shopping.CartAction;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.CartActions;
-import com.solvd.laba.block1.task2.models.shop.components.shopping.ShoppingService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
@@ -65,33 +59,33 @@ public class Main {
         CartActions.APPLY_CODE.accept(customer1.getCart(), "PROMO5");
         //Lend some money to customer
         customer1.increaseBalance(500);
-//        //Finishing transaction
-//        try {
-//            shop.checkout(customer1);
-//        } catch (CartEmptyException e) {
-//            logger.warn(e.getMessage());
-//        }
-//        //Changes in storage after successful transaction
-//        shop.printStorage();
-//        //Balance changes
-//        System.out.printf("Change in customer balance: %.2f$%n", customer1.getBalance());
-//        System.out.printf("Change in shop balance: %.2f$%n", shop.getBalance());
+        //Finishing transaction
+        try {
+            shop.checkout(customer1);
+        } catch (CartEmptyException e) {
+            logger.warn(e.getMessage());
+        }
+        //Changes in storage after successful transaction
+        shop.printStorage();
+        //Balance changes
+        System.out.printf("Change in customer balance: %.2f$%n", customer1.getBalance());
+        System.out.printf("Change in shop balance: %.2f$%n", shop.getBalance());
 
-//        //Customer - Scenario two: Failed transaction.
-//        System.out.println("\nSecond case\n");
-//        //Filling up cart
-//        shop.addItemToCustomerCart(customer2, "Pencil", 3);
-//        shop.addItemToCustomerCart(customer2, "Book", 2);
-//        //Try to finish transaction
-//        try {
-//            shop.checkout(customer2);
-//        } catch (CartEmptyException e) {
-//            logger.warn(e.getMessage());
-//        }
-//        //Possible to reject by public method
-//        //shop.rejectOrder();
-//        //Storage didn't change
-//        shop.printStorage();
+        //Customer - Scenario two: Failed transaction.
+        System.out.println("\nSecond case\n");
+        //Filling up cart
+        CartActions.ADD_ITEM.perform(customer2.getCart(), shop.getStorage().getItemByName("Pencil") ,3);
+        CartActions.ADD_ITEM.perform(customer2.getCart(), shop.getStorage().getItemByName("Book"), 2);
+        //Try to finish transaction
+        try {
+            shop.checkout(customer2);
+        } catch (CartEmptyException e) {
+            logger.warn(e.getMessage());
+        }
+        //Possible to reject by public method
+        CartActions.ORDER_REJECT.accept(customer2.getCart(), shop);
+        //Storage didn't change
+        shop.printStorage();
 
     }
 }

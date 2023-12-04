@@ -1,5 +1,6 @@
 package com.solvd.laba.block1.task2.models.shop.components.shopping;
 
+import com.solvd.laba.block1.task2.models.shop.Shop;
 import com.solvd.laba.block1.task2.models.shop.components.discount.DiscountService;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidQuantityException;
@@ -41,12 +42,12 @@ public class CartActions {
         cart.decreaseQuantity(cartItem, quantity);
     };
 
-    public static final Consumer<Cart> PRINT_CART = (cart) -> {
+    public static final Consumer<Cart> PRINT_CART = (cart -> {
         if (cart.getItems().isEmpty()) {
             logger.warn("Your cart is empty");
         }
         cart.getItems().forEach(logger::info);
-    };
+    });
 
     public static final Consumer<Cart> SHOW_PRICE = (cart) -> {
         String price = String.format("%.2f", cart.getTotalPrice());
@@ -61,5 +62,19 @@ public class CartActions {
         } catch (InvalidPromoCodeException e) {
             logger.warn(e.getMessage());
         }
+    };
+
+    public static final Consumer<Cart> ORDER_CONFIRM = (cart -> {
+        cart.getItems().clear();
+        logger.info("Thank you for choosing our shop!");
+    });
+
+    public static final BiConsumer<Cart, Shop> ORDER_REJECT = (cart, shop) -> {
+        for (Item item : cart.getItems()) {
+            Item inStorage = shop.getStorage().getItemByName(item.getName());
+            inStorage.setQuantity(inStorage.getQuantity() + item.getQuantity());
+        }
+        cart.getItems().clear();
+        logger.warn("Order rejected!");
     };
 }
