@@ -9,18 +9,10 @@ import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidProm
 import static com.solvd.laba.block1.task2.Main.logger;
 
 public final class ShoppingService {
-
-    private static ShoppingService INSTANCE;
     private static Shop shop;
 
-    public ShoppingService(Shop shop) {
+    public static void setShop(Shop shop) {
         ShoppingService.shop = shop;
-    }
-
-    public static void getInstance(Shop shop) {
-        if (INSTANCE == null) {
-            INSTANCE = new ShoppingService(shop);
-        }
     }
 
     public static void performCartAction(Customer customer, CartAction cartAction, String itemName, int quantity) {
