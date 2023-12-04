@@ -1,6 +1,5 @@
 package com.solvd.laba.block1.task2.models.shop.components.shopping;
 
-import com.solvd.laba.block1.task2.models.shop.components.Item;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidQuantityException;
 
 public class CartActions {
@@ -30,6 +29,7 @@ public class CartActions {
         if (cartItem.getQuantity() < quantity) {
             throw new InvalidQuantityException("remove from cart");
         }
+        item.setQuantity(item.getQuantity() + quantity);
         cart.decreaseQuantity(cartItem, quantity);
     };
 }

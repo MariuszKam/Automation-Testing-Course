@@ -5,7 +5,7 @@ import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.persons.employees.Manager;
 import com.solvd.laba.block1.task2.models.persons.employees.Position;
-import com.solvd.laba.block1.task2.models.shop.components.Item;
+import com.solvd.laba.block1.task2.models.shop.components.shopping.Item;
 import com.solvd.laba.block1.task2.models.shop.components.discount.PromoCode;
 
 import java.io.IOException;

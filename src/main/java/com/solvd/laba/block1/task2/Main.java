@@ -8,6 +8,7 @@ import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Sortable;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.CartActions;
+import com.solvd.laba.block1.task2.models.shop.components.shopping.ShoppingService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -39,9 +40,12 @@ public class Main {
         //Storage before transaction
 //        shop.printStorage();
         //Adding and removing a PART of order
-        //shop.customerAction(Customer, Action, Item, Quantity);
-        shop.performCartAction(customer1, CartActions.ADD_ITEM, "Pencil", 3);
-        shop.performCartAction(customer1, CartActions.REMOVE_ITEM, "Pencil", 3);
+        ShoppingService.performCartAction(customer1, CartActions.ADD_ITEM, "Pencil", 3);
+        ShoppingService.printCart(customer1);
+        System.out.println(shop.getStorage().getItemByName("Pencil"));
+        ShoppingService.performCartAction(customer1, CartActions.REMOVE_ITEM, "Pencil", 3);
+        ShoppingService.printCart(customer1);
+        System.out.println(shop.getStorage().getItemByName("Pencil"));
 //        shop.addItemToCustomerCart(customer1, "Pencil", 3);
 //        shop.showTotalPrice(customer1);
 //        shop.printStorage();

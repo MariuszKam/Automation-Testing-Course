@@ -1,4 +1,4 @@
-package com.solvd.laba.block1.task2.models.shop.components;
+package com.solvd.laba.block1.task2.models.shop.components.shopping;
 
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidItemPriceException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.NegativeQuantityException;

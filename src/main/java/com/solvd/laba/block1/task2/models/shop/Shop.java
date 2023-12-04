@@ -4,19 +4,15 @@ import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.shop.components.*;
-import com.solvd.laba.block1.task2.models.shop.components.discount.DiscountService;
-import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
-import com.solvd.laba.block1.task2.models.shop.components.interfaces.Discountable;
-import com.solvd.laba.block1.task2.models.shop.components.shopping.Cart;
-import com.solvd.laba.block1.task2.models.shop.components.shopping.CartAction;
+import com.solvd.laba.block1.task2.models.shop.components.shopping.Item;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.ShoppingService;
 
 import java.util.*;
 
 import static com.solvd.laba.block1.task2.Main.logger;
 
-public final class Shop implements Balanceable, Discountable {
+public final class Shop implements Balanceable {
     private List<Employee> employees;
     private final Storage storage;
     private List<Customer> customers;
@@ -106,59 +102,6 @@ public final class Shop implements Balanceable, Discountable {
 
     public void printStorage() {
         storage.getItems().forEach(logger::info);
-    }
-
-
-    public void performCartAction(Customer customer, CartAction cartAction, String itemName, int quantity) {
-        cartAction.perform(customer.getCart(), storage.getItemByName(itemName), quantity);
-    }
-
-    public void printCart(Customer customer) {
-        if (customer.getCart().getItems().isEmpty()) {
-            logger.warn("Your cart is empty");
-        }
-        customer.getCart().getItems().forEach(logger::info);
-    }
-
-    public void showTotalPrice(Customer customer) {
-        String price = String.format("%.2f", customer.getCart().getTotalPrice());
-        logger.info("Total price of your cart is: {}", price);
-    }
-
-    public void applyPromoCode(Customer customer, String code) {
-        //TODO: Make Try-catch and exception here for cart <if customer doesn't have one>
-        try {
-            customer.getCart().setTotalPrice(DiscountService.countPrice(code, customer.getCart()));
-            logger.info("Code applied!");
-            showTotalPrice(customer);
-        } catch (InvalidPromoCodeException e) {
-            logger.warn(e.getMessage());
-        }
-    }
-
-
-//    public void checkout(Customer customer) throws CartEmptyException {
-//        if (customerCart.get(customer).getItems().isEmpty()) {
-//            throw new CartEmptyException();
-//        }
-//        if (payment.makePayment(this, customer)) {
-//            //Successful apply to storage and clear the cart
-//            confirmOrder(customer);
-//        }
-//    }
-
-    private void confirmOrder(Customer customer) {
-        customer.getCart().getItems().clear();
-        logger.info("Thank you for choosing our shop!");
-    }
-
-    public void rejectOrder(Customer customer) {
-        for (Item item : customer.getCart().getItems()) {
-            Item inStorage = storage.getItemByName(item.getName());
-            inStorage.setQuantity(inStorage.getQuantity() + item.getQuantity());
-        }
-        customer.getCart().getItems().clear();
-        logger.warn("Order rejected!");
     }
 
 }

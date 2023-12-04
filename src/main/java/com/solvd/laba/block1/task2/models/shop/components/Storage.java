@@ -4,6 +4,7 @@ import com.solvd.laba.block1.task2.models.shop.components.exceptions.ItemNotFoun
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Searchable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Sortable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Storageable;
+import com.solvd.laba.block1.task2.models.shop.components.shopping.Item;
 
 import java.util.ArrayList;
 import java.util.Comparator;
