@@ -41,9 +41,7 @@ public class Main {
         //Adding and removing a PART of order
         //shop.customerAction(Customer, Action, Item, Quantity);
         shop.performCartAction(customer1, CartActions.ADD_ITEM, "Pencil", 3);
-        System.out.println(customer1.getCart().getItems());
         shop.performCartAction(customer1, CartActions.REMOVE_ITEM, "Pencil", 3);
-        System.out.println(customer1.getCart().getItems());
 //        shop.addItemToCustomerCart(customer1, "Pencil", 3);
 //        shop.showTotalPrice(customer1);
 //        shop.printStorage();

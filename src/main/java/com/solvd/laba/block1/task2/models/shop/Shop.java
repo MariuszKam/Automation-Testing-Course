@@ -127,34 +127,6 @@ public final class Shop implements Balanceable/*, Discountable*/ {
         logger.info("Total price of your cart is: {}", price);
     }
 
-    public void addItemToCustomerCart(Customer customer, String itemName, int quantity) {
-        //Retrieve item from storage
-        Item item = storage.getItemByName(itemName);
-        if (item.getQuantity() < quantity) {
-            throw new InvalidQuantityException("add to cart");
-        }
-        item.setQuantity(item.getQuantity() - quantity);
-        Item toCart = new Item(item.getId(), item.getName(), item.getPrice(), quantity);
-        customer.getCart().addItem(toCart);
-    }
-
-    public void removeItemFromCustomerCart(Customer customer, String itemName, int quantity) {
-        //Retrieve item
-        Item inCart = customer.getCart().getItemByName(itemName);
-        //Change in Storage
-        Item inStorage = storage.getItemByName(itemName);
-        inStorage.setQuantity(inStorage.getQuantity() + quantity);
-        //Removing item if equals to quantity
-        if (inCart.getQuantity() == quantity) {
-            customer.getCart().removeItem(inCart);
-            return;
-        }
-        if (inCart.getQuantity() < quantity) {
-            throw new InvalidQuantityException("remove from cart");
-        }
-        customer.getCart().decreaseQuantity(inCart, quantity);
-    }
-
     public void applyPromoCode(Customer customer, String code) {
         //TODO: Make Try-catch and exception here for cart <if customer doesn't have one>
         try {
