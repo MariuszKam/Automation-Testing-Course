@@ -5,9 +5,7 @@ import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.shop.components.*;
 import com.solvd.laba.block1.task2.models.shop.components.discount.DiscountService;
-import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidPromoCodeException;
-import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidQuantityException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Discountable;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.Cart;
@@ -18,7 +16,7 @@ import java.util.*;
 
 import static com.solvd.laba.block1.task2.Main.logger;
 
-public final class Shop implements Balanceable/*, Discountable*/ {
+public final class Shop implements Balanceable, Discountable {
     private List<Employee> employees;
     private final Storage storage;
     private List<Customer> customers;
