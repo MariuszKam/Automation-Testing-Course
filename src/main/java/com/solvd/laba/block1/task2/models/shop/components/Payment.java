@@ -21,7 +21,7 @@ public class Payment {
         isSuccessful = successful;
     }
 
-    public boolean makePayment(Customer customer, Shop shop) {
+    public void makePayment(Customer customer, Shop shop) {
         double customerBalance = customer.getBalance();
         double toPay = customer.getCart().getTotalPrice();
         //Check if sufficient funds in balance
@@ -29,9 +29,9 @@ public class Payment {
             //Set new balance of customer and shop
             customer.decreaseBalance(toPay);
             shop.increaseBalance(toPay);
-            return true;
+        } else {
+            CartActions.ORDER_REJECT.accept(customer.getCart(), shop);
+            throw new InsufficientFundsException();
         }
-        CartActions.ORDER_REJECT.accept(customer.getCart(), shop);
-        throw new InsufficientFundsException();
     }
 }

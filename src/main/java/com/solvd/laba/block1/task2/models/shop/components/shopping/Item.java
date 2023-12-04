@@ -3,14 +3,15 @@ package com.solvd.laba.block1.task2.models.shop.components.shopping;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidItemPriceException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.NegativeQuantityException;
 
-public class Item {
+public final class Item {
 
     private final long id;
     private final String name;
     private double price;
     private int quantity;
+    private final Category category;
 
-    public Item(long id, String name, double price, int quantity) {
+    public Item(long id, String name, double price, int quantity, Category category) {
         this.id = id;
         this.name = name;
         if (price < 0) {
@@ -22,6 +23,7 @@ public class Item {
             throw new NegativeQuantityException();
         }
         this.quantity = quantity;
+        this.category = category;
     }
 
     public long getId() {
@@ -38,6 +40,10 @@ public class Item {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public Category getCategory() {
+        return category;
     }
 
     public void setPrice(double price) {

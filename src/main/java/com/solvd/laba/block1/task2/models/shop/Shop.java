@@ -108,10 +108,9 @@ public final class Shop implements Balanceable {
         if (customer.getCart().getItems().isEmpty()) {
             throw new CartEmptyException();
         }
-        if (payment.makePayment(customer, this)) {
-            //Successful apply to storage and clear the cart
-            CartActions.ORDER_CONFIRM.accept(customer.getCart());
-        }
+        payment.makePayment(customer, this);
+        //Successful apply to storage and clear the cart
+        CartActions.ORDER_CONFIRM.accept(customer.getCart());
     }
 
 }

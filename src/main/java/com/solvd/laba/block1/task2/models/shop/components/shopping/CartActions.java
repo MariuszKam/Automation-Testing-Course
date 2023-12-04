@@ -7,6 +7,7 @@ import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidQuan
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 import static com.solvd.laba.block1.task2.Main.logger;
 
@@ -20,7 +21,7 @@ public class CartActions {
         //Update storage quantity
         item.setQuantity(item.getQuantity() - quantity);
         //Add item to cart
-        Item toCart = new Item(item.getId(), item.getName(), item.getPrice(), quantity);
+        Item toCart = new Item(item.getId(), item.getName(), item.getPrice(), quantity, item.getCategory());
         cart.addItem(toCart);
     };
 
@@ -77,4 +78,5 @@ public class CartActions {
         cart.getItems().clear();
         logger.warn("Order rejected!");
     };
+
 }

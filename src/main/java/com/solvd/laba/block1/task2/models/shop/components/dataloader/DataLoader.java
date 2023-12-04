@@ -5,6 +5,7 @@ import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.persons.employees.Manager;
 import com.solvd.laba.block1.task2.models.persons.employees.Position;
+import com.solvd.laba.block1.task2.models.shop.components.shopping.Category;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.Item;
 import com.solvd.laba.block1.task2.models.shop.components.discount.PromoCode;
 
@@ -39,7 +40,8 @@ public class DataLoader {
         long id = Long.parseLong(itemsData[0]);
         double price = Double.parseDouble(itemsData[2]);
         int quantity = Integer.parseInt(itemsData[3]);
-        return new Item(id, itemsData[1], price, quantity);
+        Category category = Category.valueOf(itemsData[4]);
+        return new Item(id, itemsData[1], price, quantity, category);
     }
 
     public static List<Item> itemLoader(String filePath) {
