@@ -1,8 +1,10 @@
 package com.solvd.laba.block1.task2.models.shop.components.discount;
 
+import static com.solvd.laba.block1.task2.Main.logger;
+
 public enum DiscountType {
     PERCENTAGE("Percentage Discount", false),
-    FLAT("Fixed Amount Discount", true);
+    FLAT("Flat Amount Discount", true);
 
     private final String typeName;
     private final boolean flat;
@@ -18,5 +20,9 @@ public enum DiscountType {
 
     public boolean isFlat() {
         return flat;
+    }
+
+    public void discountInfo() {
+        logger.info("This discount is {}", getTypeName());
     }
 }
