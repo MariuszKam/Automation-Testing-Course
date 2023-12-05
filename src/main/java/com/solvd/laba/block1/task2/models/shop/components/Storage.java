@@ -86,7 +86,7 @@ public class Storage implements Sortable, Storageable, Searchable {
     }
 
     public int getTotalAmount() {
-        items.stream()
+        return items.stream()
                 .mapToInt(Item::getQuantity)
                 .sum();
     }
