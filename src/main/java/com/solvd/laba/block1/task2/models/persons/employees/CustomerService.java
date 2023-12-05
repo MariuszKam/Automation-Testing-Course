@@ -1,6 +1,7 @@
 package com.solvd.laba.block1.task2.models.persons.employees;
 
-import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
+import com.solvd.laba.block1.task2.models.shop.components.inquiry.Inquiry;
+import com.solvd.laba.block1.task2.models.shop.components.inquiry.InquiryStatus;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.Item;
 import com.solvd.laba.block1.task2.models.shop.components.Storage;
 
@@ -14,7 +15,7 @@ public final class CustomerService extends Employee {
     public void solveInquiry(Inquiry inquiry, Storage storage) {
         Item item = storage.getItemByName(inquiry.getItemName());
         inquiry.setReply("Currently we have " + item.getQuantity() + " in stock");
-        inquiry.setPending(false);
+        inquiry.setInquiryStatus(InquiryStatus.RESOLVED);
     }
 
     //OPP - part 2 - Create and override at least one abstract method.

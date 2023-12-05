@@ -1,4 +1,4 @@
-package com.solvd.laba.block1.task2.models.shop.components;
+package com.solvd.laba.block1.task2.models.shop.components.inquiry;
 
 import com.solvd.laba.block1.task2.models.persons.Customer;
 
@@ -7,13 +7,13 @@ import java.util.Objects;
 public class Inquiry {
     private final Customer from;
     private final String itemName;
-    private boolean pending;
+    private InquiryStatus inquiryStatus;
     private String reply;
 
     public Inquiry(Customer from, String itemName) {
         this.from = from;
         this.itemName = itemName;
-        this.pending = true;
+        this.inquiryStatus = InquiryStatus.IN_PROGRESS;
         this.reply = "";
     }
 
@@ -25,12 +25,12 @@ public class Inquiry {
         return itemName;
     }
 
-    public boolean isPending() {
-        return pending;
+    public InquiryStatus getInquiryStatus() {
+        return inquiryStatus;
     }
 
-    public void setPending(boolean pending) {
-        this.pending = pending;
+    public void setInquiryStatus(InquiryStatus inquiryStatus) {
+        this.inquiryStatus = inquiryStatus;
     }
 
     public String getReply() {
@@ -46,18 +46,17 @@ public class Inquiry {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Inquiry inquiry = (Inquiry) o;
-        return pending == inquiry.pending && Objects.equals(from, inquiry.from) && Objects.equals(itemName, inquiry.itemName);
+        return Objects.equals(from, inquiry.from) && Objects.equals(itemName, inquiry.itemName) && inquiryStatus == inquiry.inquiryStatus && Objects.equals(reply, inquiry.reply);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(from, itemName, pending);
+        return Objects.hash(from, itemName, inquiryStatus, reply);
     }
 
     @Override
     public String toString() {
         return "Inquiry From: " + from.getName() + " " + from.getLastname() + " regarding the quantity of " + itemName + " in stock." +
-                "\nStatus: " + (pending ? "pending" : "solved") +
-                (pending ? "" : "\nReply: " + reply);
+                "\nStatus: " + inquiryStatus.getStatus();
     }
 }

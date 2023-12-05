@@ -5,6 +5,7 @@ import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.shop.components.*;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
+import com.solvd.laba.block1.task2.models.shop.components.inquiry.Inquiry;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
 import com.solvd.laba.block1.task2.models.shop.components.payment.Payment;
 import com.solvd.laba.block1.task2.models.shop.components.payment.PaymentMethod;

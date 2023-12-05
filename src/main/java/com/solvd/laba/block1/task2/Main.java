@@ -4,7 +4,7 @@ package com.solvd.laba.block1.task2;
 import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.shop.Shop;
 import com.solvd.laba.block1.task2.models.shop.Initializer;
-import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
+import com.solvd.laba.block1.task2.models.shop.components.inquiry.Inquiry;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
 import com.solvd.laba.block1.task2.models.shop.components.payment.PaymentMethod;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.CartActions;

@@ -1,7 +1,7 @@
 package com.solvd.laba.block1.task2.models.persons;
 
 import com.solvd.laba.block1.task2.models.shop.components.shopping.Cart;
-import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
+import com.solvd.laba.block1.task2.models.shop.components.inquiry.Inquiry;
 
 public final class Customer extends Person {
 
