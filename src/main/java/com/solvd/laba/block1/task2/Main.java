@@ -71,6 +71,7 @@ public class Main {
         //Balance changes
         System.out.printf("Change in customer balance: %.2f$%n", customer1.getBalance());
         System.out.printf("Change in shop balance: %.2f$%n", shop.getBalance());
+        
 
         //Customer - Scenario two: Failed transaction.
         System.out.println("\nSecond case\n");
@@ -87,6 +88,7 @@ public class Main {
         CartActions.ORDER_REJECT.accept(customer2.getCart(), shop);
         //Storage didn't change
         shop.printStorage();
+
 
     }
 }

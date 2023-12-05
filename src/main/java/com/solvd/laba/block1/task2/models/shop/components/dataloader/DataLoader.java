@@ -1,10 +1,7 @@
 package com.solvd.laba.block1.task2.models.shop.components.dataloader;
 
 import com.solvd.laba.block1.task2.models.persons.Customer;
-import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
-import com.solvd.laba.block1.task2.models.persons.employees.Employee;
-import com.solvd.laba.block1.task2.models.persons.employees.Manager;
-import com.solvd.laba.block1.task2.models.persons.employees.Position;
+import com.solvd.laba.block1.task2.models.persons.employees.*;
 import com.solvd.laba.block1.task2.models.shop.components.discount.DiscountType;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.Category;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.Item;
@@ -63,6 +60,9 @@ public class DataLoader {
             }
             case CUSTOMER_SERVICE -> {
                 return new CustomerService(id, firstName, lastName, salary);
+            }
+            case ACCOUNTANT -> {
+                return new Accountant(id, firstName, lastName, salary);
             }
             default -> throw new IllegalArgumentException("Unknown position: " + position);
         }
