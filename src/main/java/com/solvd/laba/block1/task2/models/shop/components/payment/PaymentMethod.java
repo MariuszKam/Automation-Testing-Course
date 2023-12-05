@@ -1,5 +1,6 @@
 package com.solvd.laba.block1.task2.models.shop.components.payment;
 
+import static com.solvd.laba.block1.task2.Main.logger;
 public enum PaymentMethod {
     CREDIT_CARD("Credit Card"),
     PAYPAL("PayPal"),
@@ -16,6 +17,6 @@ public enum PaymentMethod {
     }
 
     public void paymentMadeBy(double amount) {
-        System.out.printf("Transaction for %.2f provided by %s%n", amount, methodName);
+       logger.info ("Transaction for {} provided by {}", amount, methodName);
     }
 }

@@ -13,4 +13,6 @@ public enum InquiryStatus {
     public String getStatus() {
         return status;
     }
+
+
 }
