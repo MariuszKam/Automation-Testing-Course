@@ -5,6 +5,8 @@ import com.solvd.laba.block1.task2.models.shop.Shop;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.InsufficientFundsException;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.CartActions;
 
+import static com.solvd.laba.block1.task2.Main.logger;
+
 public class Payment {
 
     private boolean isSuccessful;
@@ -25,14 +27,13 @@ public class Payment {
         double customerBalance = customer.getBalance();
         double toPay = customer.getCart().getTotalPrice();
         //Check if sufficient funds in balance
-        if (customerBalance >= toPay) {
-            //Set new balance of customer and shop
-            paymentMethod.paymentMadeBy(toPay);
+        try {
             customer.decreaseBalance(toPay);
             shop.increaseBalance(toPay);
-        } else {
+            paymentMethod.paymentMadeBy(toPay);
+        } catch (InsufficientFundsException e) {
             CartActions.ORDER_REJECT.accept(customer.getCart(), shop);
-            throw new InsufficientFundsException();
+            logger.warn(e.getMessage());
         }
     }
 }

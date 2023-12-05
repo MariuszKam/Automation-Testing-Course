@@ -1,5 +1,6 @@
 package com.solvd.laba.block1.task2.models.persons;
 
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.InsufficientFundsException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
 
 import java.util.Objects;
@@ -45,22 +46,16 @@ public abstract class Person implements Balanceable {
     }
 
     @Override
-    public boolean isPositive() {
-        return balance >= 0;
-    }
-
-    @Override
     public void increaseBalance(double amount) {
         balance += amount;
     }
 
     @Override
-    public void decreaseBalance(double amount) {
-        double savePoint = balance;
-        balance -= amount;
-        if (!isPositive()) {
-            balance = savePoint;
-            System.out.println("Insufficient funds for operation");
+    public void decreaseBalance(double amount) throws InsufficientFundsException {
+        if (balance >= amount) {
+            balance -= amount;
+        } else {
+            throw new InsufficientFundsException();
         }
     }
 

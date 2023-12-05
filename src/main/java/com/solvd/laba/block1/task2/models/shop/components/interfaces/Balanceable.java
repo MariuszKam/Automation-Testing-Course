@@ -1,12 +1,12 @@
 package com.solvd.laba.block1.task2.models.shop.components.interfaces;
 
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.InsufficientFundsException;
+
 public interface Balanceable {
     void showBalance();
 
-    boolean isPositive();
-
     void increaseBalance(double amount);
 
-    void decreaseBalance(double amount);
+    void decreaseBalance(double amount) throws InsufficientFundsException;
 
 }

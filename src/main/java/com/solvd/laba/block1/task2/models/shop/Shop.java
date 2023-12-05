@@ -7,6 +7,7 @@ import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.shop.components.*;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.AccountantNotFoundException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.InsufficientFundsException;
 import com.solvd.laba.block1.task2.models.shop.components.inquiry.Inquiry;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
 import com.solvd.laba.block1.task2.models.shop.components.payment.Payment;
@@ -75,22 +76,16 @@ public final class Shop implements Balanceable {
     }
 
     @Override
-    public boolean isPositive() {
-        return balance >= 0;
-    }
-
-    @Override
     public void increaseBalance(double amount) {
         balance += amount;
     }
 
     @Override
-    public void decreaseBalance(double amount) {
-        double savePoint = balance;
-        balance -= amount;
-        if (!isPositive()) {
-            balance = savePoint;
-            logger.warn("Insufficient funds for operation");
+    public void decreaseBalance(double amount) throws InsufficientFundsException {
+        if (balance >= amount) {
+            balance -= amount;
+        } else {
+            throw new InsufficientFundsException();
         }
     }
 
@@ -108,7 +103,7 @@ public final class Shop implements Balanceable {
     public void paySalaries() {
         try {
             decreaseBalance(getAccountant().calculatePayroll(employees));
-        } catch (AccountantNotFoundException e) {
+        } catch (Exception e) {
             logger.warn(e.getMessage());
         }
     }

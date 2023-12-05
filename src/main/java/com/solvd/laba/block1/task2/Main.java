@@ -23,8 +23,6 @@ public class Main {
         Customer customer1 = shop.getCustomers().get(0);
         Customer customer2 = shop.getCustomers().get(1);
 
-        shop.paySalaries();
-
 
         //Inquiry
         Inquiry inquiry = customer1.makeInquiry("Pencil");
