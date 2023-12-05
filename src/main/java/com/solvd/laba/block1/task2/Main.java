@@ -6,6 +6,7 @@ import com.solvd.laba.block1.task2.models.shop.Shop;
 import com.solvd.laba.block1.task2.models.shop.Initializer;
 import com.solvd.laba.block1.task2.models.shop.components.Inquiry;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
+import com.solvd.laba.block1.task2.models.shop.components.payment.PaymentMethod;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.CartActions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -61,7 +62,7 @@ public class Main {
         customer1.increaseBalance(500);
         //Finishing transaction
         try {
-            shop.checkout(customer1);
+            shop.checkout(customer1, PaymentMethod.CASH);
         } catch (CartEmptyException e) {
             logger.warn(e.getMessage());
         }
@@ -78,7 +79,7 @@ public class Main {
         CartActions.ADD_ITEM.perform(customer2.getCart(), shop.getStorage().getItemByName("Book"), 2);
         //Try to finish transaction
         try {
-            shop.checkout(customer2);
+            shop.checkout(customer2, PaymentMethod.PAYPAL);
         } catch (CartEmptyException e) {
             logger.warn(e.getMessage());
         }

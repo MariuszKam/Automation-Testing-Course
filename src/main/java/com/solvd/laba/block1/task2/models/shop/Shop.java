@@ -6,6 +6,8 @@ import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.shop.components.*;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
+import com.solvd.laba.block1.task2.models.shop.components.payment.Payment;
+import com.solvd.laba.block1.task2.models.shop.components.payment.PaymentMethod;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.CartActions;
 
 import java.util.*;
@@ -104,11 +106,11 @@ public final class Shop implements Balanceable {
         storage.getItems().forEach(logger::info);
     }
 
-    public void checkout(Customer customer) throws CartEmptyException {
+    public void checkout(Customer customer, PaymentMethod paymentMethod) throws CartEmptyException {
         if (customer.getCart().getItems().isEmpty()) {
             throw new CartEmptyException();
         }
-        payment.makePayment(customer, this);
+        payment.makePayment(customer, this, paymentMethod);
         //Successful apply to storage and clear the cart
         CartActions.ORDER_CONFIRM.accept(customer.getCart());
     }

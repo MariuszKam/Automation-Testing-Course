@@ -1,4 +1,4 @@
-package com.solvd.laba.block1.task2.models.shop.components;
+package com.solvd.laba.block1.task2.models.shop.components.payment;
 
 import com.solvd.laba.block1.task2.models.persons.Customer;
 import com.solvd.laba.block1.task2.models.shop.Shop;
@@ -21,12 +21,13 @@ public class Payment {
         isSuccessful = successful;
     }
 
-    public void makePayment(Customer customer, Shop shop) {
+    public void makePayment(Customer customer, Shop shop, PaymentMethod paymentMethod) {
         double customerBalance = customer.getBalance();
         double toPay = customer.getCart().getTotalPrice();
         //Check if sufficient funds in balance
         if (customerBalance >= toPay) {
             //Set new balance of customer and shop
+            paymentMethod.paymentMadeBy(toPay);
             customer.decreaseBalance(toPay);
             shop.increaseBalance(toPay);
         } else {
