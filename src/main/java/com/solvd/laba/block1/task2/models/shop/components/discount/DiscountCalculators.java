@@ -10,7 +10,7 @@ public class DiscountCalculators {
             cart.getTotalPrice() * (1 - discount / 100);
 
     // Lambda expression for calculating discount based on a fixed amount
-    public static final DiscountCalculator<Cart> FIXED_AMOUNT_DISCOUNT = (cart, discount) ->
+    public static final DiscountCalculator<Cart> FlAT_DISCOUNT = (cart, discount) ->
     {
         if (cart.getTotalPrice() < discount) {
             throw new NegativePriceException();

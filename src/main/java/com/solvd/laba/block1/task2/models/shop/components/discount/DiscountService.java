@@ -29,8 +29,8 @@ public class DiscountService {
             PromoCode promoCode = promoCodes.get(code);
             DiscountCalculator<Cart> discountCalculator;
             //Check if it's flat or not and set implementation
-            if (promoCode.isFlat()) {
-                discountCalculator = DiscountCalculators.FIXED_AMOUNT_DISCOUNT;
+            if (promoCode.getDiscountType().isFlat()) {
+                discountCalculator = DiscountCalculators.FlAT_DISCOUNT;
             } else {
                 discountCalculator = DiscountCalculators.PERCENTAGE_DISCOUNT;
             }

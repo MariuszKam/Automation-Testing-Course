@@ -7,14 +7,14 @@ public class PromoCode {
     private final String code;
 
     private final double value;
-    private final boolean flat;
+    private final DiscountType discountType;
     private boolean available;
 
-    public PromoCode(long id, String code, double value, boolean flat) {
+    public PromoCode(long id, String code, double value, DiscountType discountType) {
         this.id = id;
         this.code = code;
         this.value = value;
-        this.flat = flat;
+        this.discountType = discountType;
         this.available = true;
     }
 
@@ -30,8 +30,8 @@ public class PromoCode {
         return value;
     }
 
-    public boolean isFlat() {
-        return flat;
+    public DiscountType getDiscountType() {
+        return discountType;
     }
 
     public boolean isAvailable() {

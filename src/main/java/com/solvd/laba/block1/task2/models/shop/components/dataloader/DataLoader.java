@@ -5,6 +5,7 @@ import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.persons.employees.Manager;
 import com.solvd.laba.block1.task2.models.persons.employees.Position;
+import com.solvd.laba.block1.task2.models.shop.components.discount.DiscountType;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.Category;
 import com.solvd.laba.block1.task2.models.shop.components.shopping.Item;
 import com.solvd.laba.block1.task2.models.shop.components.discount.PromoCode;
@@ -89,8 +90,8 @@ public class DataLoader {
         long id = Long.parseLong(promoCodesData[0]);
         String code = promoCodesData[1];
         double value = Double.parseDouble(promoCodesData[2]);
-        boolean flat = Boolean.parseBoolean(promoCodesData[3]);
-        return new PromoCode(id, code, value, flat);
+        DiscountType discountType = DiscountType.valueOf(promoCodesData[3]);
+        return new PromoCode(id, code, value, discountType);
     }
 
     public static Map<String, PromoCode> promoCodesLoader(String filePath) {
