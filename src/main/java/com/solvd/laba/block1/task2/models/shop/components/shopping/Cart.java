@@ -84,12 +84,10 @@ public final class Cart implements Sortable, Storageable, Searchable {
 
     @Override
     public Item getItemByName(String name) {
-        for (Item item : items) {
-            if (item.getName().equals(name)) {
-                return item;
-            }
-        }
-        throw new ItemNotFoundException();
+        return items.stream()
+                .filter(item -> item.getName().equals(name))
+                .findFirst()
+                .orElseThrow(ItemNotFoundException::new);
     }
 
     @Override
