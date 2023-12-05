@@ -84,4 +84,10 @@ public class Storage implements Sortable, Storageable, Searchable {
         logger.info("Items in the Storage Sorted by Quantity");
         sortedByQuantity.forEach(logger::info);
     }
+
+    public int getTotalAmount() {
+        items.stream()
+                .mapToInt(Item::getQuantity)
+                .sum();
+    }
 }
