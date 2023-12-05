@@ -1,9 +1,11 @@
 package com.solvd.laba.block1.task2.models.shop;
 
 import com.solvd.laba.block1.task2.models.persons.Customer;
+import com.solvd.laba.block1.task2.models.persons.employees.Accountant;
 import com.solvd.laba.block1.task2.models.persons.employees.CustomerService;
 import com.solvd.laba.block1.task2.models.persons.employees.Employee;
 import com.solvd.laba.block1.task2.models.shop.components.*;
+import com.solvd.laba.block1.task2.models.shop.components.exceptions.AccountantNotFoundException;
 import com.solvd.laba.block1.task2.models.shop.components.exceptions.CartEmptyException;
 import com.solvd.laba.block1.task2.models.shop.components.inquiry.Inquiry;
 import com.solvd.laba.block1.task2.models.shop.components.interfaces.Balanceable;
@@ -101,6 +103,22 @@ public final class Shop implements Balanceable {
                 }
             }
         }
+    }
+
+    public void paySalaries() {
+        try {
+            decreaseBalance(getAccountant().calculatePayroll(employees));
+        } catch (AccountantNotFoundException e) {
+            logger.warn(e.getMessage());
+        }
+    }
+
+    private Accountant getAccountant() throws AccountantNotFoundException {
+        Optional<Employee> accountant = employees.stream()
+                .filter(employee -> employee instanceof Accountant)
+                .findFirst();
+        return accountant.map(employee -> (Accountant) employee)
+                .orElseThrow(AccountantNotFoundException::new);
     }
 
     public void printStorage() {

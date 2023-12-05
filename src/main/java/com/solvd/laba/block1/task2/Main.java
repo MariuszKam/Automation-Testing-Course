@@ -23,6 +23,8 @@ public class Main {
         Customer customer1 = shop.getCustomers().get(0);
         Customer customer2 = shop.getCustomers().get(1);
 
+        shop.paySalaries();
+
 
         //Inquiry
         Inquiry inquiry = customer1.makeInquiry("Pencil");
@@ -71,7 +73,7 @@ public class Main {
         //Balance changes
         System.out.printf("Change in customer balance: %.2f$%n", customer1.getBalance());
         System.out.printf("Change in shop balance: %.2f$%n", shop.getBalance());
-        
+
 
         //Customer - Scenario two: Failed transaction.
         System.out.println("\nSecond case\n");
