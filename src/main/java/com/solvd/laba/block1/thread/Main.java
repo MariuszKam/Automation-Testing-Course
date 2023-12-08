@@ -1,9 +1,16 @@
 package com.solvd.laba.block1.thread;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.concurrent.CompletableFuture;
 
+
 public class Main {
+
+    public static final Logger logger = LogManager.getLogger(Main.class);
+
     public static void main(String[] args) {
         //2 Thread using Runnable and Thread
 
@@ -20,7 +27,7 @@ public class Main {
         //Pool with size 5
         ConnectionPool connectionPool = ConnectionPool.getInstance();
         Thread[] threads = new Thread[7];
-        for (Thread thread: threads) {
+        for (Thread thread : threads) {
             thread = new Thread(() -> task(connectionPool));
             thread.start();
         }
@@ -39,7 +46,7 @@ public class Main {
     private static void task(ConnectionPool connectionPool) {
         try {
             SimpleConnection connection = connectionPool.getConnection();
-            System.out.println(connection);
+            logger.info(connection);
             Thread.sleep(4000);
             connectionPool.releaseConnection(connection);
         } catch (InterruptedException e) {

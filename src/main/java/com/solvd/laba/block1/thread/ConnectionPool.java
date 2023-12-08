@@ -8,6 +8,8 @@ public class ConnectionPool {
     private final BlockingQueue<SimpleConnection> connections;
     private static final int POOL_SIZE = 5;
 
+    private static int connectionNum = 1;
+
     public ConnectionPool() {
         connections = new ArrayBlockingQueue<>(POOL_SIZE);
         initialization();
@@ -17,7 +19,7 @@ public class ConnectionPool {
         ConnectionPool result = instance;
         if (result == null) {
             synchronized (ConnectionPool.class) {
-                result =instance;
+                result = instance;
                 if (result == null) {
                     instance = result = new ConnectionPool();
                 }
@@ -29,10 +31,15 @@ public class ConnectionPool {
     private void initialization() {
         for (int i = 0; i < POOL_SIZE; i++) {
             connections.add(new SimpleConnection(i));
+
         }
     }
 
     public SimpleConnection getConnection() throws InterruptedException {
+//        if (connections.size() >= 5) {
+//            connections.add(new SimpleConnection(connectionNum));
+//            connectionNum++;
+//        }
         return connections.take();
     }
 
