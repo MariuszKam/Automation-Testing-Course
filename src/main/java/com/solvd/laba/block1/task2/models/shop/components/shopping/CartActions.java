@@ -7,7 +7,6 @@ import com.solvd.laba.block1.task2.models.shop.components.exceptions.InvalidQuan
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 import static com.solvd.laba.block1.task2.Main.logger;
 

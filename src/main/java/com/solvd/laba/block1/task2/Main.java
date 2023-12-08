@@ -23,6 +23,7 @@ public class Main {
         Customer customer1 = shop.getCustomers().get(0);
         Customer customer2 = shop.getCustomers().get(1);
 
+        shop.paySalaries();
 
         //Inquiry
         Inquiry inquiry = customer1.makeInquiry("Pencil");
@@ -88,7 +89,5 @@ public class Main {
         CartActions.ORDER_REJECT.accept(customer2.getCart(), shop);
         //Storage didn't change
         shop.printStorage();
-
-
     }
 }
