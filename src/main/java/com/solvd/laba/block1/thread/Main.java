@@ -11,12 +11,10 @@ public class Main {
 
     public static final Logger logger = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //2 Thread using Runnable and Thread
 
-        Runnable action = () -> {
-            System.out.println("Thread running: " + Thread.currentThread().getName());
-        };
+        Runnable action = () -> System.out.println("Thread running: " + Thread.currentThread().getName());
 
         Thread threadOne = new Thread(action, "One");
         Thread threadTwo = new Thread(action, "Two");
@@ -46,7 +44,6 @@ public class Main {
     private static void task(ConnectionPool connectionPool) {
         try {
             SimpleConnection connection = connectionPool.getConnection();
-            logger.info(connection);
             Thread.sleep(4000);
             connectionPool.releaseConnection(connection);
         } catch (InterruptedException e) {

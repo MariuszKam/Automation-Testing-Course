@@ -3,16 +3,17 @@ package com.solvd.laba.block1.thread;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
+import static com.solvd.laba.block1.thread.Main.logger;
+
 public class ConnectionPool {
     private static volatile ConnectionPool instance;
     private final BlockingQueue<SimpleConnection> connections;
-    private static final int POOL_SIZE = 5;
+    private static final int MAX_POOL_SIZE = 5;
+    private static int currentConnections = 1;
 
-    private static int connectionNum = 1;
 
-    public ConnectionPool() {
-        connections = new ArrayBlockingQueue<>(POOL_SIZE);
-        initialization();
+    private ConnectionPool() {
+        connections = new ArrayBlockingQueue<>(MAX_POOL_SIZE);
     }
 
     public static ConnectionPool getInstance() {
@@ -28,22 +29,23 @@ public class ConnectionPool {
         return result;
     }
 
-    private void initialization() {
-        for (int i = 0; i < POOL_SIZE; i++) {
-            connections.add(new SimpleConnection(i));
 
+    public synchronized SimpleConnection getConnection() throws InterruptedException {
+        if (connections.isEmpty()) {
+            if (currentConnections <= MAX_POOL_SIZE) {
+                SimpleConnection sp = new SimpleConnection(currentConnections);
+                connections.add(sp);
+                currentConnections++;
+                logger.info("{} created", sp);
+            }
         }
-    }
-
-    public SimpleConnection getConnection() throws InterruptedException {
-//        if (connections.size() >= 5) {
-//            connections.add(new SimpleConnection(connectionNum));
-//            connectionNum++;
-//        }
-        return connections.take();
+        SimpleConnection connection = connections.take();
+        logger.info("Connected by {} ", connection);
+        return connection;
     }
 
     public void releaseConnection(SimpleConnection simpleConnection) {
+        logger.info("{} released", simpleConnection);
         connections.offer(simpleConnection);
     }
 

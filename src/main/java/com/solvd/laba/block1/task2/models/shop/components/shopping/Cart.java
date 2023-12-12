@@ -106,12 +106,7 @@ public final class Cart implements Sortable, Storageable, Searchable {
     @Override
     public void sortByQuantity() {
         List<Item> sortedByQuantity = new ArrayList<>(items);
-        sortedByQuantity.sort(new Comparator<Item>() {
-            @Override
-            public int compare(Item o1, Item o2) {
-                return Integer.compare(o1.getQuantity(), o2.getQuantity());
-            }
-        });
+        sortedByQuantity.sort(Comparator.comparingInt(Item::getQuantity));
         logger.info("Items in your cart sorted by quantity");
         sortedByQuantity.forEach(logger::info);
     }

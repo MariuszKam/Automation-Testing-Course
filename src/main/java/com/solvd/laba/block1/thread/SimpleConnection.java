@@ -6,11 +6,9 @@ public class SimpleConnection {
     private final long id;
     private boolean available;
 
-    public SimpleConnection(long id) {
+    public SimpleConnection(int id) {
         this.id = id;
-        this.available = false;
     }
-
 
     public long getId() {
         return id;
